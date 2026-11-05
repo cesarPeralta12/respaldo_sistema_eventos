@@ -1,5 +1,5 @@
 /**
- * Reporte de un evento: lo usan el panel de IMPACTA y el espacio temporal del cliente.
+ * Reporte de un evento: lo usan el panel de Boost y el espacio temporal del cliente.
  * Todo sale de la base central, así que suma la venta online, la boletería y las invitaciones.
  */
 import { prisma } from "../client";
@@ -106,7 +106,7 @@ export async function getEventReport(eventId: string) {
 
 export type EventReport = NonNullable<Awaited<ReturnType<typeof getEventReport>>>;
 
-/** ¿El cliente puede ver este evento ahora? IMPACTA lo habilita y se cierra solo. */
+/** ¿El cliente puede ver este evento ahora? Boost lo habilita y se cierra solo. */
 export function clientAccessOpen(
   event: { clientAccessEnabled: boolean; clientAccessUntil: Date | null },
   now = new Date(),

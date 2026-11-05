@@ -1,5 +1,5 @@
 /**
- * Carga los datos de demostración de la arquitectura IMPACTA sobre la base actual, sin
+ * Carga los datos de demostración de la arquitectura Boost sobre la base actual, sin
  * borrar nada (a diferencia de la semilla completa). Ver seed-demo.ts.
  */
 import path from "node:path";

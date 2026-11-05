@@ -313,7 +313,7 @@ class SectionLabel extends StatelessWidget {
       );
 }
 
-/// Logo de iPass (SVG de la marca) sobre fondo oscuro, con un rótulo opcional al lado ("PUERTA").
+/// Logo de Boost (SVG de la marca) sobre fondo oscuro, con un rótulo opcional al lado ("PUERTA").
 class BrandMark extends StatelessWidget {
   const BrandMark({super.key, this.height = 26, this.suffix});
 
@@ -326,7 +326,7 @@ class BrandMark extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        SvgPicture.asset('assets/brand/ipass-logo-blanco.svg', height: height, semanticsLabel: 'iPass'),
+        SvgPicture.asset('assets/brand/boost-logo-blanco.svg', height: height, semanticsLabel: 'Boost'),
         if (suffix != null) ...[
           SizedBox(width: height * 0.45),
           Container(width: 1.5, height: height * 0.7, color: Brand.stroke),
@@ -338,7 +338,7 @@ class BrandMark extends StatelessWidget {
   }
 }
 
-/// Ícono de la app (la "i" de iPass sobre magenta), con brillo.
+/// Ícono de la app (la "B" de Boost sobre magenta), con brillo.
 class AppIconTile extends StatelessWidget {
   const AppIconTile({super.key, this.size = 92});
 

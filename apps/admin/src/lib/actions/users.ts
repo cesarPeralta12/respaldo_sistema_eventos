@@ -21,7 +21,7 @@ const staffSchema = z.object({
 const ORGANIZER_ROLES: StaffRole[] = ["ADMIN", "OPERATOR", "CASHIER", "PROMOTER", "BAR"];
 
 /**
- * Solo IMPACTA crea cuentas: las suyas, o las de un organizador cuando entró en él. La
+ * Solo Boost crea cuentas: las suyas, o las de un organizador cuando entró en él. La
  * contraseña es temporal: la persona la cambia al entrar por primera vez.
  */
 export async function createStaffAction(_prev: FormState, formData: FormData): Promise<FormState> {

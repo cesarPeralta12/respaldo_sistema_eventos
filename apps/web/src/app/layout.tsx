@@ -5,11 +5,11 @@ import { Logo } from "@/components/logo";
 import "./globals.css";
 import { Nav } from "./nav";
 
-// Poppins en todo el sitio (guía visual iPass): Bold títulos, SemiBold secciones, Medium botones, Regular texto.
+// Poppins en todo el sitio (guía visual Boost): Bold títulos, SemiBold secciones, Medium botones, Regular texto.
 const poppins = Poppins({ variable: "--font-poppins", subsets: ["latin"], weight: ["400", "500", "600", "700", "800"] });
 
 export const metadata: Metadata = {
-  title: { default: "iPass — Entradas para eventos en Bolivia", template: "%s · iPass" },
+  title: { default: "Boost — Entradas para eventos en Bolivia", template: "%s · Boost" },
   description: "Compra entradas para conciertos, teatro, festivales y más en Bolivia.",
 };
 

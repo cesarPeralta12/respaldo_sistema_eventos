@@ -1,6 +1,6 @@
 # Guía de demostración al cliente
 
-Recorrido completo del sistema, en el orden en que cuenta mejor la historia: **cómo compra la gente → cómo entra → cómo lo maneja el organizador → cómo lo controla Impacta**. Dura 35–45 minutos con todo; las partes marcadas *(opcional)* se pueden saltar si hay poco tiempo.
+Recorrido completo del sistema, en el orden en que cuenta mejor la historia: **cómo compra la gente → cómo entra → cómo lo maneja el organizador → cómo lo controla Boost**. Dura 35–45 minutos con todo; las partes marcadas *(opcional)* se pueden saltar si hay poco tiempo.
 
 Todas las cuentas de demostración usan la contraseña `impacta123`.
 
@@ -20,13 +20,13 @@ Todas las cuentas de demostración usan la contraseña `impacta123`.
 - [ ] Un **segundo celular o la laptop** para mostrar el panel mientras el comprador usa el suyo.
 
 ### Para tener a mano
-- La laptop con tres pestañas: el sitio (como comprador), el panel de Impacta (`admin@impacta.test`) y el panel de un organizador (`organizador@cumbre.test`) en una ventana de incógnito.
+- La laptop con tres pestañas: el sitio (como comprador), el panel de Boost (`admin@impacta.test`) y el panel de un organizador (`organizador@cumbre.test`) en una ventana de incógnito.
 - Un correo **real** tuyo para la parte de correo (las cuentas `@impacta.test` no existen y no reciben nada).
 - Esta lista de cuentas:
 
 | Rol | Cuenta | Para qué |
 |---|---|---|
-| Dueño de Impacta | `admin@impacta.test` | Todo |
+| Dueño de Boost | `admin@impacta.test` | Todo |
 | Organizador | `organizador@cumbre.test` | Su evento "Noche de Gala Cumbre" |
 | Organizador | `organizador@andeslive.test` | Evento esperando aprobación |
 | Cliente | `cliente@impacta.test` | Ve el ingreso en vivo de Loko Fest |
@@ -39,7 +39,7 @@ Todas las cuentas de demostración usan la contraseña `impacta123`.
 Códigos promocionales: `IMPACTA10` (10 % en todo) y `LOKO20` (20 % solo Loko Fest, con promotor "Rodrigo (RRPP)").
 
 ## 1. Presentación (2 min)
-Qué es el sistema: venta de entradas online + control de acceso en la puerta + panel para organizadores, todo en uno. Tres piezas: **el sitio** (compradores), **el panel** (organizadores e Impacta) y **la app de puerta** (porteros).
+Qué es el sistema: venta de entradas online + control de acceso en la puerta + panel para organizadores, todo en uno. Tres piezas: **el sitio** (compradores), **el panel** (organizadores y Boost) y **la app de puerta** (porteros).
 
 ## 2. El comprador (10 min) — sitio web
 1. **Portada.** Eventos publicados, categorías, buscador. Entra a *Noche Electrónica: Alok Bolivia*: se ve el **descuento de preventa** (precio normal tachado y el % hasta la fecha).
@@ -66,20 +66,20 @@ Qué es el sistema: venta de entradas online + control de acceso en la puerta + 
 
 ## 5. El organizador (8 min) — panel (`organizador@cumbre.test`)
 1. **Resumen** con ventas e ingresos de **sus** eventos; no ve nada de otros organizadores.
-2. **Eventos:** crear un evento, funciones (fecha y recinto), tipos de entrada con precio, cupo, **preventa** con descuento y **QR dinámico**. Se crea como borrador y **Impacta lo aprueba** antes de publicar.
+2. **Eventos:** crear un evento, funciones (fecha y recinto), tipos de entrada con precio, cupo, **preventa** con descuento y **QR dinámico**. Se crea como borrador y **Boost lo aprueba** antes de publicar.
 3. **Recintos:** el editor del mapa: butacas (grilla o arco) y **zonas generales con forma** (rectángulo, óvalo, trapecio, arco). Puertas de acceso y qué secciones entran por cada una.
 4. **Promociones:** crear un código con límite de usos, vigencia y un **promotor/RRPP** con comisión; ver sus ventas y la comisión que le toca.
 5. **Ventas:** cada compra, comprador, canal y estado.
 6. **Boletería:** vender en caja (efectivo, QR, tarjeta) e **imprimir el ticket** (térmico de 80 mm o A4) con su puerta.
 7. **Invitados:** cargar una lista, emitir invitaciones y la hoja de QRs. *(opcional)*
-8. **Límite de eventos:** explica que Impacta puede fijarle un máximo de eventos activos (se ve en el panel de Impacta, paso 7).
+8. **Límite de eventos:** explica que Boost puede fijarle un máximo de eventos activos (se ve en el panel de Boost, paso 7).
 
 ## 6. Ingreso en vivo (3 min)
 - Como organizador o con `cliente@impacta.test`: **Ingresos en puerta** de Loko Fest, en vivo: cuántos entraron, por qué puerta, el **mapa de butacas y las zonas** con quién ya entró, y los **intentos rechazados** (ya usada, puerta equivocada, **QR vencido** = intentos de captura).
 - Lee una entrada con el celular de la puerta y mira cómo se actualiza el panel.
-- `cliente@impacta.test` ve solo su evento y mientras Impacta le habilite el acceso.
+- `cliente@impacta.test` ve solo su evento y mientras Boost le habilite el acceso.
 
-## 7. Impacta (8 min) — `admin@impacta.test`
+## 7. Boost (8 min) — `admin@impacta.test`
 1. **Resumen general** y **Organizadores:** alta de un organizador (razón social, responsable y contraseña temporal), ver sus eventos, **entrar a su panel** ("Entrar como"), suspenderlo, y **fijar su límite de eventos**.
 2. **Aprobaciones:** aprobar o rechazar (con nota) el evento de Andes Live.
 3. **Usuarios y porteros:** crear un portero **dentro del organizador** (Organizadores → Ver → Gestionar sus cuentas), asignarle una función y una puerta, ver sus teléfonos con sesión y **cerrar una sesión**.

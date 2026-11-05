@@ -82,7 +82,7 @@ export function ActionForm({
       onInput={() => setDirty(true)}
       className={className}
       aria-busy={pending}
-      title={readOnly ? "Solo lectura: los cambios los hace iPass." : undefined}
+      title={readOnly ? "Solo lectura: los cambios los hace Boost." : undefined}
     >
       <fieldset disabled={pending || readOnly} className="contents">
         {children}

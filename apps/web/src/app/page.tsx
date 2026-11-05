@@ -81,7 +81,7 @@ export default async function HomePage({ searchParams }: Props) {
 
   return (
     <main>
-      <h1 className="sr-only">iPass: entradas para eventos en Bolivia</h1>
+      <h1 className="sr-only">Boost: entradas para eventos en Bolivia</h1>
 
       {slides.length > 0 && (
         <>

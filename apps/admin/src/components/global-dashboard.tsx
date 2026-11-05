@@ -6,7 +6,7 @@ import { CountUp } from "@/components/count-up";
 import { CHANNEL_LABEL, SCAN_LABEL } from "@/lib/labels";
 import { startOfToday } from "@/lib/dates";
 
-/** Resumen de IMPACTA: todos los organizadores juntos, en vivo. */
+/** Resumen de Boost: todos los organizadores juntos, en vivo. */
 export async function GlobalDashboard({ name }: { name: string }) {
   const since = startOfToday();
   const paidToday = { status: "PAID" as const, paidAt: { gte: since } };
@@ -52,7 +52,7 @@ export async function GlobalDashboard({ name }: { name: string }) {
   const stats = [
     { label: "Organizadores activos", value: organizers, href: "/organizadores", tone: "blue" },
     { label: "Eventos a la venta", value: onSale, tone: "amber" },
-    // Solo si un organizador envió un evento (los de iPass se publican directo).
+    // Solo si un organizador envió un evento (los de Boost se publican directo).
     ...(pending > 0 ? [{ label: "Esperando aprobación", value: pending, href: "/aprobaciones", warn: true, tone: "amber" }] : []),
     { label: "Ventas de hoy", value: `${salesToday} · ${formatMoney(revenueToday._sum.totalAmount ?? 0, DEFAULT_CURRENCY)}`, href: "/ordenes", tone: "magenta" },
     { label: "Entradas emitidas", value: tickets, tone: "blue" },

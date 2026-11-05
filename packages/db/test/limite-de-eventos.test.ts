@@ -118,7 +118,7 @@ describe("crear con límite", () => {
   });
 });
 
-describe("fijar el límite (IMPACTA)", () => {
+describe("fijar el límite (Boost)", () => {
   it("guarda el valor, lo deja en el registro y permite quitarlo", async () => {
     const { org, actor } = await organizer();
     await setMaxActiveEvents(org.id, 4, actor.id);

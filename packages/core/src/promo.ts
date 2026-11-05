@@ -35,8 +35,8 @@ export function isValidPromoCode(code: string): boolean {
 }
 
 /** Código legible y difícil de adivinar, por ejemplo "RRPP-K7Q3M". */
-export function generatePromoCode(prefix = "IPASS"): string {
-  const clean = normalizePromoCode(prefix).replace(/[^A-Z0-9]/g, "").slice(0, 12) || "IPASS";
+export function generatePromoCode(prefix = "BOOST"): string {
+  const clean = normalizePromoCode(prefix).replace(/[^A-Z0-9]/g, "").slice(0, 12) || "BOOST";
   return `${clean}-${randomCode(5)}`;
 }
 

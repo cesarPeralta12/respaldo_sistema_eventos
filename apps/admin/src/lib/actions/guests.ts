@@ -9,7 +9,7 @@ import { formObject, intField, zodErrors, type FormState } from "@/lib/forms";
 import { ROLES, can, requireEditor, visibleEvent, type Staff } from "@/lib/session";
 import { logAudit } from "@/lib/audit";
 
-/** IMPACTA en cualquier evento; el cliente solo en sus eventos con lista de invitados y con su espacio abierto. */
+/** Boost en cualquier evento; el cliente solo en sus eventos con lista de invitados y con su espacio abierto. */
 async function guestEvent(staff: Staff, eventId: string) {
   const event = await visibleEvent(staff, eventId);
   if (!event) return null;

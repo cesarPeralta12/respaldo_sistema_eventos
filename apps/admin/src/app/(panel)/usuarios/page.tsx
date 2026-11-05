@@ -28,11 +28,11 @@ export default async function UsersPage() {
       <div>
         {organizer && <p className="eyebrow">{staff.organization.name}</p>}
         <h1 className="text-2xl font-semibold tracking-tight">
-          {organizer ? "Cuentas del organizador" : "Usuarios de iPass"}
+          {organizer ? "Cuentas del organizador" : "Usuarios de Boost"}
         </h1>
         <p className="text-sm text-[var(--ink-muted)]">
           {organizer
-            ? "Solo iPass crea cuentas. Cada una ve únicamente los eventos de este organizador: el administrador, todo lo suyo; el portero, la app móvil de puerta; el cajero, la boletería; el promotor, solo vender con QR los eventos que le asignes."
+            ? "Solo Boost crea cuentas. Cada una ve únicamente los eventos de este organizador: el administrador, todo lo suyo; el portero, la app móvil de puerta; el cajero, la boletería; el promotor, solo vender con QR los eventos que le asignes."
             : "No hay registro público: las cuentas se crean aquí. Cada rol ve solo lo suyo: el portero, la app móvil de puerta; el cajero, la boletería; el cliente, sus eventos mientras su espacio esté abierto; el promotor, solo vender con QR los eventos que le asignes (en Promotores)."}{" "}
           La contraseña es temporal: la persona la cambia al entrar por primera vez.
         </p>
@@ -40,7 +40,7 @@ export default async function UsersPage() {
 
       {!organizer && (
         <p role="note" className="rounded-xl border border-[var(--warn)]/40 bg-[var(--warn-soft)] px-4 py-3 text-sm text-[var(--warn)]">
-          Estás creando cuentas de <strong>iPass</strong>: solo ven los eventos de iPass. Para el portero, el cajero o el administrador de un
+          Estás creando cuentas de <strong>Boost</strong>: solo ven los eventos de Boost. Para el portero, el cajero o el administrador de un
           organizador, entra primero en él: <Link href="/organizadores" className="font-semibold underline">Organizadores → Ver → Gestionar sus cuentas</Link>.
         </p>
       )}

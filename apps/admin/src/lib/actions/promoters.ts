@@ -84,7 +84,7 @@ export async function assignPromoterAction(_prev: FormState, formData: FormData)
 
 /**
  * Alta de un promotor en un solo paso: la cuenta (contraseña temporal), su teléfono, su código y su primer evento con
- * funciones, comisión y cupo. Solo iPass crea cuentas.
+ * funciones, comisión y cupo. Solo Boost crea cuentas.
  */
 export async function createPromoterAction(_prev: FormState, formData: FormData): Promise<FormState> {
   const staff = await requirePlatform();

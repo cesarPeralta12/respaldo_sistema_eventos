@@ -1,5 +1,5 @@
 /**
- * Plantillas de los correos de iPass. HTML simple con estilos en línea (los clientes de correo no
+ * Plantillas de los correos de Boost. HTML simple con estilos en línea (los clientes de correo no
  * cargan hojas de estilo) y una versión de texto para quien no ve HTML.
  */
 import { formatCode, formatDateTime, reentryText, type WhenWhere } from "@ticketera/core";
@@ -8,7 +8,7 @@ import type { Email, InlineImage } from "./send";
 const esc = (value: string) =>
   value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
-// Colores iPass: magenta para botones y enlaces (su variante oscura en textos chicos), azul noche de base.
+// Colores Boost: magenta para botones y enlaces (su variante oscura en textos chicos), azul noche de base.
 const BRAND = "#AD468D";
 const LINK = "#913673";
 const INK = "#192438";
@@ -29,7 +29,7 @@ function layout(preheader: string, body: string) {
     <tr><td style="padding:28px">${body}</td></tr>
     <tr><td style="padding:16px 28px;background:#F5F6F8;color:${MUTED};font-size:12px;line-height:1.5">
       Este es un mensaje automático: por favor no respondas a este correo. Lo recibes porque se usó esta dirección en
-      iPass; si no fuiste tú, puedes ignorarlo.
+      Boost; si no fuiste tú, puedes ignorarlo.
     </td></tr>
   </table>
 </td></tr></table>
@@ -37,7 +37,7 @@ function layout(preheader: string, body: string) {
 }
 
 export function verifyEmailMessage(input: { to: string; name: string; link: string; hours: number }): Email {
-  const subject = "Confirma tu correo en iPass";
+  const subject = "Confirma tu correo en Boost";
   const html = layout(
     "Confirma tu correo para poder comprar entradas.",
     `<h1 style="margin:0 0 12px;font-size:24px">Confirma tu correo</h1>
@@ -45,12 +45,12 @@ export function verifyEmailMessage(input: { to: string; name: string; link: stri
      <p style="margin:26px 0">${button(input.link, "Confirmar mi correo")}</p>
      <p style="color:${MUTED};font-size:13px;line-height:1.5">El enlace vale ${input.hours} horas. Si el botón no funciona, copia esta dirección en el navegador:<br><span style="word-break:break-all">${esc(input.link)}</span></p>`,
   );
-  const text = `Hola ${input.name},\n\nConfirma tu correo para poder comprar entradas en iPass:\n${input.link}\n\nEl enlace vale ${input.hours} horas.`;
+  const text = `Hola ${input.name},\n\nConfirma tu correo para poder comprar entradas en Boost:\n${input.link}\n\nEl enlace vale ${input.hours} horas.`;
   return { to: input.to, subject, html, text };
 }
 
 export function resetPasswordMessage(input: { to: string; name: string; link: string; minutes: number }): Email {
-  const subject = "Cambia tu contraseña de iPass";
+  const subject = "Cambia tu contraseña de Boost";
   const html = layout(
     "Pediste cambiar tu contraseña.",
     `<h1 style="margin:0 0 12px;font-size:24px">Cambia tu contraseña</h1>
@@ -63,14 +63,14 @@ export function resetPasswordMessage(input: { to: string; name: string; link: st
 }
 
 export function passwordChangedMessage(input: { to: string; name: string }): Email {
-  const subject = "Tu contraseña de iPass cambió";
+  const subject = "Tu contraseña de Boost cambió";
   const html = layout(
     "Tu contraseña cambió.",
     `<h1 style="margin:0 0 12px;font-size:24px">Tu contraseña cambió</h1>
      <p style="line-height:1.55">Hola ${esc(input.name)}, te avisamos que la contraseña de tu cuenta se cambió hace un momento.</p>
      <p style="line-height:1.55;color:#C62842"><strong>¿No fuiste tú?</strong> Cambia tu contraseña de inmediato desde «Olvidé mi contraseña» y escríbenos.</p>`,
   );
-  const text = `Hola ${input.name},\n\nLa contraseña de tu cuenta de iPass se cambió hace un momento. Si no fuiste tú, cámbiala de inmediato desde "Olvidé mi contraseña".`;
+  const text = `Hola ${input.name},\n\nLa contraseña de tu cuenta de Boost se cambió hace un momento. Si no fuiste tú, cámbiala de inmediato desde "Olvidé mi contraseña".`;
   return { to: input.to, subject, html, text };
 }
 

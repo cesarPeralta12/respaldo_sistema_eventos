@@ -29,7 +29,7 @@ export default async function EventsPage() {
       },
     },
   });
-  // Impacta ve también los eventos de todos los organizadores (para abrirlos, entra en el organizador).
+  // Boost ve también los eventos de todos los organizadores (para abrirlos, entra en el organizador).
   const others = isGlobalView(staff)
     ? await prisma.event.findMany({
         where: { organizationId: { not: staff.organization.id } },
@@ -52,7 +52,7 @@ export default async function EventsPage() {
         <div>
           <p className="eyebrow">{events.length} evento(s)</p>
           <h1 className="flex items-center gap-2 text-2xl font-semibold tracking-tight">
-            {isGlobalView(staff) ? "Eventos de iPass" : isNightlife(staff) ? "Noches" : "Eventos"}
+            {isGlobalView(staff) ? "Eventos de Boost" : isNightlife(staff) ? "Noches" : "Eventos"}
             <Help title="Cómo se arma un evento">
               «+ Nuevo evento» abre el asistente: datos, lugar y fecha, entradas (con modelos General, VIP, Mesa, Free y
               Preventa), revisar con la vista previa del comprador y publicar. Para un evento chico, «+ Evento pequeño» es el acceso

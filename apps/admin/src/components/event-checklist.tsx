@@ -24,7 +24,7 @@ export function EventChecklist({ checks, readOnly }: { checks: EventCheck[]; rea
             {!c.done && (
               <>
                 <span className="text-xs text-[var(--ink-dim)]"> · {c.required ? "falta" : "recomendado"}</span>
-                {/* Una cuenta de solo lectura ve qué falta, pero lo completa Impacta. */}
+                {/* Una cuenta de solo lectura ve qué falta, pero lo completa Boost. */}
                 {!readOnly && (
                   <>
                     <span className="text-xs text-[var(--ink-dim)]"> · </span>

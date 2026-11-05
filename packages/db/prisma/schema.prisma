@@ -1,4 +1,4 @@
-// Modelo de datos — Plataforma de Ticketing Impacta
+// Modelo de datos — Plataforma de Ticketing Boost
 //
 // Convenciones:
 // - Montos: enteros en la unidad mínima de la moneda (ver @ticketera/core/money).
@@ -23,7 +23,7 @@ enum OrganizationStatus {
   SUSPENDED
 }
 
-/// IMPACTA (isPlatform) y cada organizador al que le da el servicio. Todo lo de un
+/// Boost (isPlatform) y cada organizador al que le da el servicio. Todo lo de un
 /// organizador (eventos, recintos, ventas, puerta, cuentas) cuelga de su organización:
 /// un organizador nunca ve lo de otro.
 model Organization {
@@ -39,7 +39,7 @@ model Organization {
   taxId           String?
   contactEmail    String?
   /// Máximo de eventos activos (borrador, en revisión o publicados que no pasaron) que puede tener a la vez.
-  /// Nulo = sin límite. Lo fija IMPACTA; la plataforma misma no tiene límite.
+  /// Nulo = sin límite. Lo fija Boost; la plataforma misma no tiene límite.
   maxActiveEvents Int?
   createdAt       DateTime           @default(now())
   updatedAt       DateTime           @updatedAt
@@ -54,8 +54,8 @@ model Organization {
   clients    Client[]
 }
 
-/// Cliente u organizador de IMPACTA: dueño de uno o varios eventos. Sus usuarios (rol CLIENT)
-/// solo ven sus propios eventos, y solo mientras IMPACTA les habilita el acceso.
+/// Cliente u organizador de Boost: dueño de uno o varios eventos. Sus usuarios (rol CLIENT)
+/// solo ven sus propios eventos, y solo mientras Boost les habilita el acceso.
 model Client {
   id             String   @id @default(cuid())
   organizationId String
@@ -88,7 +88,7 @@ model StaffUser {
   /// Sube al cambiar la contraseña o al "cerrar todas las sesiones": las sesiones web anteriores dejan de valer.
   sessionVersion     Int      @default(0)
   image              String?
-  /// Teléfono o WhatsApp (los promotores lo dan para que iPass los contacte).
+  /// Teléfono o WhatsApp (los promotores lo dan para que Boost los contacte).
   phone              String?
   createdAt          DateTime @default(now())
   updatedAt          DateTime @updatedAt
@@ -163,7 +163,7 @@ model DeviceToken {
 }
 
 enum StaffRole {
-  /// IMPACTA: todo el ecosistema.
+  /// Boost: todo el ecosistema.
   OWNER
   ADMIN
   /// Puerta: solo la aplicación de control de acceso.
@@ -441,7 +441,7 @@ model Seat {
 
 enum EventStatus {
   DRAFT
-  /// Un organizador lo envió: espera que IMPACTA lo apruebe para salir en la web.
+  /// Un organizador lo envió: espera que Boost lo apruebe para salir en la web.
   PENDING_REVIEW
   PUBLISHED
   CANCELLED
@@ -477,13 +477,13 @@ model Event {
   category            EventCategory        @default(OTRO)
   status              EventStatus          @default(DRAFT)
   mode                EventMode            @default(TICKETING)
-  /// Cliente/organizador dueño del evento (null = evento propio de IMPACTA).
+  /// Cliente/organizador dueño del evento (null = evento propio de Boost).
   clientId            String?
-  /// Espacio temporal del cliente: IMPACTA lo habilita y se cierra solo en clientAccessUntil.
+  /// Espacio temporal del cliente: Boost lo habilita y se cierra solo en clientAccessUntil.
   clientAccessEnabled Boolean              @default(false)
   clientAccessUntil   DateTime?
   publishedAt         DateTime?
-  /// Revisión de IMPACTA: cuándo lo enviaron y, si lo devolvió, qué hay que corregir.
+  /// Revisión de Boost: cuándo lo enviaron y, si lo devolvió, qué hay que corregir.
   submittedAt         DateTime?
   reviewNote          String?
   /// ¿Los compradores pueden transferir sus entradas a otra persona registrada?

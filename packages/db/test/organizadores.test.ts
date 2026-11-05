@@ -1,5 +1,5 @@
 /**
- * Organizadores bajo IMPACTA: alta (empiezan vacíos), revisión de eventos, suspensión y
+ * Organizadores bajo Boost: alta (empiezan vacíos), revisión de eventos, suspensión y
  * contraseñas temporales, contra PostgreSQL real.
  */
 import { afterAll, describe, expect, it } from "vitest";
@@ -19,14 +19,14 @@ afterAll(() => prisma.$disconnect());
 
 const PASSWORD = "Temporal2026!";
 
-async function impactaAdmin() {
+async function boostAdmin() {
   return prisma.staffUser.create({
-    data: { email: `impacta-${randomCode(6).toLowerCase()}@prueba.test`, name: "Impacta", passwordHash: "!" },
+    data: { email: `impacta-${randomCode(6).toLowerCase()}@prueba.test`, name: "Boost", passwordHash: "!" },
   });
 }
 
 async function newOrganizer() {
-  const actor = await impactaAdmin();
+  const actor = await boostAdmin();
   const suffix = randomCode(6).toLowerCase();
   return createOrganizer({
     name: `Productora ${suffix}`,
@@ -38,10 +38,10 @@ async function newOrganizer() {
 }
 
 describe("alta de organizadores", () => {
-  it("Impacta crea usuarios de eventos (por defecto) o de boliche", async () => {
+  it("Boost crea usuarios de eventos (por defecto) o de boliche", async () => {
     const events = await newOrganizer();
     expect(events.organization.kind).toBe("EVENTS");
-    const actor = await impactaAdmin();
+    const actor = await boostAdmin();
     const suffix = randomCode(6).toLowerCase();
     const club = await createOrganizer({
       name: `Boliche ${suffix}`,
@@ -74,7 +74,7 @@ describe("alta de organizadores", () => {
 
   it("no se puede repetir el email de una cuenta existente", async () => {
     const { admin } = await newOrganizer();
-    const actor = await impactaAdmin();
+    const actor = await boostAdmin();
     await expect(
       createOrganizer({ name: "Otra", admin: { name: "X", email: admin.email, password: PASSWORD }, actorId: actor.id }),
     ).rejects.toMatchObject({ code: "DUPLICATE" });
@@ -92,10 +92,10 @@ describe("alta de organizadores", () => {
 });
 
 describe("revisión de eventos", () => {
-  it("el organizador envía, IMPACTA aprueba y recién ahí se vende", async () => {
+  it("el organizador envía, Boost aprueba y recién ahí se vende", async () => {
     const { session, types } = await createGeneralAdmissionEvent({ sectionCapacity: 10, types: [{ name: "General", capacity: 10 }] });
     await prisma.event.update({ where: { id: session.eventId }, data: { status: "DRAFT" } });
-    const actor = await impactaAdmin();
+    const actor = await boostAdmin();
     const items = [{ ticketTypeId: types[0]!.id, quantity: 1 }];
 
     await submitEventForReview(session.eventId, actor.id);
@@ -110,10 +110,10 @@ describe("revisión de eventos", () => {
     await expect(createPendingOrder({ sessionId: session.id, items, buyer: buyer(2) })).resolves.toBeTruthy();
   });
 
-  it("IMPACTA lo devuelve con una observación y queda en borrador", async () => {
+  it("Boost lo devuelve con una observación y queda en borrador", async () => {
     const { session } = await createGeneralAdmissionEvent({ sectionCapacity: 10, types: [{ name: "General", capacity: 10 }] });
     await prisma.event.update({ where: { id: session.eventId }, data: { status: "DRAFT" } });
-    const actor = await impactaAdmin();
+    const actor = await boostAdmin();
     await submitEventForReview(session.eventId, actor.id);
 
     await expect(rejectEvent(session.eventId, "", actor.id)).rejects.toMatchObject({ code: "INVALID_STATE" });
@@ -128,7 +128,7 @@ describe("revisión de eventos", () => {
     const { session } = await createGeneralAdmissionEvent({ sectionCapacity: 10, types: [{ name: "General", capacity: 10 }] });
     await prisma.event.update({ where: { id: session.eventId }, data: { status: "DRAFT" } });
     await prisma.ticketType.deleteMany({ where: { sessionId: session.id } });
-    const actor = await impactaAdmin();
+    const actor = await boostAdmin();
     await expect(submitEventForReview(session.eventId, actor.id)).rejects.toMatchObject({ code: "INVALID_STATE" });
   });
 });
@@ -138,7 +138,7 @@ describe("organizador suspendido", () => {
     const { organization, admin } = await newOrganizer();
     const { session, types } = await createGeneralAdmissionEvent({ sectionCapacity: 10, types: [{ name: "General", capacity: 10 }] });
     await prisma.event.update({ where: { id: session.eventId }, data: { organizationId: organization.id } });
-    const actor = await impactaAdmin();
+    const actor = await boostAdmin();
     const items = [{ ticketTypeId: types[0]!.id, quantity: 1 }];
 
     await setOrganizationStatus(organization.id, "SUSPENDED", actor.id);
@@ -154,7 +154,7 @@ describe("organizador suspendido", () => {
     const platform = await prisma.organization.create({
       data: { name: "Plataforma", slug: `plataforma-${randomCode(6).toLowerCase()}`, currency: "BOB", isPlatform: true },
     });
-    const actor = await impactaAdmin();
+    const actor = await boostAdmin();
     await expect(setOrganizationStatus(platform.id, "SUSPENDED", actor.id)).rejects.toMatchObject({ code: "INVALID_STATE" });
   });
 });

@@ -13,7 +13,7 @@ import {
 } from "pdf-lib";
 import QRCode from "qrcode";
 import { code128Widths } from "@ticketera/core";
-import { IPASS_LOGO } from "./ipass-logo";
+import { BOOST_LOGO } from "./boost-logo";
 
 /**
  * Entradas impresas en PDF (vectorial: el QR y el código de barras no se pixelan). Formatos:
@@ -150,18 +150,18 @@ function dashedLine(page: PDFPage, x1: number, y1: number, x2: number, y2: numbe
 }
 
 /**
- * Logo iPass (vectorial) de `height` puntos de alto, con su esquina de arriba a la izquierda en (x, top); devuelve
+ * Logo Boost (vectorial) de `height` puntos de alto, con su esquina de arriba a la izquierda en (x, top); devuelve
  * su ancho. En la térmica va en negro (no imprime color).
  */
 function drawLogo(page: PDFPage, x: number, top: number, height: number, mono = false): number {
-  const scale = height / IPASS_LOGO.height;
-  page.drawSvgPath(IPASS_LOGO.i, { x, y: top, scale, color: mono ? INK : MAGENTA });
-  page.drawSvgPath(IPASS_LOGO.pass, { x, y: top, scale, color: mono ? INK : BLUE });
-  return IPASS_LOGO.width * scale;
+  const scale = height / BOOST_LOGO.height;
+  page.drawSvgPath(BOOST_LOGO.b, { x, y: top, scale, color: mono ? INK : MAGENTA });
+  page.drawSvgPath(BOOST_LOGO.oost, { x, y: top, scale, color: mono ? INK : BLUE });
+  return BOOST_LOGO.width * scale;
 }
 
-/** El organizador se nombra junto al logo solo si no es la misma plataforma (sería "iPass" dos veces). */
-const organizer = (orgName: string) => (orgName.trim().toLowerCase() === "ipass" ? null : orgName);
+/** El organizador se nombra junto al logo solo si no es la misma plataforma (sería "Boost" dos veces). */
+const organizer = (orgName: string) => (orgName.trim().toLowerCase() === "boost" ? null : orgName);
 
 /** Arte de fondo ajustado para cubrir la caja (se recorta lo que sobra, centrado). */
 function drawCover(page: PDFPage, image: PDFImage, box: Box) {
@@ -224,7 +224,7 @@ function drawWideTicket(page: PDFPage, t: PrintableTicket, box: Box, fonts: Font
     ...(t.holder ? [{ text: wrap(t.holder, fonts.regular, 8, textW, 1), font: fonts.regular, size: 8, color: MUTED }] : []),
     ...(t.conditions.length ? [{ text: wrap(t.conditions.join(" · "), fonts.regular, 7, textW, 2), font: fonts.regular, size: 7, color: MUTED, before: 1 }] : []),
   ];
-  // Arriba de todo, el logo iPass (y al lado, el organizador si no es iPass).
+  // Arriba de todo, el logo Boost (y al lado, el organizador si no es Boost).
   const logoH = mm(5);
   const textTop = main.y + main.h - SAFE;
   const textHeight = logoH + blocks.reduce((h, b) => h + (b.before ?? 0) + b.text.length * b.size * (b.gap ?? 1.25), 0);
@@ -255,7 +255,7 @@ function drawThermal(page: PDFPage, t: PrintableTicket, box: Box, fonts: Fonts) 
   const w = box.w - mm(6);
   let y = box.y + box.h - mm(3);
   const logoH = mm(6);
-  const logoW = (IPASS_LOGO.width / IPASS_LOGO.height) * logoH;
+  const logoW = (BOOST_LOGO.width / BOOST_LOGO.height) * logoH;
   drawLogo(page, box.x + (box.w - logoW) / 2, y, logoH, true);
   y -= logoH + mm(1.5);
   const org = organizer(t.orgName);
@@ -303,8 +303,8 @@ function cropMarks(page: PDFPage, trim: Box) {
 /** Arma el PDF. Lo grande (cientos de entradas) se dibuja igual: son vectores. */
 export async function ticketsPdf(tickets: PrintableTicket[], format: PaperFormat, artImage: TicketArtImage = null): Promise<Uint8Array> {
   const pdf = await PDFDocument.create();
-  pdf.setTitle(`Entradas · ${tickets[0]?.eventTitle ?? "iPass"}`);
-  pdf.setCreator("iPass");
+  pdf.setTitle(`Entradas · ${tickets[0]?.eventTitle ?? "Boost"}`);
+  pdf.setCreator("Boost");
   const fonts: Fonts = {
     regular: await pdf.embedFont(StandardFonts.Helvetica),
     bold: await pdf.embedFont(StandardFonts.HelveticaBold),

@@ -9,7 +9,7 @@ import { ROLES, isGlobalView, isNightlife, requireStaff } from "@/lib/session";
 export default async function DashboardPage() {
   await connection();
   const staff = await requireStaff(ROLES.manage);
-  // Impacta en su propia organización ve a todos los organizadores juntos.
+  // Boost en su propia organización ve a todos los organizadores juntos.
   if (isGlobalView(staff)) return <GlobalDashboard name={staff.name} />;
   const org = staff.organization;
   const byOrg = { event: { organizationId: org.id } };

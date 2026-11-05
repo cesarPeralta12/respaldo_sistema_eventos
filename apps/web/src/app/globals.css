@@ -1,31 +1,31 @@
 @import "tailwindcss";
 
-/* Identidad iPass sobre fondo oscuro: azul noche de base, magenta para acciones y marca, ámbar para destacar
+/* Identidad Boost sobre fondo oscuro: azul noche de base, magenta para acciones y marca, ámbar para destacar
    (precios, preventas, selección). Rojo y verde quedan para errores y estados. */
 :root {
-  --ipass-blue: #60718b;
-  --ipass-magenta: #ad468d;
-  --ipass-magenta-dark: #913673;
-  --ipass-pink: #d985b8;
-  --ipass-yellow: #f5b700;
-  --ipass-navy: #192438;
-  --ipass-ice: #f5f6f8;
+  --boost-blue: #60718b;
+  --boost-magenta: #ad468d;
+  --boost-magenta-dark: #913673;
+  --boost-pink: #d985b8;
+  --boost-yellow: #f5b700;
+  --boost-navy: #192438;
+  --boost-ice: #f5f6f8;
 
   --bg: #111a2b;
-  --bg-raised: var(--ipass-navy);
+  --bg-raised: var(--boost-navy);
   --bg-raised-2: #222f48;
   --border: #2a3751;
   --border-light: #3a4865;
-  --ink: var(--ipass-ice);
+  --ink: var(--boost-ice);
   --ink-muted: #9ba9c4;
   --ink-dim: #7d89a3;
   /* Botones y fondos de acción (texto blanco encima). */
-  --accent: var(--ipass-magenta);
+  --accent: var(--boost-magenta);
   --accent-ink: #ffffff;
   /* Texto de acento sobre el fondo oscuro: el amarillo de siempre (precios, fechas, enlaces, rótulos). */
-  --accent-text: var(--ipass-yellow);
-  --highlight: var(--ipass-yellow);
-  --highlight-ink: var(--ipass-navy);
+  --accent-text: var(--boost-yellow);
+  --highlight: var(--boost-yellow);
+  --highlight-ink: var(--boost-navy);
   /* Errores, urgencia y descuentos. */
   --accent-2: #ff6b81;
   --accent-2-ink: #2a0010;

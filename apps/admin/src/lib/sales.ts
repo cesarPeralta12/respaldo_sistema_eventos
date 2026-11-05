@@ -87,7 +87,7 @@ export function readSalesFilters(params: URLSearchParams | Record<string, string
 const day = (value: string | undefined) => (value && /^\d{4}-\d{2}-\d{2}$/.test(value) ? value : null);
 
 /**
- * Filtro de órdenes según quién mira (IMPACTA: todas o un organizador; un organizador: las
+ * Filtro de órdenes según quién mira (Boost: todas o un organizador; un organizador: las
  * suyas) y lo que buscó. Lo comparten la pantalla de Ventas y su exportación.
  */
 export function salesWhere(staff: Staff, filters: SalesFilters): Prisma.OrderWhereInput {

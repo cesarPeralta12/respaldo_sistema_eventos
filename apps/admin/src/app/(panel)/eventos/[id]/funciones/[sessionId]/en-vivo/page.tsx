@@ -19,7 +19,7 @@ export default async function LiveAccessPage({ params }: Props) {
   const staff = await requireStaff(ROLES.manage);
   const { id, sessionId } = await params;
   const owned = await prisma.eventSession.findFirst({
-    // Impacta en vista general también abre los eventos de los organizadores (eventScope).
+    // Boost en vista general también abre los eventos de los organizadores (eventScope).
     where: { id: sessionId, eventId: id, event: eventScope(staff) },
     select: { id: true },
   });

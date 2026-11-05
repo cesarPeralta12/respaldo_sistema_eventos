@@ -25,7 +25,7 @@ const PAYMENT_STATUS: Record<string, string> = { PENDING: "Pendiente", APPROVED:
 
 /**
  * Una venta con todo su detalle: quién la vendió y por qué medio, el comprador, qué compró, los importes, el código y
- * la comisión, los pagos con su referencia y las entradas. Un administrador de iPass puede anularla o registrar su
+ * la comisión, los pagos con su referencia y las entradas. Un administrador de Boost puede anularla o registrar su
  * devolución, con motivo.
  */
 export default async function OrderPage({ params }: { params: Promise<{ code: string }> }) {

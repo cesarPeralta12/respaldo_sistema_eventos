@@ -34,13 +34,13 @@ punto, cómo se usa en el panel y qué queda pendiente. Lo del promotor en detal
 - ✅ El promotor **no tiene efectivo ni tarjeta**: genera un cobro QR, las entradas se reservan y se emiten solo
   cuando el pago queda aprobado. Si vence, la reserva se libera.
 - ✅ **Medios de cobro por cuenta** para los cajeros comunes: efectivo, QR y tarjeta, cada uno se puede quitar.
-- ✅ **Anulaciones y devoluciones** solo por un administrador de iPass, con motivo obligatorio. Quedan en el registro de
+- ✅ **Anulaciones y devoluciones** solo por un administrador de Boost, con motivo obligatorio. Quedan en el registro de
   seguridad (Seguridad) y en la ficha de la venta. No se anula lo que ya se usó en la puerta.
-- ✅ **Conciliación de cobros** (*Conciliación de cobros* en el menú de iPass):
+- ✅ **Conciliación de cobros** (*Conciliación de cobros* en el menú de Boost):
   - lo cobrado por día y medio;
   - lo que hay que revisar: pagos sin entradas, cobros dobles, ventas sin pago, cobros QR abandonados y devoluciones;
   - la comparación contra el reporte de la pasarela (pegar "referencia;monto").
-- ❌ **Falta la pasarela real.** Hoy el QR es de prueba (no cobra). Es una decisión comercial de iPass: qué banco o
+- ❌ **Falta la pasarela real.** Hoy el QR es de prueba (no cobra). Es una decisión comercial de Boost: qué banco o
   pasarela y cuándo llegan las credenciales. Ver [pasarela-de-pago.md](pasarela-de-pago.md) y [promotores.md](promotores.md).
   **Mientras tanto, no vender con promotores en producción** (solo probar con `PAGO_SIMULADO=si`).
 
@@ -55,11 +55,11 @@ punto, cómo se usa en el panel y qué queda pendiente. Lo del promotor en detal
 - **Exportación** a **Excel** (hoja con el detalle y hoja con los resúmenes) y **CSV**, con las mismas columnas más el
   subtotal, la referencia del pago, el promotor y la comisión.
 - **Ficha de cada venta**: pagos con su referencia, entradas, comisión (liquidada o por pagar), y anular o devolver.
-- **Reporte del promotor**: él ve lo suyo (hoy, por evento, comisión). iPass ve todos en *Promotores*: ventas, cobrado,
+- **Reporte del promotor**: él ve lo suyo (hoy, por evento, comisión). Boost ve todos en *Promotores*: ventas, cobrado,
   comisión y lo **por pagar**.
 - **Liquidación**: en la ficha del promotor, «Liquidar» marca sus ventas pagadas como pagadas y guarda cuánto se le pagó
   (con una nota). Lo que venda después queda para la próxima.
-- **Permisos**: el cajero ve solo su día; el promotor solo lo suyo; el organizador solo sus eventos; iPass todo.
+- **Permisos**: el cajero ve solo su día; el promotor solo lo suyo; el organizador solo sus eventos; Boost todo.
 
 ## 5. Zonas por tipo de entrada ✅
 

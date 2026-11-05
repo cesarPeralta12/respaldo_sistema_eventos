@@ -15,7 +15,7 @@ export const metadata: Metadata = { title: "Promotores" };
 
 /**
  * Los promotores de la organización: qué eventos venden, cuánto vendió cada uno (pagado), su comisión y lo que falta
- * pagarles, en vivo. iPass da de alta un promotor en un solo paso (cuenta, código, evento, comisión y cupo).
+ * pagarles, en vivo. Boost da de alta un promotor en un solo paso (cuenta, código, evento, comisión y cupo).
  */
 export default async function PromotersPage() {
   await connection();
@@ -51,7 +51,7 @@ export default async function PromotersPage() {
       </div>
 
       {promoters.length === 0 ? (
-        <p className="card p-5 text-sm text-[var(--ink-muted)]">Todavía no hay promotores. {staff.platform ? "Dalo de alta abajo, en un solo paso." : "Los crea iPass."}</p>
+        <p className="card p-5 text-sm text-[var(--ink-muted)]">Todavía no hay promotores. {staff.platform ? "Dalo de alta abajo, en un solo paso." : "Los crea Boost."}</p>
       ) : (
         <div className="card overflow-x-auto">
           <table className="w-full text-left text-sm">

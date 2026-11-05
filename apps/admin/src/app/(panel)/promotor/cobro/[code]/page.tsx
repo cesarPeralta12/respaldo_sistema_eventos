@@ -33,7 +33,7 @@ export default async function PromoterChargePage({ params }: { params: Promise<{
   const simulated = payment?.provider === SIMULATED_PROVIDER;
   // Con un banco conectado, el QR es el que devuelve su API; el de prueba no cobra nada (no lleva un enlace de pago).
   const qr = waiting
-    ? await QRCode.toString(`iPass · cobro de prueba ${formatCode(order.code)} · ${formatMoney(order.totalAmount, order.currency)}`, { type: "svg", margin: 1, errorCorrectionLevel: "M" })
+    ? await QRCode.toString(`Boost · cobro de prueba ${formatCode(order.code)} · ${formatMoney(order.totalAmount, order.currency)}`, { type: "svg", margin: 1, errorCorrectionLevel: "M" })
     : null;
   const wa = paid && session ? whatsappLink(order.buyerPhone ?? "", ticketsMessage(order.buyerName, session.event.title, order.code)) : null;
   const tickets = order.tickets.filter((t) => t.status !== "CANCELLED").length;
@@ -92,7 +92,7 @@ export default async function PromoterChargePage({ params }: { params: Promise<{
           {simulated && (
             <div className="space-y-3 rounded-lg border border-dashed border-[var(--warn)] bg-[var(--warn-soft)] p-4 text-left text-sm text-[var(--warn)]">
               <p>
-                <strong>QR de prueba:</strong> todavía no hay un banco conectado, así que este QR no cobra nada. Cuando iPass conecte su banco o pasarela,
+                <strong>QR de prueba:</strong> todavía no hay un banco conectado, así que este QR no cobra nada. Cuando Boost conecte su banco o pasarela,
                 aquí aparece el QR real y el pago se confirma solo.
               </p>
               {simulatedPaymentsAllowed() ? (

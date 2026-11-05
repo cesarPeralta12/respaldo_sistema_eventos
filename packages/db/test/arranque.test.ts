@@ -10,7 +10,7 @@ import { bootstrapPlatform } from "../src/operations/bootstrap";
 afterAll(() => prisma.$disconnect());
 
 describe("arranque de la plataforma", () => {
-  it("crea Impacta y un dueño con contraseña temporal, y la segunda vez no hace nada", async () => {
+  it("crea Boost y un dueño con contraseña temporal, y la segunda vez no hace nada", async () => {
     const before = await prisma.organization.count({ where: { isPlatform: true, members: { some: { role: "OWNER" } } } });
     const email = `dueno-${randomCode(6).toLowerCase()}@prueba.test`;
     const first = await bootstrapPlatform({ email, name: "Dueño Inicial", password: "Temporal2026!" });

@@ -131,7 +131,7 @@ describe("correo", () => {
   it("con Resend manda la API key, el remitente y las imágenes como adjuntos en línea", async () => {
     vi.stubEnv("MAIL_PROVIDER", "resend");
     vi.stubEnv("RESEND_API_KEY", "re_test");
-    vi.stubEnv("MAIL_FROM", "Impacta <entradas@impacta.test>");
+    vi.stubEnv("MAIL_FROM", "Boost <entradas@impacta.test>");
     const fetchMock = vi.fn().mockResolvedValue(new Response(JSON.stringify({ id: "msg_1" }), { status: 200 }));
     vi.stubGlobal("fetch", fetchMock);
 
@@ -143,7 +143,7 @@ describe("correo", () => {
     expect(url).toBe("https://api.resend.com/emails");
     expect(init.headers.Authorization).toBe("Bearer re_test");
     const body = JSON.parse(init.body);
-    expect(body).toMatchObject({ from: "Impacta <entradas@impacta.test>", to: ["ana@prueba.test"] });
+    expect(body).toMatchObject({ from: "Boost <entradas@impacta.test>", to: ["ana@prueba.test"] });
     expect(body.attachments[0]).toMatchObject({ content_id: "qr-1", content: Buffer.from("x").toString("base64") });
     vi.unstubAllGlobals();
   });
@@ -162,7 +162,7 @@ describe("correo", () => {
     vi.stubEnv("SMTP_PORT", "465");
     vi.stubEnv("SMTP_USER", "impacta@gmail.com");
     vi.stubEnv("SMTP_PASS", "clave-de-aplicacion");
-    vi.stubEnv("MAIL_FROM", "Impacta (no responder) <impacta@gmail.com>");
+    vi.stubEnv("MAIL_FROM", "Boost (no responder) <impacta@gmail.com>");
     vi.stubEnv("MAIL_REPLY_TO", "soporte@impacta.test");
     sendMail.mockResolvedValue({ messageId: "<abc@gmail.com>" });
 
@@ -174,7 +174,7 @@ describe("correo", () => {
       expect.objectContaining({ host: "smtp.gmail.com", port: 465, secure: true, auth: { user: "impacta@gmail.com", pass: "clave-de-aplicacion" } }),
     );
     expect(sendMail.mock.calls[0]![0]).toMatchObject({
-      from: "Impacta (no responder) <impacta@gmail.com>",
+      from: "Boost (no responder) <impacta@gmail.com>",
       replyTo: "soporte@impacta.test",
       to: "ana@prueba.test",
       attachments: [expect.objectContaining({ cid: "qr-1", contentDisposition: "inline" })],

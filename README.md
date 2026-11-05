@@ -1,7 +1,7 @@
-# Impacta
+# Boost
 
 Plataforma de venta de entradas y control de acceso para eventos en Bolivia, del cliente
-**Impacta**. Monorepo con dos apps
+**Boost**. Monorepo con dos apps
 Next.js que comparten la base de datos y las reglas de negocio.
 
 Integra dos trabajos: el **núcleo transaccional** (reservas sin sobreventa, pagos, entradas
@@ -10,7 +10,7 @@ eventos, editor y mapa de butacas, sala de espera, diseño visual, datos bolivia
 
 ```
 apps/web       Sitio público: eventos, compra (general y butacas), sala de espera, pago, QR, Mis eventos → :3000
-apps/admin     Panel de IMPACTA, boletería, espacio del cliente y API móvil (/api/v1) → :3001
+apps/admin     Panel de Boost, boletería, espacio del cliente y API móvil (/api/v1) → :3001
 apps/puerta_app App móvil Flutter del portero: QR, código de barras y NFC, con validación sin internet
 packages/db    Esquema Prisma, migraciones, operaciones transaccionales y pruebas de integración
 packages/core  Reglas puras: dinero, estados, inventario, QR, checkout, geometría de butacas, fechas
@@ -50,7 +50,7 @@ datos nuevos (cliente, cajero, puertas por sección, evento con invitados) **sin
 
 | Dónde | Email | Contraseña | Rol |
 |---|---|---|---|
-| Panel :3001 | `admin@impacta.test` | `Impacta2026!` | Dueño de Impacta: crea y edita todo (también dentro de cada organizador) |
+| Panel :3001 | `admin@impacta.test` | `Impacta2026!` | Dueño de Boost: crea y edita todo (también dentro de cada organizador) |
 | App móvil | `puerta@impacta.test` | `Puerta2026!` | Portero: solo la app móvil (no entra al panel) |
 | Panel :3001 | `caja@impacta.test` | `Caja2026!` | Cajero: solo boletería |
 | Panel :3001 | `promotor@impacta.test` | `Promotor2026!` | Promotor: vende Loko Fest con cobro QR (simulado) y ve su comisión (10%) |
@@ -65,7 +65,7 @@ datos nuevos (cliente, cajero, puertas por sección, evento con invitados) **sin
 
 Cada rol entra directo a su pantalla y no puede abrir las de los demás. El portero no tiene sesión en el panel web.
 Las cuentas de organizadores, boliches y clientes son **de solo lectura**: ven todo lo suyo en vivo, pero crear y
-cambiar (eventos, noches, precios, recintos, promociones, cuentas) es solo de Impacta, que entra en su panel con
+cambiar (eventos, noches, precios, recintos, promociones, cuentas) es solo de Boost, que entra en su panel con
 "Entrar". El cajero y el portero siguen operando (vender, cobrar en barra, leer QR).
 
 ## Qué probar
@@ -92,15 +92,15 @@ cambiar (eventos, noches, precios, recintos, promociones, cuentas) es solo de Im
 11. **Reporte** (botón en cada evento): por canal, ingresados, ausentes, rechazos en puerta, boletería
     por cajero y medio, y CSV de asistentes.
 12. **Usuarios**: crea un operador; al desactivarlo pierde el acceso en la siguiente acción.
-13. **Organizadores** (como admin de Impacta): *Organizadores* → "Nuevo usuario de eventos" o "Nuevo
+13. **Organizadores** (como admin de Boost): *Organizadores* → "Nuevo usuario de eventos" o "Nuevo
     usuario de boliche" → entra con esa cuenta (pide cambiar la contraseña temporal): su panel está vacío,
-    es de solo lectura y no ve nada de los demás. Impacta entra en él ("Entrar") y le arma recintos,
+    es de solo lectura y no ve nada de los demás. Boost entra en él ("Entrar") y le arma recintos,
     eventos o noches; el organizador los ve en vivo.
 14. **Preventa**: en la función, un tipo de entrada "Es preventa" con fecha de fin. La General de esa
     sección empieza sola cuando termina; la web muestra "Preventa hasta…" y la General "desde…".
-15. **Vista general de Impacta**: Resumen general, Ventas e Ingresos en puerta de todos los organizadores.
+15. **Vista general de Boost**: Resumen general, Ventas e Ingresos en puerta de todos los organizadores.
 16. **Compradores**: cada persona una sola vez, con sus compras, lo gastado y los eventos. Ventas y
-    Compradores se exportan a Excel. Impacta ve todos (y filtra por organizador); cada organizador, los suyos.
+    Compradores se exportan a Excel. Boost ve todos (y filtra por organizador); cada organizador, los suyos.
 17. **Mis eventos** (sitio, con `comprador@impacta.test`): sus compras y el historial de eventos
     pasados (a qué hora ingresó, o "no asististe"). Las entradas con su QR están en *Mis entradas*.
 
@@ -113,7 +113,7 @@ cambiar (eventos, noches, precios, recintos, promociones, cuentas) es solo de Im
 20. **Armar un boliche** (panel): evento con categoría *Boliche* → una noche → en sus precios, la caja
     *Boliche* (mesa, personas, consumo incluido, válida hasta) → en el evento, **Repetir noches** (días que
     abre y semanas). En la puerta, pasada la hora de la free ya no entra (también en la app móvil).
-21. **Plano del boliche** (panel como Impacta, entrando al boliche con "Entrar" → *Recintos* → su local):
+21. **Plano del boliche** (panel como Boost, entrando al boliche con "Entrar" → *Recintos* → su local):
     agrega escenario, barra, DJ, entrada, baños o textos y arrástralos (la esquina cambia el tamaño); crea un
     grupo de lounges ("Lounges VIP") y toca el plano donde va cada uno: cada círculo es un lounge numerado.
     *Guardar plano*. Luego, en los precios de la noche, elige ese grupo como sección y marca "Es una mesa o
@@ -163,9 +163,9 @@ cambiar (eventos, noches, precios, recintos, promociones, cuentas) es solo de Im
 - **Organizadores**: cada uno es su propia organización; todo (eventos, recintos, ventas, puerta,
   cuentas) cuelga de ella y cada consulta del panel filtra por organización, así que uno nunca ve ni
   toca lo de otro (probado entrando por dirección directa a eventos, reportes y la API de puerta
-  ajenos). Impacta es la organización "plataforma": ve todo y puede "entrar" en un organizador para
-  trabajar como él. Solo Impacta crea cuentas, siempre con contraseña temporal. Los eventos de un
-  organizador salen en la web cuando Impacta los aprueba; uno suspendido no entra ni vende.
+  ajenos). Boost es la organización "plataforma": ve todo y puede "entrar" en un organizador para
+  trabajar como él. Solo Boost crea cuentas, siempre con contraseña temporal. Los eventos de un
+  organizador salen en la web cuando Boost los aprueba; uno suspendido no entra ni vende.
 - **Canales**: online, boletería e invitaciones descuentan del mismo inventario con la misma
   transacción: nunca se vende de más. Cada orden guarda su canal y quién la emitió.
 - **Puerta sin internet**: la app móvil descarga la lista de entradas de la función (completas para su
@@ -228,11 +228,11 @@ orden). Los enlaces sirven una sola vez, vencen (24 h confirmar, 1 h contraseña
   `.dev-mail/` (ábrelo en el navegador) y el enlace aparece en la consola del servidor.
 - **Producción con Resend** (`MAIL_PROVIDER="resend"`): crea una cuenta en https://resend.com, genera una API key
   (`RESEND_API_KEY`), **verifica tu dominio** (registros SPF/DKIM que te indica Resend) y pon el remitente en
-  `MAIL_FROM="Impacta <entradas@tudominio.bo>"`. Sin dominio verificado, Resend solo entrega a tu propio correo.
+  `MAIL_FROM="Boost <entradas@tudominio.bo>"`. Sin dominio verificado, Resend solo entrega a tu propio correo.
 - **Con Gmail** (`MAIL_PROVIDER="smtp"`): sirve para pruebas y un piloto pequeño. Activa la verificación en dos pasos
   de la cuenta, crea una *contraseña de aplicación* y ponla en `SMTP_PASS` (con `SMTP_HOST="smtp.gmail.com"`,
   `SMTP_PORT="465"`, `SMTP_USER="tu-cuenta@gmail.com"`). Límites: unos 500 destinatarios al día en una cuenta
-  personal; el remitente real siempre es la cuenta de Gmail (el nombre puede ser `Impacta (no responder)` en
+  personal; el remitente real siempre es la cuenta de Gmail (el nombre puede ser `Boost (no responder)` en
   `MAIL_FROM`, pero la dirección no puede ser `noreply@`); y si Google detecta envíos masivos puede bloquear la cuenta.
   No guardes la contraseña en el repositorio: va solo en el `.env` del servidor.
 - Todos los correos dicen "mensaje automático: no respondas". Con `MAIL_REPLY_TO` las respuestas llegan a una dirección de soporte.
@@ -252,7 +252,7 @@ Los topes cambian: confirma en la página de precios de cada proveedor antes de 
 Las secciones de entrada general (sin butacas) se dibujan en el mismo mapa que las butacas, con la forma que elijas: rectángulo, óvalo, trapecio o arco. En *Recintos → (recinto)* el editor deja arrastrar la forma y ajustar sus medidas, avisa si pisa otra zona o butacas, y permite colocar en el mapa las zonas antiguas que solo estaban en la lista. En la web, el comprador ve cada zona en el mapa con lo que queda y el precio desde, toca una zona para saltar a su selector de cantidad abajo, y la zona se marca con su cantidad elegida. El aforo no cambia con la forma.
 
 ## Organizadores y límite de eventos
-Cada organizador es una organización propia: crea y edita **sus** eventos, recintos y entradas, ve sus ventas e ingresos, y nunca ve ni modifica lo de otro. IMPACTA aprueba sus eventos antes de publicarlos. En *Organizadores → (organizador)* IMPACTA fija el **máximo de eventos activos** (vacío = sin límite): cuentan los borradores, los eventos en revisión y los publicados con funciones por venir; no cuentan los cancelados ni los ya realizados. El límite solo frena crear eventos nuevos (bajarlo no borra nada) y se comprueba en el servidor aunque se intente saltar el formulario. IMPACTA no tiene límite.
+Cada organizador es una organización propia: crea y edita **sus** eventos, recintos y entradas, ve sus ventas e ingresos, y nunca ve ni modifica lo de otro. Boost aprueba sus eventos antes de publicarlos. En *Organizadores → (organizador)* Boost fija el **máximo de eventos activos** (vacío = sin límite): cuentan los borradores, los eventos en revisión y los publicados con funciones por venir; no cuentan los cancelados ni los ya realizados. El límite solo frena crear eventos nuevos (bajarlo no borra nada) y se comprueba en el servidor aunque se intente saltar el formulario. Boost no tiene límite.
 
 ## QR dinámico
 Por tipo de entrada se puede activar un QR que **cambia cada 30 segundos** y funciona sin internet, en la puerta y en el celular del comprador (no sirve una captura). Solo QR y solo venta online. Detalle, límites y pendientes en [`docs/qr-dinamico.md`](docs/qr-dinamico.md).
@@ -280,7 +280,7 @@ Variables en las dos: `DATABASE_URL`, `WEB_URL`, `ADMIN_URL`, `NIXPACKS_NODE_VER
 (`MAIL_PROVIDER`, `RESEND_API_KEY`, `MAIL_FROM`) y un secreto aleatorio para `TICKET_QR_SECRET` (el mismo en las dos),
 `WEB_AUTH_SECRET` y `ADMIN_AUTH_SECRET`.
 
-Primer arranque de un servidor **real** (no borra nada; crea Impacta y su primer dueño con contraseña temporal):
+Primer arranque de un servidor **real** (no borra nada; crea Boost y su primer dueño con contraseña temporal):
 
 ```bash
 BOOTSTRAP_EMAIL=tu@correo.com BOOTSTRAP_NAME="Tu Nombre" npm run db:bootstrap
@@ -316,7 +316,7 @@ SEED_ALLOW=si IMPORT_ADMIN_EMAIL=correo@del.organizador IMPORT_ADMIN_PASSWORD='t
 ### Crear cuentas de clientes desde la terminal
 
 Lo mismo que "Nuevo usuario de eventos / de boliche" en *Organizadores*, varias de una vez: cada una es un
-organizador propio con su panel de solo lectura (Impacta lo llena con "Entrar"). No borra nada y salta los emails que
+organizador propio con su panel de solo lectura (Boost lo llena con "Entrar"). No borra nada y salta los emails que
 ya existen. La contraseña es temporal: cada cuenta elige la suya al entrar.
 
 ```bash

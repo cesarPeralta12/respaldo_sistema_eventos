@@ -3,8 +3,8 @@ import type { MetadataRoute } from "next";
 /** Para poder instalar el sitio en la pantalla de inicio: las entradas abren como una app, también sin internet. */
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "iPass — Mis entradas",
-    short_name: "iPass",
+    name: "Boost — Mis entradas",
+    short_name: "Boost",
     description: "Tus entradas, listas para usar sin internet.",
     start_url: "/mis-entradas",
     scope: "/",

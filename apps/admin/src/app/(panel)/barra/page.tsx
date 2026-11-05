@@ -48,7 +48,7 @@ export default async function BarPage() {
         <p className="card p-5 text-sm text-[var(--ink-muted)]">
           {access.all
             ? "No hay noches con consumo incluido en estos días. Se activan al cargar una mesa o una entrada con consumo en los precios de una noche."
-            : "No tienes noches asignadas con consumo incluido en estos días. Pídele a iPass que te asigne las noches donde vas a cobrar."}
+            : "No tienes noches asignadas con consumo incluido en estos días. Pídele a Boost que te asigne las noches donde vas a cobrar."}
         </p>
       ) : (
         <ul className="grid gap-3 sm:grid-cols-2">

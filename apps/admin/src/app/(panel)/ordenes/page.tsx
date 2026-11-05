@@ -24,7 +24,7 @@ type Props = { searchParams: Promise<Record<string, string | string[] | undefine
 /**
  * Ventas detalladas: una fila por venta con quién la hizo (cajero, promotor o la web), por qué medio, cuándo, el
  * comprador, qué compró y cuánto. Con filtros, resúmenes (total, por vendedor y por medio) y exportación a CSV y Excel.
- * IMPACTA (vista general) ve los de todos los organizadores; un organizador, solo los de sus eventos.
+ * Boost (vista general) ve los de todos los organizadores; un organizador, solo los de sus eventos.
  */
 export default async function SalesPage({ searchParams }: Props) {
   await connection();

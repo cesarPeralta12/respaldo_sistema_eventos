@@ -13,7 +13,7 @@ export const metadata: Metadata = { title: "Ingresos en puerta" };
 type Props = { searchParams: Promise<{ org?: string; solo?: string }> };
 
 /**
- * Entradas que se van registrando en las puertas, en vivo. IMPACTA (vista general) ve las de
+ * Entradas que se van registrando en las puertas, en vivo. Boost (vista general) ve las de
  * todos los organizadores; un organizador, solo las de sus eventos.
  */
 export default async function EntriesPage({ searchParams }: Props) {

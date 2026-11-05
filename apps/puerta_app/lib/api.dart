@@ -1,4 +1,4 @@
-/// Cliente de la API de puerta (`/api/v1`) del panel de iPass.
+/// Cliente de la API de puerta (`/api/v1`) del panel de Boost.
 library;
 
 import 'dart:async';

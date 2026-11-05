@@ -46,7 +46,7 @@ Las mismas en las dos (salvo donde se indica). Los secretos se generan con
 | `MAIL_PROVIDER` | `resend` |
 | `RESEND_API_KEY` | la key de Resend |
 | `TRUSTED_PROXY_HOPS` | `1` (Coolify/Traefik). Con Cloudflare delante, `2`. Ver `docs/seguridad.md` |
-| `MAIL_FROM` | `IMPACTA <noreply@tudominio.bo>` |
+| `MAIL_FROM` | `Boost <noreply@tudominio.bo>` |
 | `MAIL_REPLY_TO` | (opcional) dirección de soporte |
 
 Con `PAYMENT_PROVIDER=directo` cualquiera puede "comprar" sin pagar: sirve para pruebas y para eventos de invitación, no para vender.

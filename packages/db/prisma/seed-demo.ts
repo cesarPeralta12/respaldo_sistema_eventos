@@ -1,5 +1,5 @@
 /**
- * Datos de demostración de la arquitectura IMPACTA: un cliente con su cuenta, un cajero,
+ * Datos de demostración de la arquitectura Boost: un cliente con su cuenta, un cajero,
  * puertas con secciones asignadas y un evento con lista de invitados.
  *
  * Solo AGREGA (no borra nada) y se puede correr varias veces: lo usa la semilla completa y
@@ -235,7 +235,7 @@ export async function seedArchitectureDemo(db: Db, orgId: string) {
 
 /**
  * Dos organizadores de ejemplo, cada uno aislado del otro: Andes Live con un evento con
- * preventa esperando la aprobación de IMPACTA, y Cumbre Eventos con un evento publicado.
+ * preventa esperando la aprobación de Boost, y Cumbre Eventos con un evento publicado.
  */
 async function seedOrganizers(db: Db) {
   const { prisma } = db;
@@ -506,7 +506,7 @@ const CLUBS = [
  * Boliches de ejemplo: cada uno es su propio organizador (tipo boliche) con su cuenta de solo lectura, un
  * cajero para boletería y barra y un portero. Noches que se repiten cada semana, free por horario, entrada +
  * trago y mesas con consumo, un código RRPP, y unas compras en la primera noche (una mesa con un consumo ya
- * cobrado en barra). Si el boliche ya existía dentro de Impacta (semilla anterior), se pasa a su organizador.
+ * cobrado en barra). Si el boliche ya existía dentro de Boost (semilla anterior), se pasa a su organizador.
  */
 async function seedNightlife(db: Db, orgId: string) {
   const { prisma } = db;
@@ -537,13 +537,13 @@ async function seedNightlife(db: Db, orgId: string) {
     const existing = await prisma.event.findUnique({ where: { slug }, include: { sessions: { select: { id: true, venueId: true } } } });
     if (existing) {
       if (existing.organizationId !== org.id) {
-        // Semilla anterior: el boliche estaba dentro de Impacta. Pasa a su organizador con todo lo suyo.
+        // Semilla anterior: el boliche estaba dentro de Boost. Pasa a su organizador con todo lo suyo.
         const venueIds = [...new Set(existing.sessions.map((s) => s.venueId))];
         await prisma.$transaction([
           prisma.event.update({ where: { id: existing.id }, data: { organizationId: org.id } }),
           prisma.venue.updateMany({ where: { id: { in: venueIds } }, data: { organizationId: org.id } }),
           prisma.promoCode.updateMany({ where: { eventId: existing.id }, data: { organizationId: org.id } }),
-          // Los porteros de Impacta dejan de ver las noches del boliche.
+          // Los porteros de Boost dejan de ver las noches del boliche.
           prisma.doorAssignment.deleteMany({ where: { sessionId: { in: existing.sessions.map((s) => s.id) }, userId: { not: porter.id } } }),
         ]);
         log.push(`${c.title}: pasó al organizador ${c.org.name}`);

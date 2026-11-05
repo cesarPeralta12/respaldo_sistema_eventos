@@ -6,7 +6,7 @@ import type { FormState } from "@/lib/forms";
 import { isGlobalView, requireEditor } from "@/lib/session";
 
 /**
- * Anular o devolver una venta: solo un administrador (iPass), siempre con motivo; queda en el registro de seguridad.
+ * Anular o devolver una venta: solo un administrador (Boost), siempre con motivo; queda en el registro de seguridad.
  * Las entradas dejan de valer y su lugar vuelve a la venta.
  */
 export async function voidOrderAction(_prev: FormState, formData: FormData): Promise<FormState> {

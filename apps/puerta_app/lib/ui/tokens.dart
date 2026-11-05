@@ -1,4 +1,4 @@
-/// Identidad visual de la app de puerta: colores, tipografía y el tema. Sigue la guía visual de iPass (la misma de la
+/// Identidad visual de la app de puerta: colores, tipografía y el tema. Sigue la guía visual de Boost (la misma de la
 /// web y el panel): azul noche de base, magenta para las acciones y la marca, amarillo para destacar, y Poppins.
 /// El verde, el ámbar y el rojo quedan para el resultado de una lectura, que es lo que el portero tiene que ver de
 /// un vistazo.
@@ -18,7 +18,7 @@ class Brand {
   static const muted = Color(0xFF9BA9C4);
   static const faint = Color(0xFF7D89A3);
 
-  /// Magenta iPass: acciones principales y marca. El texto encima va en blanco.
+  /// Magenta Boost: acciones principales y marca. El texto encima va en blanco.
   static const accent = Color(0xFFAD468D);
   static const accentDark = Color(0xFF913673);
   static const accentInk = Color(0xFFFFFFFF);
@@ -49,7 +49,7 @@ class Brand {
 }
 
 class Fonts {
-  /// Poppins en toda la app (guía visual iPass): Bold títulos, SemiBold secciones, Medium botones, Regular texto.
+  /// Poppins en toda la app (guía visual Boost): Bold títulos, SemiBold secciones, Medium botones, Regular texto.
   static const display = 'Poppins';
   static const body = 'Poppins';
 }

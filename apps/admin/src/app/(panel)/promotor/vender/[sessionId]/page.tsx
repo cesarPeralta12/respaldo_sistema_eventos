@@ -32,7 +32,7 @@ export default async function PromoterSellPage({ params }: { params: Promise<{ s
         <Link href="/promotor" className="text-sm text-[var(--ink-dim)] hover:text-[var(--ink)]">
           ← Mis eventos
         </Link>
-        <p className="card p-5 text-sm text-[var(--ink-muted)]">No tienes asignada esta función (o tu asignación todavía no empieza o ya terminó). Pídele a iPass que te la asigne.</p>
+        <p className="card p-5 text-sm text-[var(--ink-muted)]">No tienes asignada esta función (o tu asignación todavía no empieza o ya terminó). Pídele a Boost que te la asigne.</p>
       </div>
     );
   }
@@ -40,7 +40,7 @@ export default async function PromoterSellPage({ params }: { params: Promise<{ s
   const rule = session.event.promoters[0]!;
   const money = (c: number) => formatMoney(c, staff.organization.currency);
 
-  // Su código personal (sin descuento) y sus ofertas: los códigos con descuento que iPass le dio, vigentes y de este evento.
+  // Su código personal (sin descuento) y sus ofertas: los códigos con descuento que Boost le dio, vigentes y de este evento.
   const now = new Date();
   const myCodes = await prisma.promoCode.findMany({
     where: { organizationId: staff.organization.id, promoterId: staff.id, active: true, OR: [{ eventId: null }, { eventId: session.eventId }] },

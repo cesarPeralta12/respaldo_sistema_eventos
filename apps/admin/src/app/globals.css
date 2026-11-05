@@ -1,30 +1,30 @@
 @import "tailwindcss";
 
-/* Identidad iPass (guía de implementación visual): azul noche para navegación, blanco hielo de fondo, magenta
+/* Identidad Boost (guía de implementación visual): azul noche para navegación, blanco hielo de fondo, magenta
    para acciones y marca, ámbar para destacar. Verde, rojo y amarillo oscuro quedan solo para estados. */
 :root {
-  --ipass-blue: #60718b;
-  --ipass-magenta: #ad468d;
-  --ipass-magenta-dark: #913673;
-  --ipass-yellow: #f5b700;
-  --ipass-navy: #192438;
-  --ipass-ice: #f5f6f8;
-  --ipass-pink: #d985b8;
+  --boost-blue: #60718b;
+  --boost-magenta: #ad468d;
+  --boost-magenta-dark: #913673;
+  --boost-yellow: #f5b700;
+  --boost-navy: #192438;
+  --boost-ice: #f5f6f8;
+  --boost-pink: #d985b8;
 
-  --bg: var(--ipass-ice);
+  --bg: var(--boost-ice);
   --surface: #ffffff;
   --surface-2: #eef0f4;
   --border: #e6eaf0;
-  --ink: var(--ipass-navy);
-  --ink-muted: var(--ipass-blue);
+  --ink: var(--boost-navy);
+  --ink-muted: var(--boost-blue);
   --ink-dim: #8592a8;
   /* Acción principal (botones, enlaces, selección). */
-  --accent: var(--ipass-magenta);
-  --accent-hover: var(--ipass-magenta-dark);
+  --accent: var(--boost-magenta);
+  --accent-hover: var(--boost-magenta-dark);
   --accent-ink: #ffffff;
   --accent-soft: #f7e9f2;
-  --highlight: var(--ipass-yellow);
-  --highlight-ink: var(--ipass-navy);
+  --highlight: var(--boost-yellow);
+  --highlight-ink: var(--boost-navy);
   --highlight-soft: #fff4dc;
   /* Estados */
   --success: #16846c;
@@ -36,15 +36,15 @@
   --info: #3c649e;
   --info-soft: #e8eef7;
 
-  --grad-brand: linear-gradient(90deg, var(--ipass-magenta) 0%, var(--ipass-pink) 100%);
-  --grad-accent: linear-gradient(135deg, var(--ipass-magenta) 0%, var(--ipass-magenta-dark) 100%);
+  --grad-brand: linear-gradient(90deg, var(--boost-magenta) 0%, var(--boost-pink) 100%);
+  --grad-accent: linear-gradient(135deg, var(--boost-magenta) 0%, var(--boost-magenta-dark) 100%);
   --shadow-card: 0 1px 2px rgb(25 36 56 / 0.04), 0 6px 20px -12px rgb(25 36 56 / 0.16);
   --shadow-lift: 0 2px 4px rgb(25 36 56 / 0.05), 0 16px 32px -14px rgb(25 36 56 / 0.26);
   --radius-card: 12px;
   --radius-button: 8px;
 
   /* Menú lateral: azul noche */
-  --side-bg: var(--ipass-navy);
+  --side-bg: var(--boost-navy);
   --side-ink: #f5f6f8;
   --side-dim: #9ba9c4;
   --side-border: rgb(255 255 255 / 0.09);
@@ -237,7 +237,7 @@ a.card:hover {
   color: var(--side-ink);
 }
 .nav-link:hover svg {
-  color: var(--ipass-yellow);
+  color: var(--boost-yellow);
   transform: scale(1.1);
 }
 /* Activa: fondo magenta, texto e ícono blancos. */
@@ -332,7 +332,7 @@ table tbody tr:hover {
   border-radius: 0.75rem;
   /* 150vmax cubre siempre la pantalla (una sombra de miles de píxeles Chrome a veces no la dibuja). */
   box-shadow: 0 0 0 150vmax rgb(25 36 56 / 0.55);
-  outline: 2px solid var(--ipass-yellow);
+  outline: 2px solid var(--boost-yellow);
   pointer-events: none;
   transition: top 0.35s ease, left 0.35s ease, width 0.35s ease, height 0.35s ease;
 }
@@ -341,7 +341,7 @@ table tbody tr:hover {
   position: absolute;
   inset: -2px;
   border-radius: inherit;
-  border: 2px solid var(--ipass-yellow);
+  border: 2px solid var(--boost-yellow);
   animation: tour-ring 1.6s ease-out infinite;
 }
 .tour-dim {
@@ -381,16 +381,16 @@ table tbody tr:hover {
 /* Colores por función (no uno distinto por tarjeta): azul = estructura y conteos, magenta = ventas e ingresos,
    ámbar = lo que está a la venta o pendiente. Sirven para los números del resumen y los accesos rápidos. */
 .tone-blue {
-  --tone: var(--ipass-blue);
+  --tone: var(--boost-blue);
   --tone-ink: #ffffff;
 }
 .tone-magenta {
-  --tone: var(--ipass-magenta);
+  --tone: var(--boost-magenta);
   --tone-ink: #ffffff;
 }
 .tone-amber {
-  --tone: var(--ipass-yellow);
-  --tone-ink: var(--ipass-navy);
+  --tone: var(--boost-yellow);
+  --tone-ink: var(--boost-navy);
 }
 .tone-tile {
   background: var(--tone);
@@ -400,7 +400,7 @@ table tbody tr:hover {
 /* Números del resumen: tarjetas blancas con borde superior de 3 px según la función. */
 .stats > .card,
 .stats > .card:hover {
-  border-top: 3px solid var(--tone, var(--ipass-blue));
+  border-top: 3px solid var(--tone, var(--boost-blue));
 }
 .stats .eyebrow {
   display: flex;
@@ -414,7 +414,7 @@ table tbody tr:hover {
   height: 0.5rem;
   flex-shrink: 0;
   border-radius: 9999px;
-  background: var(--tone, var(--ipass-blue));
+  background: var(--tone, var(--boost-blue));
 }
 
 /* Punto "en vivo" que late. */

@@ -112,7 +112,7 @@ class _BarHomeScreenState extends State<BarHomeScreen> {
               if (_error != null) Text(_error!, style: Type.body.copyWith(color: Brand.red)),
               if (_nights == null && _error == null) const Center(child: Padding(padding: EdgeInsets.all(30), child: CircularProgressIndicator())),
               if (_nights != null && _nights!.isEmpty)
-                Text('No tienes noches con consumo asignadas ahora. Pídele a iPass que te asigne la noche.', style: Type.body),
+                Text('No tienes noches con consumo asignadas ahora. Pídele a Boost que te asigne la noche.', style: Type.body),
               for (final (i, n) in (_nights ?? const <BarNight>[]).indexed)
                 Padding(
                   padding: const EdgeInsets.only(bottom: 12),

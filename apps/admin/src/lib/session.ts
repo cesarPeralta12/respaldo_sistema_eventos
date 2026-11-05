@@ -13,7 +13,7 @@ export const ROLES = {
   pos: ["OWNER", "ADMIN", "CASHIER"],
   /** Barra: leer los QR de consumo de las noches asignadas (además de quienes administran y los cajeros). */
   bar: ["OWNER", "ADMIN", "CASHIER", "BAR"],
-  /** Espacio temporal del cliente (eventos que IMPACTA opera para él). */
+  /** Espacio temporal del cliente (eventos que Boost opera para él). */
   client: ["CLIENT"],
   /** Promotor: vende con cobro por QR los eventos que tiene asignados y ve su comisión. */
   promoter: ["PROMOTER"],
@@ -33,7 +33,7 @@ export const HOME_BY_ROLE: Record<StaffRole, string> = {
   BAR: "/barra",
 };
 
-/** Organizador en el que está trabajando un administrador de IMPACTA ("Entrar como"). */
+/** Organizador en el que está trabajando un administrador de Boost ("Entrar como"). */
 export const VIEW_AS_COOKIE = "impacta-ver-como";
 
 /** Vista previa dentro de un organizador: el panel como lo ve una de sus cuentas, sin poder cambiar nada. */
@@ -46,8 +46,8 @@ export const PREVIEW_LABEL: Record<PreviewRole, string> = { ADMIN: "el organizad
  * Usuario actual verificado contra la base, o null (para route handlers que responden JSON).
  *
  * - organization: la organización en la que trabaja. Para un organizador, siempre la suya.
- *   Para IMPACTA, la suya o la del organizador en el que "entró".
- * - platform: es administrador de IMPACTA (ve y gestiona a todos los organizadores).
+ *   Para Boost, la suya o la del organizador en el que "entró".
+ * - platform: es administrador de Boost (ve y gestiona a todos los organizadores).
  */
 export async function currentStaff() {
   const session = await auth();
@@ -92,18 +92,18 @@ export async function currentStaff() {
     role: preview ?? membership.role,
     mustChangePassword: membership.user.mustChangePassword,
     organization,
-    /** Su propia organización (para IMPACTA, aunque esté viendo un organizador). */
+    /** Su propia organización (para Boost, aunque esté viendo un organizador). */
     home,
     platform: platform && !preview,
-    /** El organizador en el que entró un administrador de IMPACTA, o null. */
+    /** El organizador en el que entró un administrador de Boost, o null. */
     viewingAs,
-    /** IMPACTA mirando el panel como lo ve una cuenta del organizador (siempre de solo lectura), o null. */
+    /** Boost mirando el panel como lo ve una cuenta del organizador (siempre de solo lectura), o null. */
     preview,
     /** Solo para el rol CLIENT. */
     client: viewingAs ? null : membership.client,
     /**
      * Solo lectura: las cuentas de los organizadores y de los clientes ven todo lo suyo (eventos, ventas,
-     * ingresos, reportes) pero no cambian nada; crear y modificar es solo de IMPACTA (también cuando entra en
+     * ingresos, reportes) pero no cambian nada; crear y modificar es solo de Boost (también cuando entra en
      * un organizador). El personal de operación (cajero y portero) sigue vendiendo, cobrando y leyendo QR.
      */
     readOnly: preview !== null || (!platform && (membership.role === "OWNER" || membership.role === "ADMIN" || membership.role === "CLIENT")),
@@ -127,7 +127,7 @@ export async function requireStaff(allowed: StaffRole[] = ROLES.manage): Promise
   return staff;
 }
 
-export const READ_ONLY_MESSAGE = "Tu cuenta es de solo lectura: los cambios los hace iPass.";
+export const READ_ONLY_MESSAGE = "Tu cuenta es de solo lectura: los cambios los hace Boost.";
 
 /** Una cuenta de solo lectura intentó cambiar algo (la interfaz no lo ofrece: llegó por otro lado). */
 export class ReadOnlyError extends Error {
@@ -138,7 +138,7 @@ export class ReadOnlyError extends Error {
 
 /**
  * Para toda server action que crea o cambia algo: además del rol, exige que la cuenta pueda editar
- * (IMPACTA). Una cuenta de solo lectura no pasa aunque invoque la acción directamente.
+ * (Boost). Una cuenta de solo lectura no pasa aunque invoque la acción directamente.
  */
 export async function requireEditor(allowed: StaffRole[] = ROLES.manage): Promise<Staff> {
   const staff = await requireStaff(allowed);
@@ -156,7 +156,7 @@ export function allowedCategories(staff: Staff): EventCategory[] {
   return isNightlife(staff) ? ["BOLICHE"] : all.filter((c) => c !== "BOLICHE");
 }
 
-/** Solo administradores de IMPACTA: organizadores, aprobaciones, cuentas. */
+/** Solo administradores de Boost: organizadores, aprobaciones, cuentas. */
 export async function requirePlatform(): Promise<Staff> {
   const staff = await requireStaff(ROLES.manage);
   if (!staff.platform) redirect("/");
@@ -165,16 +165,16 @@ export async function requirePlatform(): Promise<Staff> {
 
 export const can = (staff: Staff, allowed: StaffRole[]) => allowed.includes(staff.role);
 
-/** IMPACTA en su propia organización: las vistas generales muestran a todos los organizadores. */
+/** Boost en su propia organización: las vistas generales muestran a todos los organizadores. */
 export const isGlobalView = (staff: Staff) => staff.platform && !staff.viewingAs;
 
-/** Filtro de eventos según quién mira: todos (vista general de IMPACTA) o los de la organización. */
+/** Filtro de eventos según quién mira: todos (vista general de Boost) o los de la organización. */
 export function eventScope(staff: Staff) {
   return isGlobalView(staff) ? {} : { organizationId: staff.organization.id };
 }
 
 /**
- * Evento que este usuario puede ver: cualquiera de la organización para IMPACTA; para un
+ * Evento que este usuario puede ver: cualquiera de la organización para Boost; para un
  * cliente, solo los suyos y solo mientras su espacio temporal esté abierto.
  */
 export async function visibleEvent(staff: Staff, eventId: string) {

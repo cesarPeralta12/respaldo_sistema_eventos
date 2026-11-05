@@ -1,5 +1,5 @@
 /**
- * Primer arranque de un servidor real: crea la organización de la plataforma (Impacta) y su primer dueño.
+ * Primer arranque de un servidor real: crea la organización de la plataforma (Boost) y su primer dueño.
  *
  * A diferencia de la semilla de demostración, NUNCA borra nada y se puede repetir sin riesgo:
  * si ya existe una plataforma con un dueño, no hace nada.
@@ -14,7 +14,7 @@ export type BootstrapResult =
   | { created: true; organizationId: string; email: string; temporaryPassword: string };
 
 /**
- * Crea Impacta (isPlatform) y un OWNER con contraseña temporal (la tiene que cambiar al entrar).
+ * Crea Boost (isPlatform) y un OWNER con contraseña temporal (la tiene que cambiar al entrar).
  * Si no se da contraseña, genera una aleatoria y la devuelve UNA vez.
  */
 export async function bootstrapPlatform(input: {
@@ -33,7 +33,7 @@ export async function bootstrapPlatform(input: {
   const organization =
     (await prisma.organization.findFirst({ where: { isPlatform: true } })) ??
     (await prisma.organization.create({
-      data: { name: input.organizationName ?? "iPass", slug: "impacta", currency: DEFAULT_CURRENCY, isPlatform: true },
+      data: { name: input.organizationName ?? "Boost", slug: "impacta", currency: DEFAULT_CURRENCY, isPlatform: true },
     }));
 
   const owner = await createStaffUser({

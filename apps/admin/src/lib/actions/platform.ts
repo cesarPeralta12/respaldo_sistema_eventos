@@ -31,7 +31,7 @@ const VIEW_COOKIE_OPTIONS = {
   maxAge: 8 * 60 * 60,
 } as const;
 
-/** IMPACTA entra a trabajar dentro de un organizador: ve y edita exactamente lo que él ve. */
+/** Boost entra a trabajar dentro de un organizador: ve y edita exactamente lo que él ve. */
 export async function enterOrganizationAction(formData: FormData) {
   await requirePlatform();
   const organization = await prisma.organization.findUnique({ where: { id: String(formData.get("organizationId")) } });
@@ -51,10 +51,10 @@ export async function exitOrganizationAction(formData: FormData) {
 }
 
 /**
- * Dentro de un organizador, IMPACTA mira el panel como lo ve una de sus cuentas (administrador del organizador o
+ * Dentro de un organizador, Boost mira el panel como lo ve una de sus cuentas (administrador del organizador o
  * cajero) antes de entregar los accesos: mismo menú y mismas pantallas, sin poder cambiar nada. Sin `role`, vuelve
  * a trabajar normal dentro del organizador. No usa requirePlatform: durante la vista previa la cuenta actúa con el
- * rol que se mira, pero solo llega aquí quien "entró" a un organizador (eso ya exige ser administrador de IMPACTA).
+ * rol que se mira, pero solo llega aquí quien "entró" a un organizador (eso ya exige ser administrador de Boost).
  */
 export async function previewAsAction(formData: FormData) {
   const staff = await requireStaff(ROLES.any);

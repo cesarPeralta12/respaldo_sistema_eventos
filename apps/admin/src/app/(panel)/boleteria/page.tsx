@@ -83,7 +83,7 @@ export default async function BoxOfficePage() {
           <p className="card p-5 text-sm text-[var(--ink-muted)]">
             {access.all
               ? "No hay funciones publicadas a la venta."
-              : "No tienes funciones asignadas para vender ahora. Pídele a iPass que te asigne los eventos o funciones que vas a vender."}
+              : "No tienes funciones asignadas para vender ahora. Pídele a Boost que te asigne los eventos o funciones que vas a vender."}
           </p>
         ) : (
           <ul className="grid gap-3 md:grid-cols-2">

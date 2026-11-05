@@ -19,7 +19,7 @@ const SORTS = {
 
 /**
  * Directorio de compradores: cada persona una vez, con todo lo que compró online o en
- * boletería. IMPACTA (vista general) ve los de todos los organizadores; un organizador,
+ * boletería. Boost (vista general) ve los de todos los organizadores; un organizador,
  * los de sus eventos.
  */
 export default async function BuyersPage({ searchParams }: Props) {

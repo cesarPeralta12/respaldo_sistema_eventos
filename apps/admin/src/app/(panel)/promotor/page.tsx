@@ -35,7 +35,7 @@ export default async function PromoterHome() {
     {
       label: "Tu comisión",
       value: money(sales.totals.commission),
-      note: sales.totals.toSettle > 0 ? `${money(sales.totals.toSettle)} por cobrarle a iPass` : "de lo ya pagado (todo liquidado)",
+      note: sales.totals.toSettle > 0 ? `${money(sales.totals.toSettle)} por cobrarle a Boost` : "de lo ya pagado (todo liquidado)",
       tone: "magenta",
     },
     {
@@ -79,7 +79,7 @@ export default async function PromoterHome() {
       <section className="space-y-3">
         <h2 className="eyebrow">Tus eventos</h2>
         {assignments.length === 0 ? (
-          <p className="card p-5 text-sm text-[var(--ink-muted)]">Todavía no tienes eventos asignados. Pídele a iPass que te asigne los que vas a vender.</p>
+          <p className="card p-5 text-sm text-[var(--ink-muted)]">Todavía no tienes eventos asignados. Pídele a Boost que te asigne los que vas a vender.</p>
         ) : (
           assignments.map(({ event, scope, ...rule }) => {
             // Solo las funciones que tiene asignadas (y vigentes) y que todavía se venden.

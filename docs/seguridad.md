@@ -35,7 +35,7 @@ Cada evento guarda **quién, qué, cuándo y desde dónde**: IP, navegador (web)
 - Lecturas en puerta (un evento por lote: cuántas entraron y cuántas se rechazaron, y desde qué teléfono).
 - Cambios del sistema: cuentas, eventos, recintos, invitados, clientes, transferencias.
 - Filtros por tipo, cuenta, IP, fechas y "solo alertas"; tarjetas de las últimas 24 horas e IP con más fallos.
-- IMPACTA ve todo; cada organizador solo lo de su organización.
+- Boost ve todo; cada organizador solo lo de su organización.
 - **Retención**: los eventos de acceso (`auth.*`, `device.*`) se borran a los 12 meses; los de negocio no se borran.
 
 ## Configuración del servidor

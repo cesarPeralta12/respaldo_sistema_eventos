@@ -14,7 +14,7 @@ export async function Nav() {
       <Link href="/" className="text-[var(--ink-muted)] transition-colors hover:text-[var(--ink)]">
         Eventos
       </Link>
-      <Link href="/boliches" className="font-semibold text-[var(--ipass-pink)] transition-colors hover:text-[var(--ink)]">
+      <Link href="/boliches" className="font-semibold text-[var(--boost-pink)] transition-colors hover:text-[var(--ink)]">
         Boliches
       </Link>
     </>
@@ -23,7 +23,7 @@ export async function Nav() {
   return (
     <header className="sticky top-0 z-40 border-b border-[var(--border)] bg-[var(--bg)]/85 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:gap-4 sm:px-6 sm:py-4">
-        <Link href="/" aria-label="iPass, ir al inicio" className="shrink-0">
+        <Link href="/" aria-label="Boost, ir al inicio" className="shrink-0">
           <Logo className="h-7 w-auto sm:h-8" />
         </Link>
         <nav className="flex items-center gap-3 whitespace-nowrap text-[13px] sm:gap-5 sm:text-sm">

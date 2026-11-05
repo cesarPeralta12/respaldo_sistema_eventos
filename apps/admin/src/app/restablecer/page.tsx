@@ -17,7 +17,7 @@ export default async function ResetPasswordPage({ searchParams }: Props) {
     <main className="mx-auto flex min-h-dvh max-w-sm flex-col justify-center gap-6 px-6">
       <div>
         <Logo className="mb-4 h-10 w-auto" />
-        <p className="eyebrow">Panel de iPass</p>
+        <p className="eyebrow">Panel de Boost</p>
         <h1 className="text-xl font-semibold tracking-tight">Elige tu contraseña nueva</h1>
       </div>
       <div className="card p-6">

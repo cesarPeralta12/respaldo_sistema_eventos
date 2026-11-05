@@ -16,8 +16,8 @@
 
 Aplicado completo:
 
-- **Varios clientes/organizadores** bajo IMPACTA (`Client`); cada evento se asigna a uno.
-- **Espacio temporal del cliente**: IMPACTA lo habilita por evento y se cierra solo (por defecto 24 h
+- **Varios clientes/organizadores** bajo Boost (`Client`); cada evento se asigna a uno.
+- **Espacio temporal del cliente**: Boost lo habilita por evento y se cierra solo (por defecto 24 h
   después de la última función). El cliente ve solo sus eventos: reporte en vivo, CSV y su lista de invitados.
 - **Modalidad 2: lista de invitados** (`GUEST_LIST`): sin venta y fuera del sitio público; invitados
   desde Excel (pegar o .xlsx), CSV o a mano; QR único por invitado; anular; hoja de QRs para imprimir.
@@ -34,22 +34,22 @@ Aplicado completo:
 
 - **Varios organizadores**, cada uno una organización aislada: sus recintos, eventos, ventas, puerta,
   boletería y reportes. Un organizador nuevo empieza vacío. Probado: no ve ni puede abrir nada ajeno.
-- **Impacta = plataforma**: Resumen general, Organizadores (alta, suspensión, "Entrar"), Aprobaciones,
+- **Boost = plataforma**: Resumen general, Organizadores (alta, suspensión, "Entrar"), Aprobaciones,
   Ventas e Ingresos en puerta de todos, en vivo.
-- **Solo Impacta crea cuentas** (de Impacta o de un organizador), con contraseña temporal que se cambia
+- **Solo Boost crea cuentas** (de Boost o de un organizador), con contraseña temporal que se cambia
   al entrar. Cualquier cuenta puede cambiar su contraseña.
-- **Revisión**: el organizador envía su evento; Impacta lo aprueba (sale en la web) o lo devuelve con
+- **Revisión**: el organizador envía su evento; Boost lo aprueba (sale en la web) o lo devuelve con
   una observación.
 - **Preventa** por tipo de entrada: fecha de fin (y de inicio opcional); la General empieza sola al
   terminar; en butacas numeradas un solo precio a la vez. Web, boletería y mapa la muestran.
-- Se mantiene el modo "Clientes" (Impacta opera el evento y el cliente solo mira).
+- Se mantiene el modo "Clientes" (Boost opera el evento y el cliente solo mira).
 
 ## Lista de funciones del cliente (2026-10-09)
 
 Hecho:
 
 - **Compradores**: directorio sin repetidos (por email), con compras, entradas, total, canales y eventos;
-  búsqueda, orden y filtro por organizador. Impacta ve todos; cada organizador solo los suyos.
+  búsqueda, orden y filtro por organizador. Boost ve todos; cada organizador solo los suyos.
 - **Exportar a Excel** las ventas (con los filtros aplicados) y los compradores (CSV con `;`, BOM y
   protección contra fórmulas, se abre directo en Excel).
 - **Invitados desde .xlsx**: se lee la primera hoja (nombre, email, documento); el .xls antiguo se rechaza
@@ -84,13 +84,13 @@ la barra (hoy lector USB o código escrito) y reportes de consumo por noche en e
 
 ## Organizadores de solo lectura y boliches como organizador (2026-10-14, rama `feature/boliches`)
 
-- **Dos tipos de usuario** que crea Impacta en *Organizadores*: de **eventos** o de **boliche**. El de boliche
+- **Dos tipos de usuario** que crea Boost en *Organizadores*: de **eventos** o de **boliche**. El de boliche
   tiene su panel de noches, mesas, barra, RRPP, ventas e ingresos; el de eventos no ve la barra. Un boliche
   solo crea eventos de categoría Boliche; uno de eventos, todas menos esa.
 - **Solo lectura**: las cuentas de organizadores, boliches y clientes ven todo lo suyo en vivo pero no crean ni
   cambian nada (formularios deshabilitados y, en el servidor, `requireEditor` en toda acción que modifica). Solo
-  Impacta crea y edita, también dentro de un organizador ("Entrar"). El cajero (boletería y barra) y el portero
-  siguen operando. El cliente ya no carga invitados: lo hace Impacta.
+  Boost crea y edita, también dentro de un organizador ("Entrar"). El cajero (boletería y barra) y el portero
+  siguen operando. El cliente ya no carga invitados: lo hace Boost.
 - Lounge 360 y Forum Club pasan a ser organizadores tipo boliche, cada uno con organizador (solo lectura),
   cajero y portero.
 
@@ -174,7 +174,7 @@ Del documento "Impacta - Planificación completa" (partes 2 y 3), lo de poco rie
 - [ ] **Conciliación** de pagos con la pasarela real.
 - [ ] **https** en el entorno de pruebas: la cámara del celular no funciona por http en la red local.
 - [ ] **Invitación por email** al crear un organizador o una cuenta (hoy se le pasa la contraseña temporal a mano).
-- [ ] **Comisión de Impacta** por organizador y liquidaciones (cuánto se le paga a cada uno).
+- [ ] **Comisión de Boost** por organizador y liquidaciones (cuánto se le paga a cada uno).
 - [ ] **Editor de butacas**: editar/mover secciones existentes, zoom, deshacer (mejoras ya conversadas con el cliente; propuesta: Konva.js).
 - [ ] **Recuperar contraseña** y verificación de email.
 - [ ] **Hosting**: Vercel + Postgres administrado con pooler de conexiones.

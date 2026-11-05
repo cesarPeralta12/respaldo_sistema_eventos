@@ -7,7 +7,7 @@ import { TICKET_STATUS } from "@/lib/labels";
 import { orderUrl } from "@/lib/qr";
 
 /**
- * Lista de invitados de una función: la usan IMPACTA (/eventos/…/invitados) y el cliente
+ * Lista de invitados de una función: la usan Boost (/eventos/…/invitados) y el cliente
  * (/cliente/…/invitados). Quien llama ya verificó que el usuario puede ver el evento.
  * Devuelve null si la función no es de ese evento.
  */

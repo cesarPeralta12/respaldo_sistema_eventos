@@ -29,7 +29,7 @@ async function shrinkImage(file: File): Promise<Blob> {
 }
 
 /**
- * Campo de imagen con vista previa: se pega el enlace de una foto o se sube un archivo (queda guardado en iPass y el
+ * Campo de imagen con vista previa: se pega el enlace de una foto o se sube un archivo (queda guardado en Boost y el
  * campo toma su dirección). Así se nota al instante si la URL no es una foto.
  */
 export function ImageUrlField({

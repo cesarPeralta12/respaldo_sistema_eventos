@@ -24,7 +24,7 @@ const dayStart = (value: string | undefined) =>
 
 /**
  * Registro de seguridad: quién entró, quién falló, qué cambió y desde dónde (IP, navegador o teléfono).
- * IMPACTA ve todo; cada organizador, solo lo de su organización.
+ * Boost ve todo; cada organizador, solo lo de su organización.
  */
 export default async function SecurityPage({ searchParams }: Props) {
   await connection();

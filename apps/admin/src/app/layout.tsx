@@ -3,13 +3,13 @@ import { IBM_Plex_Mono, Inter, Poppins } from "next/font/google";
 import type { ReactNode } from "react";
 import "./globals.css";
 
-// Poppins para títulos e Inter para tablas y formularios (guía visual iPass).
+// Poppins para títulos e Inter para tablas y formularios (guía visual Boost).
 const poppins = Poppins({ variable: "--font-poppins", subsets: ["latin"], weight: ["500", "600", "700"] });
 const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
 const plexMono = IBM_Plex_Mono({ variable: "--font-mono-plex", subsets: ["latin"], weight: ["400", "500"] });
 
 export const metadata: Metadata = {
-  title: { default: "Panel · iPass", template: "%s · Panel iPass" },
+  title: { default: "Panel · Boost", template: "%s · Panel Boost" },
   robots: { index: false, follow: false },
 };
 

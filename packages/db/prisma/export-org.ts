@@ -46,7 +46,7 @@ async function main() {
     },
   });
   if (!org) throw new Error(`No existe el organizador "${slug}".`);
-  if (org.isPlatform) throw new Error("La plataforma (Impacta) no se exporta.");
+  if (org.isPlatform) throw new Error("La plataforma (Boost) no se exporta.");
 
   const data = {
     version: 1,

@@ -34,7 +34,7 @@ export default async function TablesPage({ params }: Props) {
         <Link href="/boleteria" className="text-sm text-[var(--ink-dim)] hover:text-[var(--ink)]">
           ← Boletería
         </Link>
-        <p className="card p-5 text-sm text-[var(--ink-muted)]">No tienes asignada esta función: pídele a iPass que te la asigne.</p>
+        <p className="card p-5 text-sm text-[var(--ink-muted)]">No tienes asignada esta función: pídele a Boost que te la asigne.</p>
       </div>
     );
   }

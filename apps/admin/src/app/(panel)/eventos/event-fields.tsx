@@ -27,7 +27,7 @@ export function EventFields({
     contactPhone?: string | null;
     contactEmail?: string | null;
   };
-  /** Clientes de Impacta (null: no aplica, por ejemplo en el panel de un organizador). */
+  /** Clientes de Boost (null: no aplica, por ejemplo en el panel de un organizador). */
   clients: { id: string; name: string }[] | null;
   /** Categorías que admite el organizador (un boliche, solo "Boliche"). */
   categories?: EventCategory[];
@@ -86,9 +86,9 @@ export function EventFields({
         </label>
         {clients && (
           <label className="label">
-            Cliente (iPass opera el evento)
+            Cliente (Boost opera el evento)
             <select name="clientId" defaultValue={defaults?.clientId ?? ""} className="field">
-              <option value="">iPass (evento propio)</option>
+              <option value="">Boost (evento propio)</option>
               {clients.map((c) => (
                 <option key={c.id} value={c.id}>
                   {c.name}

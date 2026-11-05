@@ -94,7 +94,7 @@ function eventData(data: z.infer<typeof eventSchema>) {
   };
 }
 
-/** El cliente elegido tiene que ser de la organización; vacío = evento propio de IMPACTA. */
+/** El cliente elegido tiene que ser de la organización; vacío = evento propio de Boost. */
 async function checkClient(organizationId: string, clientId: string | undefined) {
   if (!clientId) return { ok: true as const, clientId: null };
   const client = await prisma.client.findFirst({ where: { id: clientId, organizationId } });
@@ -125,7 +125,7 @@ export async function createEventAction(_prev: FormState, formData: FormData): P
 
   let event;
   try {
-    // IMPACTA no tiene tope (puede trabajar dentro de un organizador sin importar su límite); el organizador, sí.
+    // Boost no tiene tope (puede trabajar dentro de un organizador sin importar su límite); el organizador, sí.
     event = await createEventWithinLimit(
       {
         organizationId: staff.organization.id,
@@ -176,8 +176,8 @@ export async function updateEventAction(_prev: FormState, formData: FormData): P
 }
 
 /**
- * Publicar. IMPACTA publica directo (también cuando entró en un organizador). Un
- * organizador no publica: lo envía a revisión y sale en la web cuando IMPACTA lo aprueba.
+ * Publicar. Boost publica directo (también cuando entró en un organizador). Un
+ * organizador no publica: lo envía a revisión y sale en la web cuando Boost lo aprueba.
  */
 export async function publishEventAction(_prev: FormState, formData: FormData): Promise<FormState> {
   const staff = await requireEditor();

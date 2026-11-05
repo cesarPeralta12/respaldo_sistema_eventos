@@ -210,7 +210,7 @@ export default async function VenuePage({ params, searchParams }: Props) {
       </section>
 
       {staff.readOnly ? (
-        // Solo lectura: el mapa tal como lo armó Impacta, sin los editores.
+        // Solo lectura: el mapa tal como lo armó Boost, sin los editores.
         <section className="card space-y-3 p-6">
           <h2 className="eyebrow">Mapa del recinto</h2>
           <SeatMapPreview

@@ -12,14 +12,14 @@ export const metadata: Metadata = { title: "Nuevo evento" };
 
 export default async function NewEventPage() {
   const staff = await requireStaff(ROLES.manage);
-  // Crear es de IMPACTA: una cuenta de solo lectura vuelve a la lista.
+  // Crear es de Boost: una cuenta de solo lectura vuelve a la lista.
   if (staff.readOnly) redirect("/eventos");
   const clients = await prisma.client.findMany({
     where: { organizationId: staff.organization.id },
     orderBy: { name: "asc" },
     select: { id: true, name: true },
   });
-  // IMPACTA no tiene tope; un organizador, el que le fijó IMPACTA.
+  // Boost no tiene tope; un organizador, el que le fijó Boost.
   const quota = staff.platform ? null : await getEventQuota(staff.organization.id);
   return (
     <div className="max-w-2xl space-y-6">

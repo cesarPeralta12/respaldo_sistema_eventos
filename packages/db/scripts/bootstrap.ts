@@ -1,5 +1,5 @@
 /**
- * Primer arranque de un servidor real (Coolify): crea Impacta y su primer dueño. No borra nada.
+ * Primer arranque de un servidor real (Coolify): crea Boost y su primer dueño. No borra nada.
  *
  *   BOOTSTRAP_EMAIL=dueno@tudominio.bo BOOTSTRAP_NAME="Tu Nombre" npm run db:bootstrap
  *

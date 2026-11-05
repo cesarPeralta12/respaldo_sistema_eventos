@@ -16,10 +16,10 @@ import { HOME_BY_ROLE, PREVIEW_LABEL, PREVIEW_ROLES, ROLES, can, isGlobalView, i
 type NavItem = { href: string; label: string; icon: NavIcon; badge?: number };
 type NavGroup = { title?: string; items: NavItem[] };
 
-/** El menú depende de quién entra: IMPACTA (general o dentro de un organizador), un organizador o su personal. */
+/** El menú depende de quién entra: Boost (general o dentro de un organizador), un organizador o su personal. */
 async function navigation(staff: Staff): Promise<NavGroup[]> {
   // El control de acceso se hace con la app móvil de puerta: el panel no tiene pantalla de lectura.
-  // La Barra es de los boliches (e IMPACTA, que puede operar uno).
+  // La Barra es de los boliches (y Boost, que puede operar uno).
   const nightlife = isNightlife(staff);
   const operate: NavItem[] = can(staff, ROLES.pos)
     ? [
@@ -37,7 +37,7 @@ async function navigation(staff: Staff): Promise<NavGroup[]> {
           { href: "/", label: "Resumen general", icon: "home" },
           { href: "/organizadores", label: "Organizadores", icon: "briefcase" },
           { href: "/organizadores?tipo=boliche", label: "Boliches", icon: "glass" },
-          // Los eventos los arma iPass y se publican directo: Aprobaciones aparece solo si un organizador envió uno.
+          // Los eventos los arma Boost y se publican directo: Aprobaciones aparece solo si un organizador envió uno.
           ...(pending > 0 ? [{ href: "/aprobaciones", label: "Aprobaciones", icon: "check" as const, badge: pending }] : []),
           { href: "/ordenes", label: "Ventas", icon: "receipt" },
           { href: "/conciliacion", label: "Conciliación de cobros", icon: "check" },
@@ -46,7 +46,7 @@ async function navigation(staff: Staff): Promise<NavGroup[]> {
         ],
       },
       {
-        title: "Eventos de iPass",
+        title: "Eventos de Boost",
         items: [
           { href: "/eventos", label: "Eventos", icon: "calendar" },
           { href: "/clientes", label: "Clientes", icon: "briefcase" },
@@ -81,7 +81,7 @@ async function navigation(staff: Staff): Promise<NavGroup[]> {
           { href: "/promotores", label: "Promotores", icon: "users" },
           ...operate,
           { href: "/seguridad", label: "Seguridad", icon: "shield" },
-          // Las cuentas de un organizador las crea IMPACTA (al entrar en él).
+          // Las cuentas de un organizador las crea Boost (al entrar en él).
           ...(staff.platform ? [{ href: "/usuarios", label: "Usuarios y porteros", icon: "users" as const }] : []),
         ],
       },
@@ -107,7 +107,7 @@ function tourSteps(staff: Staff): TourStep[] {
   const nightlife = isNightlife(staff);
   const events = nightlife ? "Noches" : "Eventos";
   const welcome: TourStep = {
-    title: "Bienvenido al panel de iPass",
+    title: "Bienvenido al panel de Boost",
     href: "/",
     target: ".stats",
     text: staff.readOnly
@@ -155,7 +155,7 @@ function tourSteps(staff: Staff): TourStep[] {
     ];
   }
 
-  // iPass (vista general de la plataforma): organizadores, eventos propios y cuentas.
+  // Boost (vista general de la plataforma): organizadores, eventos propios y cuentas.
   if (isGlobalView(staff)) {
     return [
       {
@@ -167,7 +167,7 @@ function tourSteps(staff: Staff): TourStep[] {
         title: "Organizadores y boliches",
         href: "/organizadores",
         target: '[data-tour="nuevo-organizador"]',
-        text: "Los clientes a los que iPass da el servicio. Cada uno tiene su panel de solo lectura: lo que se crea o cambia lo hace iPass.",
+        text: "Los clientes a los que Boost da el servicio. Cada uno tiene su panel de solo lectura: lo que se crea o cambia lo hace Boost.",
         points: [
           "Crea el usuario de un organizador de eventos o de un boliche: empieza vacío.",
           "«Entrar» abre su panel: ahí le armas recintos, eventos y precios.",
@@ -175,10 +175,10 @@ function tourSteps(staff: Staff): TourStep[] {
         ],
       },
       {
-        title: "Eventos de iPass",
+        title: "Eventos de Boost",
         href: "/eventos",
         target: '[data-tour="nuevo-evento"]',
-        text: "Los eventos propios de iPass o de un cliente que iPass opera. El asistente te lleva paso a paso.",
+        text: "Los eventos propios de Boost o de un cliente que Boost opera. El asistente te lleva paso a paso.",
         points: [
           "Datos, lugar y fecha, entradas (modelos listos) y revisión con la vista previa.",
           "«Evento pequeño»: el acceso rápido, una sola pantalla (en la web o con entradas impresas).",
@@ -189,7 +189,7 @@ function tourSteps(staff: Staff): TourStep[] {
         title: "Clientes",
         href: "/clientes",
         target: '[data-tour="nuevo-cliente"]',
-        text: "Las productoras para las que iPass gestiona eventos. Cada evento se asigna a un cliente.",
+        text: "Las productoras para las que Boost gestiona eventos. Cada evento se asigna a un cliente.",
         points: ["El cliente ve sus ventas e ingresos en un espacio de solo lectura.", "Ese acceso se habilita por evento y por un tiempo."],
       },
       {
@@ -215,7 +215,7 @@ function tourSteps(staff: Staff): TourStep[] {
         title: "Usuarios y porteros",
         href: "/usuarios",
         target: '[data-tour="crear-cuenta"]',
-        text: "Las cuentas del equipo de iPass, cada una con su rol. Las de un organizador se crean entrando a ese organizador.",
+        text: "Las cuentas del equipo de Boost, cada una con su rol. Las de un organizador se crean entrando a ese organizador.",
         points: ["Dueño, administrador, cajero o portero.", "A cada portero le asignas su función y su puerta."],
       },
       {
@@ -379,7 +379,7 @@ export default async function PanelLayout({ children }: { children: ReactNode })
     <div className="flex min-h-dvh flex-col md:flex-row print:block">
       <aside className="sidebar flex flex-col md:sticky md:top-0 md:h-dvh md:w-64 md:shrink-0 print:hidden">
         <div className="flex items-center justify-between gap-3 px-5 py-5 md:block">
-          <Link href={HOME_BY_ROLE[staff.role]} aria-label="iPass, ir al inicio" className="block w-fit">
+          <Link href={HOME_BY_ROLE[staff.role]} aria-label="Boost, ir al inicio" className="block w-fit">
             <Logo negative className="h-8 w-auto md:h-9" />
           </Link>
           {subtitle && (
@@ -418,7 +418,7 @@ export default async function PanelLayout({ children }: { children: ReactNode })
             <p className="truncate text-sm font-medium">{staff.name}</p>
             <p className="text-xs text-[var(--side-dim)]">
               {staff.readOnly && staff.role !== "CASHIER" ? "Solo lectura" : ROLE_LABEL[staff.role]}
-              {staff.viewingAs ? " · iPass" : ""}
+              {staff.viewingAs ? " · Boost" : ""}
             </p>
             <Link href="/cuenta/contrasena" className="mt-1 hidden text-xs text-[var(--side-dim)] hover:text-[var(--side-ink)] md:block">
               Cambiar contraseña
@@ -459,7 +459,7 @@ export default async function PanelLayout({ children }: { children: ReactNode })
                 </form>
               ))}
               <form action={previewAsAction}>
-                <button type="submit" className="rounded-md bg-[var(--ipass-navy)] px-3 py-1 text-xs font-medium text-white shadow-sm">
+                <button type="submit" className="rounded-md bg-[var(--boost-navy)] px-3 py-1 text-xs font-medium text-white shadow-sm">
                   Salir de la vista previa
                 </button>
               </form>
@@ -469,7 +469,7 @@ export default async function PanelLayout({ children }: { children: ReactNode })
         {staff.viewingAs && !staff.preview && (
           <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[var(--info)]/30 bg-[var(--info-soft)] px-4 py-2.5 text-sm text-[var(--info)] md:px-8 print:hidden">
             <p>
-              Estás dentro de <strong>{staff.viewingAs.name}</strong> como iPass: aquí creas y editas lo que el
+              Estás dentro de <strong>{staff.viewingAs.name}</strong> como Boost: aquí creas y editas lo que el
               organizador ve (su cuenta es de solo lectura).
             </p>
             <div className="flex flex-wrap gap-2">
@@ -484,7 +484,7 @@ export default async function PanelLayout({ children }: { children: ReactNode })
               <form action={exitOrganizationAction}>
                 <input type="hidden" name="next" value="/organizadores" />
                 <button type="submit" className="rounded-md bg-white px-3 py-1 text-xs font-medium shadow-sm">
-                  Volver a iPass
+                  Volver a Boost
                 </button>
               </form>
             </div>
@@ -493,7 +493,7 @@ export default async function PanelLayout({ children }: { children: ReactNode })
         {staff.readOnly && staff.role !== "CASHIER" && (
           <div className="border-b border-[var(--border)] bg-[var(--surface-2)] px-4 py-2.5 text-sm text-[var(--ink-muted)] md:px-8 print:hidden">
             <strong className="text-[var(--ink)]">Cuenta de solo lectura.</strong> Ves en vivo tus eventos, ventas,
-            compradores e ingresos; los cambios (eventos, precios, recintos, promociones, cuentas) los hace iPass.
+            compradores e ingresos; los cambios (eventos, precios, recintos, promociones, cuentas) los hace Boost.
           </div>
         )}
         <Suspense fallback={null}>

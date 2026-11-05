@@ -13,7 +13,7 @@ export const metadata: Metadata = { title: "Clientes" };
 export default async function ClientsPage() {
   await connection();
   const staff = await requirePlatform();
-  // Los clientes son de Impacta (eventos que Impacta opera para otros), no de un organizador.
+  // Los clientes son de Boost (eventos que Boost opera para otros), no de un organizador.
   if (staff.viewingAs) redirect("/");
   const clients = await prisma.client.findMany({
     where: { organizationId: staff.organization.id },
@@ -31,7 +31,7 @@ export default async function ClientsPage() {
         <p className="eyebrow">{clients.length} cliente(s)</p>
         <h1 className="text-2xl font-semibold tracking-tight">Clientes</h1>
         <p className="text-sm text-[var(--ink-muted)]">
-          Productoras u organizadores para los que iPass gestiona eventos. Cada evento se asigna a un cliente; sus
+          Productoras u organizadores para los que Boost gestiona eventos. Cada evento se asigna a un cliente; sus
           cuentas (rol cliente, en Usuarios) solo ven esos eventos y solo mientras su espacio esté abierto.
         </p>
       </div>

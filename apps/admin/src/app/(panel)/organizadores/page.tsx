@@ -63,9 +63,9 @@ export default async function OrganizersPage({ searchParams }: Props) {
         <p className="eyebrow">{organizers.length} organizador(es)</p>
         <h1 className="text-2xl font-semibold tracking-tight">{kind === "NIGHTLIFE" ? "Boliches" : kind === "EVENTS" ? "Organizadores de eventos" : "Organizadores"}</h1>
         <p className="text-sm text-[var(--ink-muted)]">
-          Clientes a los que iPass les da el servicio: organizadores de eventos y boliches. Cada uno tiene su panel de{" "}
+          Clientes a los que Boost les da el servicio: organizadores de eventos y boliches. Cada uno tiene su panel de{" "}
           <strong>solo lectura</strong>: ve en vivo sus eventos (o noches), ventas, compradores, ingresos y reportes, sin
-          ver nada de los demás. Todo lo que se crea o cambia lo hace iPass: entra con &ldquo;Entrar&rdquo; y trabaja
+          ver nada de los demás. Todo lo que se crea o cambia lo hace Boost: entra con &ldquo;Entrar&rdquo; y trabaja
           dentro de su panel.
         </p>
       </div>

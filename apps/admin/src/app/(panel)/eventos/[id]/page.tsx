@@ -98,9 +98,9 @@ export default async function EventDetailPage({ params, searchParams }: Props) {
   const ready = event.sessions.length > 0 && event.sessions.every((s) => s.ticketTypes.length > 0);
   const tz = event.sessions[0]?.venue.timezone ?? DEFAULT_TIMEZONE;
   const accessOpen = clientAccessOpen(event);
-  // "Clientes" es el modo en que Impacta opera el evento para otro: solo en la organización de Impacta.
+  // "Clientes" es el modo en que Boost opera el evento para otro: solo en la organización de Boost.
   const clientMode = staff.organization.isPlatform;
-  // Un organizador no publica: envía a revisión y Impacta aprueba.
+  // Un organizador no publica: envía a revisión y Boost aprueba.
   const needsReview = !staff.platform;
   const nightlife = event.category === "BOLICHE";
   const noun = sessionNoun(event.category);
@@ -162,7 +162,7 @@ export default async function EventDetailPage({ params, searchParams }: Props) {
 
       {event.reviewNote && event.status === "DRAFT" && (
         <div role="alert" className="rounded-lg border border-[var(--warn)]/40 bg-[var(--warn-soft)] px-5 py-4 text-sm">
-          <p className="font-semibold text-[var(--warn)]">iPass devolvió este evento</p>
+          <p className="font-semibold text-[var(--warn)]">Boost devolvió este evento</p>
           <p className="mt-1">{event.reviewNote}</p>
           <p className="mt-1 text-xs text-[var(--ink-muted)]">Corrígelo y vuelve a enviarlo a revisión.</p>
         </div>
@@ -516,7 +516,7 @@ export default async function EventDetailPage({ params, searchParams }: Props) {
               <div className="flex flex-col gap-3">
                 <p className="text-sm text-[var(--ink-muted)]">
                   {needsReview
-                    ? "Enviado a iPass. Sale en la web cuando lo aprueben; si piden cambios, los verás aquí."
+                    ? "Enviado a Boost. Sale en la web cuando lo aprueben; si piden cambios, los verás aquí."
                     : "El organizador lo envió a revisión. Apruébalo aquí, o devuélvelo con observaciones desde Aprobaciones."}
                 </p>
                 {!needsReview && (
@@ -558,7 +558,7 @@ export default async function EventDetailPage({ params, searchParams }: Props) {
                   {!ready
                     ? "Completa lo marcado con ! para poder publicar."
                     : needsReview
-                      ? "iPass lo revisa y lo publica en la web."
+                      ? "Boost lo revisa y lo publica en la web."
                       : guestList
                         ? "Con lista de invitados no aparece en el sitio: se entra solo con invitación."
                         : "Sale a la venta en el sitio apenas lo publiques."}

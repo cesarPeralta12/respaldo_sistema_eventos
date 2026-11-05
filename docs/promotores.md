@@ -1,6 +1,6 @@
 # Promotores (RRPP)
 
-Un promotor vende con **cobro por QR** los eventos que iPass le asigna y ve su **comisión en vivo**. Nunca recibe
+Un promotor vende con **cobro por QR** los eventos que Boost le asigna y ve su **comisión en vivo**. Nunca recibe
 efectivo: el cliente paga desde la app de su banco y, apenas se aprueba el pago, se emiten las entradas.
 
 ## Cómo se arma
@@ -19,7 +19,7 @@ efectivo: el cliente paga desde la app de su banco y, apenas se aprueba el pago,
    - **Funciones**: todas o algunas, con vigencia (desde y hasta) opcional.
 3. El promotor entra al panel y solo ve **Vender y mi comisión**, con lo de hoy, lo de cada evento y lo que le falta
    cobrar.
-4. **Liquidar**: cuando iPass le paga, en su ficha «Liquidar» marca esas ventas como pagadas y guarda el monto y una nota.
+4. **Liquidar**: cuando Boost le paga, en su ficha «Liquidar» marca esas ventas como pagadas y guarda el monto y una nota.
    Lo que venda después queda para la próxima liquidación.
 
 ## La venta
@@ -34,7 +34,7 @@ Lo que se compra en la web con el **enlace del promotor** (`/eventos/<evento>?pr
 suma a su comisión. El enlace recuerda el código 7 días y lo aplica solo al comprar.
 
 La comisión de cada venta se calcula al crearla con la regla del evento y cuenta recién cuando el pago queda aprobado.
-Si después se cambia la regla, lo ya vendido no cambia. iPass ve todo en *Promotores* (ventas, cobrado y comisión de
+Si después se cambia la regla, lo ya vendido no cambia. Boost ve todo en *Promotores* (ventas, cobrado y comisión de
 cada uno).
 
 ## Pago QR: hoy simulado

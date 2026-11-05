@@ -63,17 +63,17 @@ Prueba automática (22-10): `entradas-impresas`, 6 de 6 bien. PDF generado en lo
 
 ### 5. Ajuste visual del panel (punto 6)
 
-- [x] ✅ Identidad iPass: logo, colores, Poppins/Inter, menú azul noche, acciones en magenta, estados en verde/rojo.
+- [x] ✅ Identidad Boost: logo, colores, Poppins/Inter, menú azul noche, acciones en magenta, estados en verde/rojo.
 - [ ] 🧪 Revisar pantalla por pantalla: colores, categorías, orden de los bloques y animaciones.
 
 ### 6. Recorrido guiado (punto 7)
 
 Probado en local (23-10) entrando con cada tipo de cuenta: cada paso abre su pantalla e ilumina lo que explica.
 
-- [x] ✅ Recorrido de 12 pasos del organizador (lo ve iPass al "Entrar" a un organizador de eventos).
+- [x] ✅ Recorrido de 12 pasos del organizador (lo ve Boost al "Entrar" a un organizador de eventos).
 - [x] ✅ Recorrido del boliche de solo lectura (6 pasos: Resumen, Noches, Ventas, Ingresos, Buscar, Listo).
-- [x] ✅ Recorrido nuevo para el administrador iPass (12 pasos): Resumen general, Organizadores y boliches,
-      Aprobaciones, Eventos de iPass, Clientes, Recintos, Ventas, Ingresos, Usuarios, Seguridad, Buscar, Listo.
+- [x] ✅ Recorrido nuevo para el administrador Boost (12 pasos): Resumen general, Organizadores y boliches,
+      Aprobaciones, Eventos de Boost, Clientes, Recintos, Ventas, Ingresos, Usuarios, Seguridad, Buscar, Listo.
 - [x] ✅ Recorrido nuevo para cajeros: Boletería y Listo (2 pasos); en un boliche, también Barra (3 pasos).
       El cajero ahora también tiene "Ver el recorrido" en el menú.
 - [ ] ❓ Lectores/porteros no entran al panel: usan la app de puerta. Su guía va en la app (de tu amigo) o en una hoja
@@ -95,7 +95,7 @@ Probado en local (23-10) entrando con cada tipo de cuenta: cada paso abre su pan
 
 - [x] ✅ Pruebas automáticas completas (23-10): 23 archivos, **199 de 199** bien (compra web, boletería, invitaciones,
       Excel, impresas, puerta, reingreso, zonas, mesas, boliches, QR dinámico, transferencias, reportes, seguridad).
-- [x] ✅ En local, a mano (24-10), evento "Prueba integral iPass" en Salón Asistente Prueba:
+- [x] ✅ En local, a mano (24-10), evento "Prueba integral Boost" en Salón Asistente Prueba:
       1. Crear y configurar: asistente completo, 2 precios (con y sin reingreso), publicado.
       2. Venta: web (orden NNXN4-D5JTH, 3 entradas), boletería (1, efectivo) e importación por Excel (con un error no
          deja importar; corregido, 3 entradas, PDF y correo).

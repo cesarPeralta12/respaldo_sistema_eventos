@@ -27,7 +27,7 @@ export default async function BarNightPage({ params }: Props) {
         <Link href="/barra" className="text-sm text-[var(--ink-dim)] hover:text-[var(--ink)]">
           ← Barra
         </Link>
-        <p className="card p-5 text-sm text-[var(--ink-muted)]">No tienes asignada esta función: pídele a iPass que te la asigne.</p>
+        <p className="card p-5 text-sm text-[var(--ink-muted)]">No tienes asignada esta función: pídele a Boost que te la asigne.</p>
       </div>
     );
   }

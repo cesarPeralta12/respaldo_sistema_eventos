@@ -208,7 +208,7 @@ const MAX_SMALL_ONLINE = 20_000;
 /**
  * "Evento pequeño", el acceso rápido: en un solo paso crea el lugar (sin mapa: una zona general con el aforo de las
  * entradas), el evento, su función y los precios. Se vende de una de dos formas:
- *  - En la web: queda publicado y sale en «Otros eventos» (iPass publica directo).
+ *  - En la web: queda publicado y sale en «Otros eventos» (Boost publica directo).
  *  - Con entradas impresas: queda en borrador con un lote por tipo, listo para imprimir y vender en mano.
  */
 export async function createSmallEventAction(_prev: FormState, formData: FormData): Promise<FormState> {
@@ -300,7 +300,7 @@ export async function createSmallEventAction(_prev: FormState, formData: FormDat
     });
     if (!online) await createPrintBatch({ sessionId: session.id, ticketTypeId: type.id, quantity: t.quantity, mode, staffId: staff.id });
   }
-  // En la web: iPass publica directo (un organizador lo envía a revisión, como siempre).
+  // En la web: Boost publica directo (un organizador lo envía a revisión, como siempre).
   if (online) {
     if (staff.platform) await prisma.event.update({ where: { id: event.id }, data: { status: "PUBLISHED", publishedAt: new Date() } });
     else await submitEventForReview(event.id, staff.id);

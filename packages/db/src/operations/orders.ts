@@ -386,7 +386,7 @@ export async function createPendingOrder(
     let commissionAmount = 0;
     if (promoterId) {
       const rule = await tx.promoterAssignment.findUnique({ where: { userId_eventId: { userId: promoterId, eventId: event.id } } });
-      if (!rule && channel === "PROMOTER") throw new DomainError("NOT_ON_SALE", "No tienes asignado este evento: pídele a iPass que te lo asigne.");
+      if (!rule && channel === "PROMOTER") throw new DomainError("NOT_ON_SALE", "No tienes asignado este evento: pídele a Boost que te lo asigne.");
       const units = priced.reduce((sum, l) => sum + l.quantity, 0);
       if (rule && channel === "PROMOTER") {
         // Solo las funciones que tiene asignadas (con su vigencia) y, si tiene cupo, sin pasarse de él.

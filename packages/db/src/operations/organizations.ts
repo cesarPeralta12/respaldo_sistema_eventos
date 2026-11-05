@@ -1,8 +1,8 @@
 /**
- * Organizadores bajo IMPACTA y la revisión de sus eventos.
+ * Organizadores bajo Boost y la revisión de sus eventos.
  *
  * Cada organizador es una organización propia: sus eventos, recintos, ventas, puerta y
- * cuentas cuelgan de ella, así que nunca ve lo de otro. Solo IMPACTA (la organización
+ * cuentas cuelgan de ella, así que nunca ve lo de otro. Solo Boost (la organización
  * isPlatform) crea organizadores y sus cuentas, y aprueba sus eventos antes de publicarlos.
  */
 import { DEFAULT_CURRENCY, slugify } from "@ticketera/core";
@@ -98,7 +98,7 @@ export async function publicationProblem(eventId: string): Promise<string | null
   return null;
 }
 
-/** El organizador lo deja listo y lo envía: IMPACTA lo revisa antes de que salga en la web. */
+/** El organizador lo deja listo y lo envía: Boost lo revisa antes de que salga en la web. */
 export async function submitEventForReview(eventId: string, actorId: string, now = new Date()) {
   const event = await prisma.event.findUnique({ where: { id: eventId } });
   if (!event) throw new DomainError("NOT_FOUND", "Evento no encontrado.");
@@ -112,7 +112,7 @@ export async function submitEventForReview(eventId: string, actorId: string, now
   await audit(prisma, { actorType: "staff", actorId, action: "event.submit", entity: "Event", entityId: eventId });
 }
 
-/** IMPACTA aprueba: el evento sale en la web y queda a la venta. */
+/** Boost aprueba: el evento sale en la web y queda a la venta. */
 export async function approveEvent(eventId: string, actorId: string, now = new Date()) {
   const event = await prisma.event.findUnique({ where: { id: eventId } });
   if (!event) throw new DomainError("NOT_FOUND", "Evento no encontrado.");
@@ -123,7 +123,7 @@ export async function approveEvent(eventId: string, actorId: string, now = new D
   await audit(prisma, { actorType: "staff", actorId, action: "event.approve", entity: "Event", entityId: eventId });
 }
 
-/** IMPACTA lo devuelve con lo que hay que corregir; el organizador lo vuelve a enviar. */
+/** Boost lo devuelve con lo que hay que corregir; el organizador lo vuelve a enviar. */
 export async function rejectEvent(eventId: string, note: string, actorId: string) {
   const event = await prisma.event.findUnique({ where: { id: eventId } });
   if (!event) throw new DomainError("NOT_FOUND", "Evento no encontrado.");

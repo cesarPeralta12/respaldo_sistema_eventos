@@ -1,4 +1,4 @@
-# Impacta — Mejoras propuestas para todo el sistema
+# Boost — Mejoras propuestas para todo el sistema
 
 Propuesta, no implementada. Surge de revisar el sistema completo después de fusionar el modelo de
 organizadores con la app móvil de puerta. Prioridad: **P0** antes de vender entradas reales,
@@ -8,7 +8,7 @@ organizadores con la app móvil de puerta. Prioridad: **P0** antes de vender ent
 
 | Hallazgo | Dónde | Acción |
 |---|---|---|
-| La semilla no marcaba a Impacta como plataforma (solo la migración lo hacía): un `db:seed` sobre base nueva dejaba a Impacta sin vista general | `seed.ts` | **Corregido** en la fusión |
+| La semilla no marcaba a Boost como plataforma (solo la migración lo hacía): un `db:seed` sobre base nueva dejaba a Boost sin vista general | `seed.ts` | **Corregido** en la fusión |
 | Los teléfonos seguían leyendo entradas con un organizador suspendido | `authenticateDevice` | **Corregido** |
 | La descarga "delta" se calcula por fechas (`issuedAt/usedAt/cancelledAt`): no ve otros cambios (transferencias, cambios de tipo) y depende de relojes | `getDoorDownload` | Ver 3.3 |
 | El teléfono valida que el código exista, no su firma (el secreto no está en el teléfono) | `validator.dart` | Ver 3.5 |
@@ -27,7 +27,7 @@ organizadores con la app móvil de puerta. Prioridad: **P0** antes de vender ent
 4. **P1 · Auditoría visible.** Pantalla de registro de acciones (quién aprobó, suspendió, entró como,
    cambió precios, anuló entradas). Ya se guarda; falta mostrarlo y filtrarlo.
 5. **P1 · Contraseñas y sesiones.** Política de contraseñas, cierre de sesión en todos los dispositivos,
-   aviso de nuevo inicio de sesión, doble factor opcional para Impacta y organizadores.
+   aviso de nuevo inicio de sesión, doble factor opcional para Boost y organizadores.
 6. **P2 · Invitar por enlace** a porteros y cajeros (enlace de un solo uso en vez de contraseña temporal).
 
 ## 2. Compra, pagos y negocio

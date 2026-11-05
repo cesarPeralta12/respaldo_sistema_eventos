@@ -1,6 +1,6 @@
 /**
  * Crea de una vez cuentas de clientes para usar el sistema: organizadores de eventos y boliches, cada uno con su
- * panel propio de solo lectura (Impacta entra con "Entrar" y les arma recintos, eventos o noches). Es lo mismo que
+ * panel propio de solo lectura (Boost entra con "Entrar" y les arma recintos, eventos o noches). Es lo mismo que
  * "Nuevo usuario de eventos / de boliche" en Organizadores. No borra nada: una cuenta cuyo email ya existe se salta.
  *
  * Por defecto, 3 de eventos (eventos1@impacta.test …) y 3 de boliche (boliche1@impacta.test …):
@@ -52,7 +52,7 @@ async function main() {
   const accounts = parseAccounts(process.env.ACCOUNTS);
 
   const { prisma, createOrganizer } = await import("../src/index");
-  // Queda registrado como hecho por el dueño de Impacta (en Seguridad).
+  // Queda registrado como hecho por el dueño de Boost (en Seguridad).
   const owner = await prisma.membership.findFirst({
     where: { organization: { isPlatform: true }, role: "OWNER" },
     orderBy: { createdAt: "asc" },

@@ -2,7 +2,7 @@
  * Límite de eventos activos por organizador.
  *
  * Cuenta los eventos en borrador, en revisión y publicados que no pasaron (no cuenta los cancelados ni los
- * que ya se realizaron: todas sus funciones quedaron atrás). Lo fija IMPACTA por organizador; vacío = sin
+ * que ya se realizaron: todas sus funciones quedaron atrás). Lo fija Boost por organizador; vacío = sin
  * límite, y la plataforma misma nunca tiene límite. Solo frena CREAR eventos: los que ya existen siguen
  * funcionando aunque se baje el límite por debajo de lo que ya hay.
  */
@@ -41,10 +41,10 @@ export async function getEventQuota(organizationId: string, now = new Date()): P
 }
 
 export const eventLimitMessage = (limit: number) =>
-  `Llegaste al límite de ${limit} evento${limit === 1 ? "" : "s"} activo${limit === 1 ? "" : "s"}. Para crear otro, cancela o elimina uno que ya no uses, o pide a iPass ampliar tu límite.`;
+  `Llegaste al límite de ${limit} evento${limit === 1 ? "" : "s"} activo${limit === 1 ? "" : "s"}. Para crear otro, cancela o elimina uno que ya no uses, o pide a Boost ampliar tu límite.`;
 
 /**
- * Crea un evento respetando el límite (salvo `ignoreLimit`: IMPACTA trabajando dentro de un organizador). La
+ * Crea un evento respetando el límite (salvo `ignoreLimit`: Boost trabajando dentro de un organizador). La
  * comprobación y la creación van juntas bajo un bloqueo de la organización: dos creaciones a la vez no pueden
  * pasarse del límite.
  */
@@ -64,7 +64,7 @@ export async function createEventWithinLimit(data: Prisma.EventUncheckedCreateIn
   });
 }
 
-/** IMPACTA fija el límite de un organizador (null = sin límite). Bajarlo por debajo de lo que ya tiene no borra nada. */
+/** Boost fija el límite de un organizador (null = sin límite). Bajarlo por debajo de lo que ya tiene no borra nada. */
 export async function setMaxActiveEvents(organizationId: string, limit: number | null, actorId: string) {
   if (limit !== null && (!Number.isInteger(limit) || limit < 0 || limit > 10_000)) {
     throw new DomainError("INVALID_STATE", "El límite debe ser un número entero de 0 a 10.000, o vacío para no limitar.");

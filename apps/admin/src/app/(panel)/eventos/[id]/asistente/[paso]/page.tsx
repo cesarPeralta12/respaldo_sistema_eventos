@@ -256,7 +256,7 @@ export default async function WizardPage({ params }: Props) {
             </p>
           ) : event.status === "PENDING_REVIEW" ? (
             <p className="text-sm">
-              Enviado a iPass: sale en la web cuando lo aprueben.{" "}
+              Enviado a Boost: sale en la web cuando lo aprueben.{" "}
               <Link href={`/eventos/${event.id}`} className="text-[var(--accent)] underline">
                 Ir al evento
               </Link>
@@ -271,7 +271,7 @@ export default async function WizardPage({ params }: Props) {
                     ? guestList
                       ? "Al activarlo se puede entrar con invitación (no aparece en la web)."
                       : "Al publicarlo sale a la venta en la web."
-                    : "Se envía a iPass, que lo revisa y lo publica."}
+                    : "Se envía a Boost, que lo revisa y lo publica."}
               </p>
               <button type="submit" disabled={!ready} className="btn btn-primary w-fit disabled:cursor-not-allowed disabled:opacity-50">
                 {!staff.platform ? "Enviar a revisión" : guestList ? "Activar evento" : "Publicar evento"}

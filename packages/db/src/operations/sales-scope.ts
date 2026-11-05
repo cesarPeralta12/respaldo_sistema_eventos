@@ -24,7 +24,7 @@ export const assignmentLive = (now: Date) => ({
 });
 
 /**
- * Qué puede vender `userId` en la organización. Los administradores (y iPass, también dentro de un organizador)
+ * Qué puede vender `userId` en la organización. Los administradores (y Boost, también dentro de un organizador)
  * venden todo; un cajero, según su alcance; un promotor, solo lo asignado.
  */
 export async function salesAccess(db: Db, userId: string, organizationId: string, now = new Date()): Promise<SalesAccess> {
@@ -63,7 +63,7 @@ export function sellableSessionsWhere(access: SalesAccess) {
 export async function assertCanSell(db: Db, input: { userId: string; organizationId: string; session: { id: string; eventId: string }; now?: Date }) {
   const access = await salesAccess(db, input.userId, input.organizationId, input.now);
   if (!canSellSession(access, input.session)) {
-    throw new DomainError("NOT_ALLOWED", "No tienes asignada esta función: pídele a iPass que te la asigne.");
+    throw new DomainError("NOT_ALLOWED", "No tienes asignada esta función: pídele a Boost que te la asigne.");
   }
   return access;
 }

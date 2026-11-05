@@ -164,7 +164,7 @@ export async function recordLoginFailure(input: { kind: "staff" | "customer"; em
 export type AuditScope = "security" | "changes" | "all";
 
 export type AuditFilter = {
-  /** undefined = todas las organizaciones (vista general de IMPACTA). */
+  /** undefined = todas las organizaciones (vista general de Boost). */
   organizationId?: string;
   scope?: AuditScope;
   onlyWarnings?: boolean;

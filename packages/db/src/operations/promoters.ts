@@ -406,7 +406,7 @@ export async function settlePromoterCommission(input: { organizationId: string; 
  * recién cuando el pago queda aprobado (el promotor nunca recibe efectivo).
  */
 export async function sellAsPromoter(input: CheckoutInput, options: { promoterId: string; buyerPhone?: string; provider: string; promoCode?: string; now?: Date }) {
-  // Solo puede aplicar un código suyo (el que le dio iPass a él): no el de otro promotor ni uno cualquiera.
+  // Solo puede aplicar un código suyo (el que le dio Boost a él): no el de otro promotor ni uno cualquiera.
   if (options.promoCode?.trim()) {
     const normalized = normalizePromoCode(options.promoCode);
     const mine = await prisma.promoCode.findFirst({ where: { code: normalized, promoterId: options.promoterId, active: true }, select: { id: true } });

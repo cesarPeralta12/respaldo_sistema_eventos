@@ -9,7 +9,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'tokens.dart';
 
-/// Fondo de toda la app: casi negro con dos resplandores (amarillo y verde) que se mueven despacio.
+/// Fondo de toda la app: noche violeta con luces de escenario que se mueven despacio (naranja arriba a la izquierda,
+/// rosa arriba a la derecha y un lila tenue abajo, como en la web).
 class Backdrop extends StatefulWidget {
   const Backdrop({super.key, required this.child, this.intensity = 1});
 
@@ -64,8 +65,9 @@ class _GlowPainter extends CustomPainter {
       canvas.drawCircle(center, radius, paint);
     }
 
-    glow(Offset(size.width * (0.85 - 0.2 * t), size.height * (0.05 + 0.08 * t)), size.width * 0.95, Brand.slate, 0.30);
-    glow(Offset(size.width * (0.1 + 0.25 * t), size.height * (0.02 + 0.1 * t)), size.width * 0.95, Brand.accent, 0.26);
+    glow(Offset(size.width * (0.85 - 0.2 * t), size.height * (0.05 + 0.08 * t)), size.width * 0.95, Brand.pink, 0.20);
+    glow(Offset(size.width * (0.1 + 0.25 * t), size.height * (0.02 + 0.1 * t)), size.width * 0.95, Brand.orange, 0.22);
+    glow(Offset(size.width * (0.5 + 0.15 * t), size.height * (1.05 - 0.05 * t)), size.width * 1.1, Brand.lilac, 0.12);
   }
 
   @override
@@ -288,7 +290,7 @@ class SoftCard extends StatelessWidget {
         color: gradient == null ? (color ?? Brand.surface) : null,
         gradient: gradient ??
             (color == null
-                ? const LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [Color(0xFF1C2842), Color(0xFF162034)])
+                ? const LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [Brand.cardTop, Brand.cardBottom])
                 : null),
         borderRadius: BorderRadius.circular(radius),
         border: Border.all(color: borderColor ?? Brand.stroke),
@@ -338,7 +340,7 @@ class BrandMark extends StatelessWidget {
   }
 }
 
-/// Ícono de la app (la "B" de Boost sobre magenta), con brillo.
+/// Ícono de la app (la "B" de Boost sobre la llama), con brillo.
 class AppIconTile extends StatelessWidget {
   const AppIconTile({super.key, this.size = 92});
 
@@ -358,7 +360,7 @@ class AppIconTile extends StatelessWidget {
   }
 }
 
-/// Botón principal magenta, grande, con rebote y estado de carga.
+/// Botón principal con la llama (naranja → rosa) y texto en noche violeta, grande, con rebote y estado de carga.
 class PrimaryButton extends StatelessWidget {
   const PrimaryButton({super.key, required this.label, required this.onPressed, this.icon, this.loading = false, this.color, this.textColor});
 
@@ -372,8 +374,10 @@ class PrimaryButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final enabled = onPressed != null && !loading;
+    // Mientras carga conserva su color: la ruedita va en el color del texto (oscuro) y tiene que verse.
+    final lit = onPressed != null;
     final bg = color ?? Brand.accent;
-    final fg = textColor ?? Brand.accentInk;
+    final fg = lit ? (textColor ?? Brand.accentInk) : Brand.text.withValues(alpha: 0.7);
     return PressScale(
       onTap: enabled ? onPressed : null,
       scale: 0.97,
@@ -381,8 +385,8 @@ class PrimaryButton extends StatelessWidget {
         duration: const Duration(milliseconds: 200),
         height: 58,
         decoration: BoxDecoration(
-          color: enabled ? bg : bg.withValues(alpha: 0.35),
-          gradient: enabled && color == null ? const LinearGradient(colors: [Brand.accent, Brand.accentDark]) : null,
+          color: lit ? bg : bg.withValues(alpha: 0.35),
+          gradient: lit && color == null ? Brand.flame : null,
           borderRadius: BorderRadius.circular(18),
           boxShadow: enabled ? [BoxShadow(color: bg.withValues(alpha: 0.32), blurRadius: 22, offset: const Offset(0, 8))] : null,
         ),
@@ -454,7 +458,7 @@ class RoundIconButton extends StatelessWidget {
         height: 46,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: active ? Brand.accent.withValues(alpha: 0.16) : Colors.black.withValues(alpha: 0.38),
+          color: active ? Brand.accent.withValues(alpha: 0.16) : Brand.ink.withValues(alpha: 0.45),
           border: Border.all(color: active ? Brand.accent.withValues(alpha: 0.55) : Brand.stroke),
         ),
         child: Stack(

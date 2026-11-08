@@ -1,37 +1,67 @@
-/// Identidad visual de la app de puerta: colores, tipografía y el tema. Sigue la guía visual de Boost (la misma de la
-/// web y el panel): azul noche de base, magenta para las acciones y la marca, amarillo para destacar, y Poppins.
-/// El verde, el ámbar y el rojo quedan para el resultado de una lectura, que es lo que el portero tiene que ver de
-/// un vistazo.
+/// Identidad visual de la app de puerta: colores, tipografía y el tema. Sigue la identidad de Boost, "aguayo de neón"
+/// (la misma de la web y el panel): noche violeta de base, la llama (naranja y rosa en degradado) para la marca y las
+/// acciones principales, turquesa para los datos destacados, amarillo para destacar, lila de acento secundario, y
+/// Poppins. El verde, el ámbar y el rojo quedan solo para el resultado de una lectura, que es lo que el portero tiene
+/// que ver de un vistazo.
+///
+/// Todo texto sobre los fondos oscuros (ink, surface, surface2) tiene un contraste de al menos 4.5:1, para leerse en
+/// plena luz y en la oscuridad del boliche. Por eso el rosa va de ícono, borde o relleno (con texto oscuro encima),
+/// pero no de texto chico: para texto de acento se usa el turquesa, el amarillo o el lila.
 library;
 
 import 'package:flutter/cupertino.dart' show CupertinoPageTransitionsBuilder;
 import 'package:flutter/material.dart';
 
 class Brand {
-  // Azul noche (fondos): el mismo de la web.
-  static const ink = Color(0xFF111A2B);
-  static const surface = Color(0xFF192438);
-  static const surface2 = Color(0xFF222F48);
-  static const surface3 = Color(0xFF2C3A57);
-  static const stroke = Color(0xFF2A3751);
-  static const text = Color(0xFFF5F6F8);
-  static const muted = Color(0xFF9BA9C4);
-  static const faint = Color(0xFF7D89A3);
+  // Noche violeta (fondos): la misma de la web.
+  static const ink = Color(0xFF1A0933);
+  static const surface = Color(0xFF26104A);
+  static const surface2 = Color(0xFF33185F);
+  static const surface3 = Color(0xFF402074);
+  static const stroke = Color(0xFF3E2470);
+  static const text = Color(0xFFFBF7FF);
+  static const muted = Color(0xFFC2B3E0);
 
-  /// Magenta Boost: acciones principales y marca. El texto encima va en blanco.
-  static const accent = Color(0xFFAD468D);
-  static const accentDark = Color(0xFF913673);
-  static const accentInk = Color(0xFFFFFFFF);
-  static const pink = Color(0xFFD985B8);
+  /// Un poco más claro que el de la web para leerse también sobre las hojas (surface2), con 5:1.
+  static const faint = Color(0xFFA08FC4);
 
-  /// Azul pizarra del logo.
-  static const slate = Color(0xFF60718B);
+  /// Tarjetas: un degradado casi invisible alrededor de surface.
+  static const cardTop = Color(0xFF2A1352);
+  static const cardBottom = Color(0xFF220E43);
 
-  /// Amarillo: para destacar (rótulos, cifras, la lectura en curso). Nunca de fondo de botón.
-  static const highlight = Color(0xFFF5B700);
-  static const highlightInk = Color(0xFF192438);
+  /// La llama de Boost: naranja y rosa, juntos en degradado. Es la marca y el fondo de las acciones principales; el
+  /// texto encima va en noche violeta (5.5:1 sobre el rosa, 6.5:1 sobre el naranja). El blanco no se lee sobre ellos.
+  static const orange = Color(0xFFFF6A2B);
+  static const pink = Color(0xFFFF3D8B);
+  static const flameColors = [orange, pink];
+  static const flame = LinearGradient(colors: flameColors);
 
-  /// Resultado de una lectura.
+  /// Acento de la marca sobre el fondo oscuro (íconos, bordes, foco, cargas) y relleno de los botones chicos: el rosa
+  /// de la llama. Lo que va encima, en noche violeta.
+  static const accent = pink;
+  static const accentInk = ink;
+
+  /// Rosa oscuro: fondos con texto blanco encima (5.5:1), como los botones de las hojas.
+  static const pinkDeep = Color(0xFFC8136F);
+  static const pinkDeepInk = Color(0xFFFFFFFF);
+
+  /// Turquesa: precios, cifras y datos destacados. También el NFC y el cambio de zona (VIP).
+  static const teal = Color(0xFF22E3C1);
+
+  /// Fondo del resultado "cambio de zona": termina casi negro para que el texto blanco del medio tenga 4.7:1.
+  static const tealDeep = Color(0xFF011F1B);
+
+  /// Amarillo: para destacar (rótulos, la lectura en curso, el ingreso rápido). Nunca de fondo de botón.
+  static const highlight = Color(0xFFFFD23F);
+  static const highlightInk = ink;
+
+  /// Lila: acento secundario. La salida, "entrada y salida" y el código de barras.
+  static const lilac = Color(0xFFB79CFF);
+
+  /// Fondo del resultado "salida": el texto blanco del medio queda con 5.1:1.
+  static const lilacDeep = Color(0xFF3A1C80);
+
+  /// Resultado de una lectura: verde aceptado, ámbar aviso, rojo rechazado. Solo para eso.
   static const green = Color(0xFF35C48F);
   static const greenDeep = Color(0xFF0E6B4D);
   static const amber = Color(0xFFFFB020);
@@ -39,13 +69,8 @@ class Brand {
   static const red = Color(0xFFFF6B81);
   static const redDeep = Color(0xFFA3243A);
 
-  /// Salida y "entrada y salida": azul pizarra claro (el del logo, aclarado para leerse sobre el fondo oscuro).
-  static const blue = Color(0xFF8CA0C0);
-  static const blueDeep = Color(0xFF34435F);
-
-  /// Cambio de zona (VIP): rosa de la marca.
-  static const violet = Color(0xFFD985B8);
-  static const violetDeep = Color(0xFF7A2F62);
+  /// Texto de un error sobre el rojo tenue de su recuadro.
+  static const redText = Color(0xFFFFC2C8);
 }
 
 class Fonts {
@@ -69,10 +94,12 @@ ThemeData buildTheme() {
   const scheme = ColorScheme.dark(
     primary: Brand.accent,
     onPrimary: Brand.accentInk,
-    secondary: Brand.green,
+    secondary: Brand.lilac,
     onSecondary: Brand.ink,
+    tertiary: Brand.teal,
+    onTertiary: Brand.ink,
     error: Brand.red,
-    onError: Colors.white,
+    onError: Brand.ink,
     surface: Brand.surface,
     onSurface: Brand.text,
     onSurfaceVariant: Brand.muted,
@@ -115,6 +142,8 @@ ThemeData buildTheme() {
       filled: true,
       fillColor: Brand.surface,
       labelStyle: Type.muted,
+      // Arriba del campo la etiqueta sigue en gris lila: el rosa no llega a 4.5:1 sobre las hojas. El foco lo marca el borde.
+      floatingLabelStyle: const TextStyle(fontFamily: Fonts.body, color: Brand.muted),
       hintStyle: const TextStyle(color: Brand.faint),
       contentPadding: const EdgeInsets.symmetric(horizontal: 18, vertical: 18),
       border: OutlineInputBorder(borderRadius: BorderRadius.circular(16), borderSide: const BorderSide(color: Brand.stroke)),
@@ -125,8 +154,8 @@ ThemeData buildTheme() {
     filledButtonTheme: FilledButtonThemeData(
       style: FilledButton.styleFrom(
         minimumSize: const Size.fromHeight(56),
-        backgroundColor: Brand.accent,
-        foregroundColor: Brand.accentInk,
+        backgroundColor: Brand.pinkDeep,
+        foregroundColor: Brand.pinkDeepInk,
         textStyle: const TextStyle(fontFamily: Fonts.body, fontSize: 16, fontWeight: FontWeight.w600),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       ),

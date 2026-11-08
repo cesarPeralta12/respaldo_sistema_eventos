@@ -33,7 +33,7 @@ class _ConsultSheet extends StatelessWidget {
     }
     final (color, icon) = switch (v.state) {
       PresenceState.inside => (Brand.green, Icons.login_rounded),
-      PresenceState.left => (Brand.blue, Icons.logout_rounded),
+      PresenceState.left => (Brand.lilac, Icons.logout_rounded),
       PresenceState.neverEntered => (Brand.amber, Icons.hourglass_empty_rounded),
     };
     final rows = <(IconData, String, String)>[

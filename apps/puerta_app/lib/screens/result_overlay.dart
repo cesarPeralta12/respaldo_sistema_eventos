@@ -19,8 +19,8 @@ class OutcomeStyle {
       return switch (o.movement ?? Movement.entry) {
         Movement.entry => const OutcomeStyle(Brand.green, Brand.greenDeep, Icons.check_rounded),
         Movement.reentry => const OutcomeStyle(Brand.green, Brand.greenDeep, Icons.replay_rounded),
-        Movement.exit => const OutcomeStyle(Brand.blue, Brand.blueDeep, Icons.logout_rounded),
-        Movement.zoneChange => const OutcomeStyle(Brand.violet, Brand.violetDeep, Icons.star_rounded),
+        Movement.exit => const OutcomeStyle(Brand.lilac, Brand.lilacDeep, Icons.logout_rounded),
+        Movement.zoneChange => const OutcomeStyle(Brand.teal, Brand.tealDeep, Icons.star_rounded),
       };
     }
     if (o.verdict.isWarning) return const OutcomeStyle(Brand.amber, Brand.amberDeep, Icons.priority_high_rounded);

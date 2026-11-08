@@ -236,7 +236,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            gradient: const LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [Brand.pink, Brand.accent]),
+                            gradient: const LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: Brand.flameColors),
                             boxShadow: [BoxShadow(color: Brand.accent.withValues(alpha: 0.3), blurRadius: 14)],
                           ),
                           child: Text(first.isEmpty ? 'P' : first.characters.first.toUpperCase(), style: const TextStyle(fontFamily: Fonts.display, fontSize: 19, fontWeight: FontWeight.w700, color: Brand.accentInk)),
@@ -273,7 +273,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                       children: [
                         const Icon(Icons.wifi_off_rounded, color: Brand.red, size: 20),
                         const SizedBox(width: 10),
-                        Expanded(child: Text(_error!, style: Type.body.copyWith(color: const Color(0xFFFFC2C8), fontSize: 15))),
+                        Expanded(child: Text(_error!, style: Type.body.copyWith(color: Brand.redText, fontSize: 15))),
                       ],
                     ),
                   ),
@@ -434,10 +434,11 @@ class _EventHero extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(28),
         border: Border.all(color: Brand.accent.withValues(alpha: 0.28)),
+        // Un reflejo de la llama que se apaga en la noche violeta.
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [Brand.accent.withValues(alpha: 0.16), const Color(0xFF12161C)],
+          colors: [Brand.orange.withValues(alpha: 0.18), Brand.pink.withValues(alpha: 0.10), Brand.ink],
         ),
       ),
       child: Column(
@@ -485,7 +486,7 @@ class _GatePicker extends StatelessWidget {
   static Color _color(GateDirection d) => switch (d) {
         GateDirection.inward => Brand.green,
         GateDirection.outward => Brand.amber,
-        GateDirection.both => Brand.blue,
+        GateDirection.both => Brand.lilac,
       };
 
   @override
@@ -739,7 +740,9 @@ class _SyncButtonState extends State<_SyncButton> with SingleTickerProviderState
         duration: const Duration(milliseconds: 240),
         height: 54,
         decoration: BoxDecoration(
-          color: widget.refresh ? Brand.surface2 : Brand.accent,
+          // "Descargar datos" es la acción principal: la llama. "Descargar de nuevo" queda discreto.
+          color: widget.refresh ? Brand.surface2 : null,
+          gradient: widget.refresh ? null : Brand.flame,
           borderRadius: BorderRadius.circular(16),
           border: Border.all(color: widget.refresh ? Brand.stroke : Colors.transparent),
         ),
@@ -757,12 +760,12 @@ class _MethodTile extends StatelessWidget {
 
   Color get _color => switch (method) {
         AccessMethod.qr => Brand.accent,
-        AccessMethod.barcode => Brand.blue,
-        AccessMethod.nfc => Brand.violet,
+        AccessMethod.barcode => Brand.lilac,
+        AccessMethod.nfc => Brand.teal,
       };
 
-  /// Sobre el magenta el ícono va en blanco; sobre los tonos claros, en azul noche.
-  Color get _iconColor => method == AccessMethod.qr ? Brand.accentInk : Brand.ink;
+  /// El QR, que es el principal, lleva la llama; los otros, su color liso. El ícono va siempre en noche violeta.
+  Gradient? get _gradient => method == AccessMethod.qr ? const LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: Brand.flameColors) : null;
 
   @override
   Widget build(BuildContext context) {
@@ -781,8 +784,8 @@ class _MethodTile extends StatelessWidget {
             Container(
               width: 60,
               height: 60,
-              decoration: BoxDecoration(color: _color, borderRadius: BorderRadius.circular(18), boxShadow: [BoxShadow(color: _color.withValues(alpha: 0.35), blurRadius: 18, offset: const Offset(0, 6))]),
-              child: Icon(method.icon, size: 32, color: _iconColor),
+              decoration: BoxDecoration(color: _color, gradient: _gradient, borderRadius: BorderRadius.circular(18), boxShadow: [BoxShadow(color: _color.withValues(alpha: 0.35), blurRadius: 18, offset: const Offset(0, 6))]),
+              child: Icon(method.icon, size: 32, color: Brand.ink),
             ),
             const SizedBox(width: 16),
             Expanded(

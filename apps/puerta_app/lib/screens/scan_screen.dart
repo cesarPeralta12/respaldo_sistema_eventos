@@ -273,7 +273,7 @@ class _ScanScreenState extends State<ScanScreen> {
   Color get _gateColor => switch (_gate?.direction ?? GateDirection.inward) {
         GateDirection.inward => Brand.green,
         GateDirection.outward => Brand.amber,
-        GateDirection.both => Brand.blue,
+        GateDirection.both => Brand.lilac,
       };
 
   String get _gateLabel {
@@ -292,7 +292,7 @@ class _ScanScreenState extends State<ScanScreen> {
     final zoneLabel = (_outcome?.verdict.ok ?? false) && (_gate?.zoneId != null) && _outcome?.movement != Movement.exit ? (_gate?.zoneName ?? _gate?.name) : null;
 
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Brand.ink,
       body: Stack(
         fit: StackFit.expand,
         children: [
@@ -329,9 +329,9 @@ class _ScanScreenState extends State<ScanScreen> {
           IgnorePointer(
             child: Column(
               children: [
-                Container(height: 190, decoration: BoxDecoration(gradient: LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: [Colors.black.withValues(alpha: 0.82), Colors.transparent]))),
+                Container(height: 190, decoration: BoxDecoration(gradient: LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: [Brand.ink.withValues(alpha: 0.82), Brand.ink.withValues(alpha: 0)]))),
                 const Spacer(),
-                Container(height: 230, decoration: BoxDecoration(gradient: LinearGradient(begin: Alignment.bottomCenter, end: Alignment.topCenter, colors: [Colors.black.withValues(alpha: 0.9), Colors.transparent]))),
+                Container(height: 230, decoration: BoxDecoration(gradient: LinearGradient(begin: Alignment.bottomCenter, end: Alignment.topCenter, colors: [Brand.ink.withValues(alpha: 0.9), Brand.ink.withValues(alpha: 0)]))),
               ],
             ),
           ),
@@ -365,7 +365,7 @@ class _ScanScreenState extends State<ScanScreen> {
                                 listenable: _settings,
                                 builder: (context, _) => _settings.autoAccept && !_consultOnly ? const Pill('Ingreso rápido', icon: Icons.bolt_rounded, color: Brand.highlight, small: true) : const SizedBox.shrink(),
                               ),
-                              if (_consultOnly) const Pill('Solo consulta', icon: Icons.visibility_outlined, color: Brand.violet, small: true),
+                              if (_consultOnly) const Pill('Solo consulta', icon: Icons.visibility_outlined, color: Brand.teal, small: true),
                             ],
                           ),
                         ],

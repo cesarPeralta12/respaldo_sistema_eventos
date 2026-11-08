@@ -244,7 +244,7 @@ class _BarScanScreenState extends State<BarScanScreen> with WidgetsBindingObserv
   Widget build(BuildContext context) {
     final pending = _s.barPending;
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Brand.ink,
       body: Stack(
         fit: StackFit.expand,
         children: [
@@ -262,9 +262,9 @@ class _BarScanScreenState extends State<BarScanScreen> with WidgetsBindingObserv
           IgnorePointer(
             child: Column(
               children: [
-                Container(height: 170, decoration: BoxDecoration(gradient: LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: [Colors.black.withValues(alpha: 0.82), Colors.transparent]))),
+                Container(height: 170, decoration: BoxDecoration(gradient: LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: [Brand.ink.withValues(alpha: 0.82), Brand.ink.withValues(alpha: 0)]))),
                 const Spacer(),
-                Container(height: 200, decoration: BoxDecoration(gradient: LinearGradient(begin: Alignment.bottomCenter, end: Alignment.topCenter, colors: [Colors.black.withValues(alpha: 0.9), Colors.transparent]))),
+                Container(height: 200, decoration: BoxDecoration(gradient: LinearGradient(begin: Alignment.bottomCenter, end: Alignment.topCenter, colors: [Brand.ink.withValues(alpha: 0.9), Brand.ink.withValues(alpha: 0)]))),
               ],
             ),
           ),
@@ -429,7 +429,7 @@ class _VoucherSheetState extends State<_VoucherSheet> {
               const SizedBox(height: 4),
               Text('${v.people > 1 ? '${v.people} personas · ' : ''}a nombre de ${v.buyer}', style: Type.muted),
               const SizedBox(height: 14),
-              Text(formatVoucherAmount(v.amount, v.currency), style: Type.number.copyWith(fontSize: 40, color: ok ? Brand.green : Brand.muted)),
+              Text(formatVoucherAmount(v.amount, v.currency), style: Type.number.copyWith(fontSize: 40, color: ok ? Brand.teal : Brand.muted)),
               Text('de consumo · ${_code(v.code)}', style: Type.muted),
             ],
             if (o.detail != null) ...[
@@ -458,7 +458,7 @@ class _VoucherSheetState extends State<_VoucherSheet> {
                   const SizedBox(width: 10),
                   Expanded(
                     flex: 3,
-                    child: PrimaryButton(label: 'MARCAR COMO LEÍDO', icon: Icons.check_rounded, color: Brand.green, textColor: Colors.white, onPressed: () => Navigator.of(context).pop(VoucherConfirm(note: _note.text))),
+                    child: PrimaryButton(label: 'MARCAR COMO LEÍDO', icon: Icons.check_rounded, color: Brand.green, textColor: Brand.ink, onPressed: () => Navigator.of(context).pop(VoucherConfirm(note: _note.text))),
                   ),
                 ],
               ),
@@ -490,7 +490,7 @@ Future<void> showVoucherDone(BuildContext context, {required Voucher voucher}) {
             const SizedBox(height: 14),
             Text('Anótalo', style: Type.muted),
             Text(voucher.label, style: const TextStyle(fontFamily: Fonts.display, fontSize: 24, fontWeight: FontWeight.w700, color: Brand.text)),
-            Text(formatVoucherAmount(voucher.amount, voucher.currency), style: Type.number.copyWith(fontSize: 38, color: Brand.green)),
+            Text(formatVoucherAmount(voucher.amount, voucher.currency), style: Type.number.copyWith(fontSize: 38, color: Brand.teal)),
             if (voucher.note != null) Text(voucher.note!, style: Type.body),
             const SizedBox(height: 16),
             SizedBox(width: double.infinity, child: FilledButton(onPressed: () => Navigator.of(context).pop(), child: const Text('Listo'))),

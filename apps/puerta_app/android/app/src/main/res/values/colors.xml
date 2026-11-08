@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Azul noche de Boost: el fondo de la app, también mientras arranca. -->
-    <color name="boost_navy">#111A2B</color>
+    <!-- Noche violeta de Boost ("aguayo de neón"): el fondo de la app, también mientras arranca. -->
+    <color name="boost_night">#1A0933</color>
 </resources>

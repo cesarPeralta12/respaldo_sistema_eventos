@@ -45,7 +45,7 @@ class _AccountSheet extends StatelessWidget {
           TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Cancelar')),
           FilledButton(
             onPressed: () => Navigator.pop(context, true),
-            style: FilledButton.styleFrom(minimumSize: const Size(130, 48), backgroundColor: Brand.red, foregroundColor: Colors.white),
+            style: FilledButton.styleFrom(minimumSize: const Size(130, 48), backgroundColor: Brand.red, foregroundColor: Brand.ink),
             child: const Text('Cerrar sesión'),
           ),
         ],
@@ -77,7 +77,7 @@ class _AccountSheet extends StatelessWidget {
                     width: 58,
                     height: 58,
                     alignment: Alignment.center,
-                    decoration: const BoxDecoration(shape: BoxShape.circle, gradient: LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [Brand.pink, Brand.accent])),
+                    decoration: const BoxDecoration(shape: BoxShape.circle, gradient: LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: Brand.flameColors)),
                     child: Text(name.characters.first.toUpperCase(), style: const TextStyle(fontFamily: Fonts.display, fontSize: 24, fontWeight: FontWeight.w700, color: Brand.accentInk)),
                   ),
                   const SizedBox(width: 14),
@@ -87,7 +87,7 @@ class _AccountSheet extends StatelessWidget {
                       children: [
                         Text(name, style: Type.title.copyWith(fontSize: 20), maxLines: 1, overflow: TextOverflow.ellipsis),
                         const SizedBox(height: 4),
-                        Wrap(spacing: 8, children: [Pill(roleLabel(service.role), icon: Icons.verified_user_outlined, color: Brand.pink, small: true)]),
+                        Wrap(spacing: 8, children: [Pill(roleLabel(service.role), icon: Icons.verified_user_outlined, color: Brand.lilac, small: true)]),
                       ],
                     ),
                   ),

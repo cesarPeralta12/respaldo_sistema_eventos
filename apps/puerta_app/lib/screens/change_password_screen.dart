@@ -136,7 +136,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                           borderRadius: BorderRadius.circular(14),
                           border: Border.all(color: Brand.red.withValues(alpha: 0.4)),
                         ),
-                        child: Text(_error!, style: Type.body.copyWith(color: const Color(0xFFFFC2C8), fontSize: 15)),
+                        child: Text(_error!, style: Type.body.copyWith(color: Brand.redText, fontSize: 15)),
                       ),
                     ),
             ),

@@ -152,7 +152,7 @@ class _BraceletScreenState extends State<BraceletScreen> {
                   children: [
                     const Icon(Icons.nfc_rounded, color: Brand.red),
                     const SizedBox(width: 10),
-                    Expanded(child: Text(_nfcProblem!, style: Type.body.copyWith(color: const Color(0xFFFFC2C8), fontSize: 15))),
+                    Expanded(child: Text(_nfcProblem!, style: Type.body.copyWith(color: Brand.redText, fontSize: 15))),
                   ],
                 ),
               ),
@@ -236,8 +236,8 @@ class _BraceletScreenState extends State<BraceletScreen> {
                                   Container(
                                     width: 44,
                                     height: 44,
-                                    decoration: BoxDecoration(color: (done ? Brand.green : Brand.violet).withValues(alpha: 0.16), borderRadius: BorderRadius.circular(14)),
-                                    child: Icon(done ? Icons.check_circle_rounded : Icons.nfc_rounded, color: done ? Brand.green : Brand.violet),
+                                    decoration: BoxDecoration(color: (done ? Brand.green : Brand.teal).withValues(alpha: 0.16), borderRadius: BorderRadius.circular(14)),
+                                    child: Icon(done ? Icons.check_circle_rounded : Icons.nfc_rounded, color: done ? Brand.green : Brand.teal),
                                   ),
                                   const SizedBox(width: 12),
                                   Expanded(
@@ -294,7 +294,7 @@ class _StatusView extends StatelessWidget {
   Widget build(BuildContext context) {
     final waiting = phase == _Phase.waiting || phase == _Phase.writing;
     final ok = phase == _Phase.done;
-    final color = ok ? Brand.green : (waiting ? Brand.violet : Brand.red);
+    final color = ok ? Brand.green : (waiting ? Brand.teal : Brand.red);
     final title = switch (phase) {
       _Phase.waiting => 'ACERCA LA PULSERA',
       _Phase.writing => 'GRABANDO… NO LA MUEVAS',
@@ -338,7 +338,7 @@ class _StatusView extends StatelessWidget {
             if (phase == _Phase.failed && result != null)
               Padding(
                 padding: const EdgeInsets.only(top: 14),
-                child: Text(result!.message, textAlign: TextAlign.center, style: Type.body.copyWith(color: const Color(0xFFFFC2C8))),
+                child: Text(result!.message, textAlign: TextAlign.center, style: Type.body.copyWith(color: Brand.redText)),
               ),
             const SizedBox(height: 26),
             if (phase == _Phase.waiting) GhostButton(label: 'Cancelar', onPressed: onCancel),

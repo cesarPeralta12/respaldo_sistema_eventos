@@ -119,7 +119,7 @@ class _FramePainter extends CustomPainter {
 
 /// Ondas que salen del icono mientras se espera una pulsera o tarjeta.
 class NfcWaiting extends StatefulWidget {
-  const NfcWaiting({super.key, this.message, this.color = Brand.violet});
+  const NfcWaiting({super.key, this.message, this.color = Brand.teal});
 
   final String? message;
   final Color color;
@@ -169,7 +169,7 @@ class _NfcWaitingState extends State<NfcWaiting> with SingleTickerProviderStateM
             child: Text(
               widget.message ?? 'Acerca la pulsera o tarjeta a la parte de atrás del teléfono',
               textAlign: TextAlign.center,
-              style: Type.heading.copyWith(fontSize: 20, color: failed ? const Color(0xFFFFC2C8) : Brand.text),
+              style: Type.heading.copyWith(fontSize: 20, color: failed ? Brand.redText : Brand.text),
             ),
           ),
         ],
@@ -405,7 +405,7 @@ class _ExitSheetState extends State<_ExitSheet> with SingleTickerProviderStateMi
   @override
   Widget build(BuildContext context) {
     final t = widget.outcome.ticket!;
-    const color = Brand.blue;
+    const color = Brand.lilac;
     final at = t.usedAt;
     final since = at == null ? null : '${at.hour.toString().padLeft(2, '0')}:${at.minute.toString().padLeft(2, '0')}';
     return SafeArea(

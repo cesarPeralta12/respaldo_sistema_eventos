@@ -109,14 +109,14 @@ export default async function MyTicketsPage({ searchParams }: Props) {
       ) : (
         <ul className="grid gap-4 sm:grid-cols-2">
           {cards.map((t) => (
-            <li key={t.id} className="rounded-2xl bg-[#F5F6F8] p-5 text-center text-[#192438]">
-              <p className="text-xs uppercase tracking-wide text-[#60718B]">{t.receivedByTransfer ? "Recibida por transferencia" : "Entrada"}</p>
+            <li key={t.id} className="rounded-2xl bg-[#F7F4FE] p-5 text-center text-[#1A0933]">
+              <p className="text-xs uppercase tracking-wide text-[#5E4B85]">{t.receivedByTransfer ? "Recibida por transferencia" : "Entrada"}</p>
               <p className="font-display text-xl">{t.eventTitle}</p>
-              <p className="text-xs text-[#60718B]">
+              <p className="text-xs text-[#5E4B85]">
                 {formatDateTime(t.startsAt, t.timezone)} · {t.venueName}
               </p>
               {(t.whenWhere.when.doors || t.whenWhere.when.end) && (
-                <p className="text-xs text-[#60718B]">
+                <p className="text-xs text-[#5E4B85]">
                   {[t.whenWhere.when.doors, t.whenWhere.when.lastEntry, t.whenWhere.when.end].filter(Boolean).join(" · ")}
                 </p>
               )}
@@ -133,7 +133,7 @@ export default async function MyTicketsPage({ searchParams }: Props) {
                 <p className="mt-1 text-sm font-bold text-[#B77900]">Válida para entrar hasta las {formatClock(t.entryUntil, t.timezone)}</p>
               )}
               {t.consumption && (
-                <p className="mx-auto mt-2 w-fit rounded-full bg-[#192438] px-3 py-1 text-xs font-semibold text-[#F5B700]">
+                <p className="mx-auto mt-2 w-fit rounded-full bg-[#1A0933] px-3 py-1 text-xs font-semibold text-[#FFD23F]">
                   Consumo {t.consumption.shared ? "de la mesa" : "incluido"}: te quedan {formatMoney(t.consumption.left, t.consumption.currency)} de{" "}
                   {formatMoney(t.consumption.amount, t.consumption.currency)}
                 </p>
@@ -143,16 +143,16 @@ export default async function MyTicketsPage({ searchParams }: Props) {
                   <Link href={`/entrada/${t.code}`} className="btn-accent inline-block">
                     Abrir entrada (QR dinámico)
                   </Link>
-                  <p className="mt-2 text-xs text-[#60718B]">El QR cambia cada 30 segundos y funciona sin internet. No sirve una captura.</p>
+                  <p className="mt-2 text-xs text-[#5E4B85]">El QR cambia cada 30 segundos y funciona sin internet. No sirve una captura.</p>
                 </div>
               )}
               {t.qr && <div className={`mx-auto my-3 w-44 ${t.status === "USED" ? "opacity-30" : ""}`} dangerouslySetInnerHTML={{ __html: t.qr }} />}
               {t.barcode && (
                 <div className={`mx-auto my-3 w-full max-w-60 overflow-hidden rounded-md bg-white [&>svg]:h-auto [&>svg]:w-full ${t.status === "USED" ? "opacity-30" : ""}`} dangerouslySetInnerHTML={{ __html: t.barcode }} />
               )}
-              {t.accessMethods.includes("NFC") && <p className="my-2 text-xs font-semibold text-[#60718B]">{t.qr || t.barcode ? "También se lee por NFC." : "Se lee por NFC: acércala al lector."}</p>}
+              {t.accessMethods.includes("NFC") && <p className="my-2 text-xs font-semibold text-[#5E4B85]">{t.qr || t.barcode ? "También se lee por NFC." : "Se lee por NFC: acércala al lector."}</p>}
               <p className="font-mono text-sm tracking-wider">{formatCode(t.code)}</p>
-              {t.status === "USED" && <p className="mt-1 text-xs font-semibold text-[#60718B]">Ya utilizada</p>}
+              {t.status === "USED" && <p className="mt-1 text-xs font-semibold text-[#5E4B85]">Ya utilizada</p>}
 
               {t.pending ? (
                 <div className="mt-3 rounded-lg bg-[#fff4d6] p-3 text-left text-xs">
@@ -168,9 +168,9 @@ export default async function MyTicketsPage({ searchParams }: Props) {
                 </div>
               ) : t.status === "VALID" ? (
                 t.blockedReason ? (
-                  <p className="mt-3 text-xs text-[#60718B]">{t.blockedReason}</p>
+                  <p className="mt-3 text-xs text-[#5E4B85]">{t.blockedReason}</p>
                 ) : (
-                  <details className="mt-3 rounded-lg border border-[#E6EAF0] p-3 text-left">
+                  <details className="mt-3 rounded-lg border border-[#E7E0F6] p-3 text-left">
                     <summary className="cursor-pointer text-sm font-semibold">Transferir a otra persona</summary>
                     <TransferForm ticketId={t.id} />
                   </details>

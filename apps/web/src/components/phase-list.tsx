@@ -56,7 +56,7 @@ export function PhaseList({
               return (
                 <li key={t.id} className={`flex items-center gap-4 px-5 py-3 ${active ? "bg-[var(--highlight)]/10" : ""} ${phase.state === "done" ? "opacity-55" : ""}`}>
                   <span
-                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full font-display text-sm ${active ? "bg-[var(--highlight)] text-[#192438]" : "border border-[var(--border)] text-[var(--ink-muted)]"}`}
+                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full font-display text-sm ${active ? "bg-[var(--highlight)] text-[#1A0933]" : "border border-[var(--border)] text-[var(--ink-muted)]"}`}
                   >
                     {phase.position}
                   </span>

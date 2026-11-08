@@ -8,11 +8,15 @@ import type { Email, InlineImage } from "./send";
 const esc = (value: string) =>
   value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
-// Colores Boost: magenta para botones y enlaces (su variante oscura en textos chicos), azul noche de base.
-const BRAND = "#AD468D";
-const LINK = "#913673";
-const INK = "#192438";
-const MUTED = "#60718B";
+// Colores Boost: rosa intenso para botones y enlaces (su variante oscura en textos chicos), noche violeta de base y
+// el naranja de la llama para la "B" del logo.
+const BRAND = "#C8136F";
+const LINK = "#A50D5B";
+const INK = "#1A0933";
+const MUTED = "#5E4B85";
+const FLAME = "#FF6A2B";
+const PAPER = "#F6F2FF";
+const LINE = "#E6DEF5";
 
 function button(href: string, label: string) {
   return `<a href="${esc(href)}" style="display:inline-block;background:${BRAND};color:#ffffff;text-decoration:none;font-weight:700;padding:14px 26px;border-radius:10px;font-size:16px">${esc(label)}</a>`;
@@ -21,13 +25,13 @@ function button(href: string, label: string) {
 function layout(preheader: string, body: string) {
   return `<!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
-<body style="margin:0;background:#F5F6F8;font-family:Arial,Helvetica,sans-serif;color:${INK}">
+<body style="margin:0;background:${PAPER};font-family:Arial,Helvetica,sans-serif;color:${INK}">
 <span style="display:none;max-height:0;overflow:hidden;opacity:0">${esc(preheader)}</span>
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F5F6F8"><tr><td align="center" style="padding:24px 12px">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${PAPER}"><tr><td align="center" style="padding:24px 12px">
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#ffffff;border-radius:14px;overflow:hidden">
-    <tr><td style="background:${INK};padding:18px 28px;color:#ffffff;font-size:26px;font-weight:700;letter-spacing:-.5px"><span style="color:${BRAND}">i</span>Pass</td></tr>
+    <tr><td style="background:${INK};padding:18px 28px;color:#ffffff;font-size:26px;font-weight:700;letter-spacing:-.5px"><span style="color:${FLAME}">B</span>oost</td></tr>
     <tr><td style="padding:28px">${body}</td></tr>
-    <tr><td style="padding:16px 28px;background:#F5F6F8;color:${MUTED};font-size:12px;line-height:1.5">
+    <tr><td style="padding:16px 28px;background:${PAPER};color:${MUTED};font-size:12px;line-height:1.5">
       Este es un mensaje automático: por favor no respondas a este correo. Lo recibes porque se usó esta dirección en
       Boost; si no fuiste tú, puedes ignorarlo.
     </td></tr>
@@ -128,7 +132,7 @@ function whenWhereHtml(ww: WhenWhere): string {
         : []),
     ...(ww.contact.email ? [`<a href="mailto:${esc(ww.contact.email)}" style="color:${LINK}">${esc(ww.contact.email)}</a>`] : []),
   ];
-  return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:16px 0;border-top:1px solid #E6EAF0;border-bottom:1px solid #E6EAF0">
+  return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:16px 0;border-top:1px solid ${LINE};border-bottom:1px solid ${LINE}">
     ${row("Cuándo", when)}${row("Dónde", where)}${row("Condiciones", ww.conditions.map(esc))}${row("Programa", program)}${row("Consultas", contact)}
   </table>`;
 }
@@ -179,7 +183,7 @@ export function ticketsMessage(input: {
     .map((v, i) => {
       const cid = `consumo-${i + 1}`;
       images.push({ cid, filename: `consumo-${v.code}.png`, content: v.qrPng, contentType: "image/png" });
-      return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #E6EAF0;border-radius:12px;margin:14px 0"><tr><td align="center" style="padding:16px">
+      return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid ${LINE};border-radius:12px;margin:14px 0"><tr><td align="center" style="padding:16px">
         <div style="font-size:12px;color:${MUTED};text-transform:uppercase;letter-spacing:1px">QR de consumo</div>
         <div style="font-size:18px;font-weight:700;margin-top:4px">${esc(v.label)}</div>
         <div style="font-size:18px;font-weight:700;margin-top:2px;color:${LINK}">${esc(v.amount)} de consumo</div>
@@ -202,7 +206,7 @@ export function ticketsMessage(input: {
         ? `<div style="margin:14px 0 6px">${button(t.dynamicUrl, "Abrir mi entrada")}</div>
         <div style="font-size:12px;color:${MUTED};line-height:1.5;max-width:340px">Esta entrada es de <strong>QR dinámico</strong>: el QR cambia cada 30 segundos y no sirve una captura. <strong>Ábrela una vez con internet antes de salir</strong> y después funciona aunque no haya señal.</div>`
         : "";
-      return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #E6EAF0;border-radius:12px;margin:14px 0"><tr><td align="center" style="padding:16px">
+      return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid ${LINE};border-radius:12px;margin:14px 0"><tr><td align="center" style="padding:16px">
         <div style="font-size:12px;color:${MUTED};text-transform:uppercase;letter-spacing:1px">Entrada ${i + 1} de ${input.tickets.length}</div>
         <div style="font-size:18px;font-weight:700;margin-top:4px">${esc(t.typeName)}</div>
         ${t.seat ? `<div style="font-size:15px;font-weight:700;margin-top:2px">${esc(t.seat)}</div>` : ""}

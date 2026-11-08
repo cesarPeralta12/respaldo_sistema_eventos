@@ -266,7 +266,7 @@ export function CheckoutForm({
                 {t.presale && <span className="font-semibold text-[var(--accent-2)]">(preventa)</span>}
                 {t.discountPercent ? <span className="font-semibold text-[var(--accent-2)]"> (-{t.discountPercent}% preventa)</span> : null}
                 {t.table && (
-                  <span className="text-[#D985B8]">
+                  <span className="text-[#FF7AB6]">
                     {" "}
                     · mesa para {t.table.people}
                     {t.consumption ? `, incluye ${t.consumption} de consumo` : ""}
@@ -324,12 +324,12 @@ export function CheckoutForm({
                       </span>
                     )}
                     {type.table && (
-                      <span className="ml-2 rounded-full bg-[#AD468D]/20 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-[#D985B8]">
+                      <span className="ml-2 rounded-full bg-[#C8136F]/20 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-[#FF7AB6]">
                         Mesa · {type.table.people} personas
                       </span>
                     )}
                     {type.entryUntil && type.unitAmount === 0 && (
-                      <span className="ml-2 rounded-full bg-[#35C48F]/20 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-[#35C48F]">
+                      <span className="ml-2 rounded-full bg-[#3BE08A]/20 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-[#3BE08A]">
                         Free
                       </span>
                     )}
@@ -340,12 +340,12 @@ export function CheckoutForm({
                     <p className="text-xs text-[var(--ink-muted)]">Cada persona de la mesa recibe su QR para entrar (puedes pasárselo desde Mis entradas).</p>
                   )}
                   {type.consumption && (
-                    <p className="text-xs font-semibold text-[#F5B700]">
+                    <p className="text-xs font-semibold text-[#FFD23F]">
                       Incluye {type.consumption} de consumo en barra{type.table ? " para la mesa" : ""}
                     </p>
                   )}
                   {type.entryUntil && (
-                    <p className="text-xs font-semibold text-[#35C48F]">
+                    <p className="text-xs font-semibold text-[#3BE08A]">
                       Válida para entrar hasta las {type.entryUntil}
                       {type.unitAmount === 0 ? " · una por persona" : ""}
                     </p>

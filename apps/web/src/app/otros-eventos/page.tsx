@@ -42,7 +42,7 @@ export default async function OtherEventsPage({ searchParams }: Props) {
         <div
           aria-hidden
           className="absolute inset-0 opacity-70"
-          style={{ background: "radial-gradient(60% 80% at 15% 20%, #F5B70044, transparent 70%), radial-gradient(50% 70% at 85% 30%, #AD468D55, transparent 70%)" }}
+          style={{ background: "radial-gradient(60% 80% at 15% 20%, #FFD23F44, transparent 70%), radial-gradient(50% 70% at 85% 30%, #C8136F55, transparent 70%)" }}
         />
         <div className="relative mx-auto max-w-6xl px-6 py-14 sm:py-20">
           <p className="eyebrow text-[var(--highlight)]">Peñas · Recitales · Obras · Ferias</p>

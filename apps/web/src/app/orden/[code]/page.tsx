@@ -259,8 +259,8 @@ async function TicketList({
     <ul className="grid gap-4 sm:grid-cols-2">
       {rendered.map((ticket, i) => (
         // Boleto claro: el QR se lee mejor con fondo blanco, también en pantallas con poco brillo.
-        <li key={ticket.id} className="rounded-2xl bg-[#F5F6F8] p-5 text-center text-[#192438]">
-          <p className="text-xs uppercase tracking-wide text-[#60718B]">
+        <li key={ticket.id} className="rounded-2xl bg-[#F7F4FE] p-5 text-center text-[#1A0933]">
+          <p className="text-xs uppercase tracking-wide text-[#5E4B85]">
             {guest ? "Invitación" : `Entrada ${i + 1} de ${rendered.length}`}
           </p>
           {ticket.holderName && <p className="text-sm font-semibold">{ticket.holderName}</p>}
@@ -280,7 +280,7 @@ async function TicketList({
             <p className="mt-1 text-sm font-bold text-[#B77900]">Válida para entrar hasta las {formatClock(ticket.ticketType.entryUntil, timeZone)}</p>
           )}
           {ticket.credit && ticket.credit.amount > 0 && (!ticket.person || ticket.person === 1) && (
-            <p className="mx-auto mt-2 w-fit rounded-full bg-[#192438] px-3 py-1 text-xs font-semibold text-[#F5B700]">
+            <p className="mx-auto mt-2 w-fit rounded-full bg-[#1A0933] px-3 py-1 text-xs font-semibold text-[#FFD23F]">
               Consumo {ticket.ticketType.kind === "TABLE" ? "de la mesa" : "incluido"}: {formatMoney(ticket.credit.amount, ticket.credit.currency)} · tu QR de consumo está abajo
             </p>
           )}
@@ -290,10 +290,10 @@ async function TicketList({
             </p>
           )}
           {!ticket.transferred && zonesText(ticket.ticketType.zones.map((z) => z.name)) && (
-            <p className="mt-1 text-sm font-bold text-[#192438]">{zonesText(ticket.ticketType.zones.map((z) => z.name))}</p>
+            <p className="mt-1 text-sm font-bold text-[#1A0933]">{zonesText(ticket.ticketType.zones.map((z) => z.name))}</p>
           )}
           {!ticket.transferred && reentryText(ticket.ticketType.maxEntries) && (
-            <p className="mt-1 text-xs text-[#60718B]">{reentryText(ticket.ticketType.maxEntries)}: al salir y al volver, haz leer tu QR en la puerta.</p>
+            <p className="mt-1 text-xs text-[#5E4B85]">{reentryText(ticket.ticketType.maxEntries)}: al salir y al volver, haz leer tu QR en la puerta.</p>
           )}
           {ticket.transferred && (
             <p className="my-4 rounded-lg bg-[#fff4d6] px-3 py-3 text-sm font-semibold">Esta entrada fue transferida a otra persona.</p>
@@ -303,7 +303,7 @@ async function TicketList({
               <Link href={`/entrada/${ticket.code}`} className="btn-accent inline-block">
                 Abrir entrada (QR dinámico)
               </Link>
-              <p className="mt-2 text-xs text-[#60718B]">Ábrela con internet antes de salir: el QR cambia cada 30 segundos y funciona sin señal.</p>
+              <p className="mt-2 text-xs text-[#5E4B85]">Ábrela con internet antes de salir: el QR cambia cada 30 segundos y funciona sin señal.</p>
             </div>
           )}
           {ticket.qr && (
@@ -319,12 +319,12 @@ async function TicketList({
             />
           )}
           {ticket.nfc && (
-            <p className="my-2 text-xs font-semibold text-[#60718B]">
+            <p className="my-2 text-xs font-semibold text-[#5E4B85]">
               {ticket.qr || ticket.barcode ? "También se lee por NFC." : "Esta entrada se lee por NFC: acércala al lector."}
             </p>
           )}
           <p className="font-mono text-sm tracking-wider">{formatCode(ticket.code)}</p>
-          {ticket.status === "USED" && <p className="mt-1 text-xs font-semibold text-[#60718B]">Ya utilizada</p>}
+          {ticket.status === "USED" && <p className="mt-1 text-xs font-semibold text-[#5E4B85]">Ya utilizada</p>}
           {ticket.status === "CANCELLED" && (
             <p className="mt-1 text-xs font-semibold text-[#C62842]">
               {ticket.expiredAt && ticket.ticketType.entryUntil
@@ -343,13 +343,13 @@ async function TicketList({
         </p>
         <ul className="grid gap-4 sm:grid-cols-2">
           {vouchers.map((v) => (
-            <li key={v.id} className="rounded-2xl bg-[#F5F6F8] p-5 text-center text-[#192438]">
-              <p className="text-xs uppercase tracking-wide text-[#60718B]">QR de consumo</p>
+            <li key={v.id} className="rounded-2xl bg-[#F7F4FE] p-5 text-center text-[#1A0933]">
+              <p className="text-xs uppercase tracking-wide text-[#5E4B85]">QR de consumo</p>
               <p className="font-display text-xl">{v.label}</p>
               <p className="mt-1 text-lg font-bold text-[#16846C]">{formatMoney(v.amount, v.currency)}</p>
               <div className={`mx-auto my-3 w-48 ${v.redeemedAt ? "opacity-30" : ""}`} dangerouslySetInnerHTML={{ __html: v.qr }} />
               <p className="font-mono text-sm tracking-wider">{formatCode(v.code)}</p>
-              <p className={`mt-1 text-xs font-semibold ${v.redeemedAt ? "text-[#C62842]" : "text-[#60718B]"}`}>
+              <p className={`mt-1 text-xs font-semibold ${v.redeemedAt ? "text-[#C62842]" : "text-[#5E4B85]"}`}>
                 {v.redeemedAt ? `Ya fue leído a las ${formatClock(v.redeemedAt, timeZone)}` : "Sin usar"}
               </p>
             </li>

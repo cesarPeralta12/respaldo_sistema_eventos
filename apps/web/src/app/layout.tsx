@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Bricolage_Grotesque, Figtree } from "next/font/google";
 import type { ReactNode } from "react";
 import { Logo } from "@/components/logo";
 import "./globals.css";
 import { Nav } from "./nav";
 
-// Poppins en todo el sitio (guía visual Boost): Bold títulos, SemiBold secciones, Medium botones, Regular texto.
-const poppins = Poppins({ variable: "--font-poppins", subsets: ["latin"], weight: ["400", "500", "600", "700", "800"] });
+// Bricolage Grotesque para títulos, precios y fechas (con el eje de ancho, para angostarla en los títulos largos);
+// Figtree para el texto y los botones. Las dos son variables: no hace falta elegir pesos.
+const bricolage = Bricolage_Grotesque({ variable: "--font-bricolage", subsets: ["latin"], axes: ["wdth", "opsz"] });
+const figtree = Figtree({ variable: "--font-figtree", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: { default: "Boost — Entradas para eventos en Bolivia", template: "%s · Boost" },
@@ -15,7 +17,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="es" className={`${poppins.variable} h-full antialiased`}>
+    <html lang="es" className={`${bricolage.variable} ${figtree.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
         <Nav />
         {children}

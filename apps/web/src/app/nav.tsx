@@ -8,20 +8,20 @@ export async function Nav() {
   // Las secciones del sitio. En el celular van en una segunda fila (con la cuenta no entran en una sola).
   const sections = (
     <>
-      <Link href="/otros-eventos" className="font-semibold text-[var(--highlight)] transition-colors hover:text-[var(--ink)]">
+      <Link href="/otros-eventos" className="link-sweep font-semibold text-[var(--highlight)] hover:text-[var(--ink)]">
         Otros eventos
       </Link>
-      <Link href="/" className="text-[var(--ink-muted)] transition-colors hover:text-[var(--ink)]">
+      <Link href="/" className="link-sweep text-[var(--ink-muted)] hover:text-[var(--ink)]">
         Eventos
       </Link>
-      <Link href="/boliches" className="font-semibold text-[var(--boost-pink)] transition-colors hover:text-[var(--ink)]">
+      <Link href="/boliches" className="link-sweep font-semibold text-[var(--boost-pink)] hover:text-[var(--ink)]">
         Boliches
       </Link>
     </>
   );
 
   return (
-    <header className="sticky top-0 z-40 border-b border-[var(--border)] bg-[var(--bg)]/85 backdrop-blur-md">
+    <header className="sticky top-0 z-40 bg-[var(--bg)]/85 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:gap-4 sm:px-6 sm:py-4">
         <Link href="/" aria-label="Boost, ir al inicio" className="shrink-0">
           <Logo className="h-7 w-auto sm:h-8" />
@@ -30,10 +30,10 @@ export async function Nav() {
           <div className="hidden items-center gap-5 sm:flex">{sections}</div>
           {session?.user ? (
             <>
-              <Link href="/mis-entradas" className="text-[var(--ink-muted)] transition-colors hover:text-[var(--ink)]">
+              <Link href="/mis-entradas" className="link-sweep text-[var(--ink-muted)] hover:text-[var(--ink)]">
                 Mis entradas
               </Link>
-              <Link href="/mis-eventos" className="text-[var(--ink-muted)] transition-colors hover:text-[var(--ink)]">
+              <Link href="/mis-eventos" className="link-sweep text-[var(--ink-muted)] hover:text-[var(--ink)]">
                 Mis compras
               </Link>
               <form
@@ -49,13 +49,10 @@ export async function Nav() {
             </>
           ) : (
             <>
-              <Link href="/login" className="text-[var(--ink-muted)] transition-colors hover:text-[var(--ink)]">
+              <Link href="/login" className="link-sweep text-[var(--ink-muted)] hover:text-[var(--ink)]">
                 Ingresar
               </Link>
-              <Link
-                href="/registro"
-                className="rounded-full bg-[var(--accent)] px-4 py-1.5 font-semibold text-[var(--accent-ink)] transition-transform hover:scale-105"
-              >
+              <Link href="/registro" className="btn-accent !px-4 !py-1.5">
                 Registrarse
               </Link>
             </>
@@ -65,6 +62,7 @@ export async function Nav() {
       <nav aria-label="Secciones" className="flex gap-5 overflow-x-auto whitespace-nowrap px-4 pb-2.5 text-[13px] sm:hidden">
         {sections}
       </nav>
+      <div className="aguayo" aria-hidden />
     </header>
   );
 }

@@ -32,7 +32,8 @@ export function EventStub({ event, now, eager = false }: { event: EventCard; now
   return (
     <Link
       href={`/eventos/${event.slug}`}
-      className="group stub grain relative flex h-full flex-col overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--bg-raised)] transition-transform duration-300 hover:-translate-y-1"
+      className="group stub stub-lift grain relative flex h-full flex-col overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--bg-raised)]"
+      style={{ ["--cat" as string]: color }}
     >
       <div className="relative aspect-[4/3] w-full overflow-hidden bg-[var(--bg-raised-2)]">
         <EventImage
@@ -42,7 +43,7 @@ export function EventStub({ event, now, eager = false }: { event: EventCard; now
           className={`h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 ${soldOut ? "grayscale" : ""}`}
         />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[var(--bg-raised)] via-transparent to-transparent" />
-        <span className="absolute left-3 top-3 rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wide" style={{ background: color, color: "#192438" }}>
+        <span className="absolute left-3 top-3 rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wide" style={{ background: color, color: "#1A0933" }}>
           {CATEGORY_LABEL[event.category] ?? "Evento"}
         </span>
         {event.sales.onSale && event.sales.discountPercent ? (

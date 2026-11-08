@@ -113,7 +113,7 @@ export function HeroCarousel({ slides }: { slides: HeroSlide[] }) {
             <div className="relative mx-auto flex h-full w-full max-w-6xl flex-col justify-end px-6 pb-24 sm:pb-28">
               <div className="hero-rise max-w-3xl space-y-4">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="rounded-full px-3 py-1 text-xs font-extrabold uppercase tracking-wide" style={{ background: s.categoryColor, color: "#192438" }}>
+                  <span className="rounded-full px-3 py-1 text-xs font-extrabold uppercase tracking-wide" style={{ background: s.categoryColor, color: "#1A0933" }}>
                     {s.category}
                   </span>
                   {s.soon && <span className="tag tag-soon">{s.soon}</span>}
@@ -124,14 +124,14 @@ export function HeroCarousel({ slides }: { slides: HeroSlide[] }) {
                   ))}
                 </div>
 
-                <h2 className="font-display text-[clamp(2.7rem,9vw,6.75rem)] leading-[0.9] text-[var(--ink)]">{s.title}</h2>
+                <h2 className="hero-title font-display text-[clamp(2.7rem,9vw,6.75rem)] leading-[0.9]">{s.title}</h2>
 
                 <p className="text-base text-[var(--ink)]/85 sm:text-lg">
                   <span className="capitalize">{s.when}</span> · {s.venue}
                 </p>
 
                 {s.offer && (
-                  <p className="inline-flex items-center gap-2 rounded-lg border border-[var(--highlight)]/50 bg-[var(--highlight)]/10 px-3 py-1.5 text-sm font-semibold text-[var(--accent-text)]">
+                  <p className="inline-flex items-center gap-2 rounded-lg border border-[var(--highlight)]/50 bg-[var(--highlight)]/10 px-3 py-1.5 text-sm font-semibold text-[var(--highlight)]">
                     <span aria-hidden>★</span> {s.offer}
                   </p>
                 )}
@@ -178,7 +178,7 @@ export function HeroCarousel({ slides }: { slides: HeroSlide[] }) {
                     {i === index && (
                       <span
                         key={`${index}-${paused ? "p" : "r"}`}
-                        className="hero-progress absolute inset-0 bg-[var(--highlight)]"
+                        className="hero-progress absolute inset-0"
                         style={{ ["--hero-ms" as string]: `${SLIDE_MS}ms`, animationPlayState: paused ? "paused" : "running", ...(reduced ? { transform: "scaleX(1)" } : {}) }}
                       />
                     )}
@@ -195,7 +195,7 @@ export function HeroCarousel({ slides }: { slides: HeroSlide[] }) {
               type="button"
               aria-label="Anterior"
               onClick={() => go(index - 1)}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/25 bg-black/30 text-lg backdrop-blur hover:border-[var(--accent)]"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/25 bg-black/30 text-lg backdrop-blur transition-[border-color,transform] hover:-translate-x-0.5 hover:border-[var(--boost-pink)]"
             >
               ←
             </button>
@@ -203,7 +203,7 @@ export function HeroCarousel({ slides }: { slides: HeroSlide[] }) {
               type="button"
               aria-label="Siguiente"
               onClick={() => go(index + 1)}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/25 bg-black/30 text-lg backdrop-blur hover:border-[var(--accent)]"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/25 bg-black/30 text-lg backdrop-blur transition-[border-color,transform] hover:translate-x-0.5 hover:border-[var(--boost-pink)]"
             >
               →
             </button>

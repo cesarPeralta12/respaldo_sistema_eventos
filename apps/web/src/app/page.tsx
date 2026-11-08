@@ -194,7 +194,7 @@ export default async function HomePage({ searchParams }: Props) {
               ["03", "Entra con tu celular", "Tu QR funciona también sin internet y te dice por qué puerta ingresar."],
             ].map(([n, title, text]) => (
               <div key={n} className="flex gap-4">
-                <span className="font-display text-4xl leading-none text-[var(--accent-text)]">{n}</span>
+                <span className="text-flame font-display text-5xl leading-none">{n}</span>
                 <div>
                   <h3 className="font-display text-lg leading-tight">{title}</h3>
                   <p className="mt-1 text-sm text-[var(--ink-muted)]">{text}</p>

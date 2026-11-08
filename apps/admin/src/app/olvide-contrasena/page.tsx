@@ -7,7 +7,7 @@ export const metadata: Metadata = { title: "Olvidé mi contraseña" };
 
 export default function ForgotPasswordPage() {
   return (
-    <main className="mx-auto flex min-h-dvh max-w-sm flex-col justify-center gap-6 px-6">
+    <main className="auth-stage mx-auto flex min-h-dvh max-w-sm flex-col justify-center gap-6 px-6">
       <div>
         <Logo className="mb-4 h-10 w-auto" />
         <p className="eyebrow">Panel de Boost</p>

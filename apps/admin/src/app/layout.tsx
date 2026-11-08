@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Mono, Inter, Poppins } from "next/font/google";
+import { Bricolage_Grotesque, Figtree, IBM_Plex_Mono } from "next/font/google";
 import type { ReactNode } from "react";
 import "./globals.css";
 
-// Poppins para títulos e Inter para tablas y formularios (guía visual Boost).
-const poppins = Poppins({ variable: "--font-poppins", subsets: ["latin"], weight: ["500", "600", "700"] });
-const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
+// Bricolage Grotesque para títulos y Figtree para tablas y formularios (las mismas de la web). Son variables.
+const bricolage = Bricolage_Grotesque({ variable: "--font-bricolage", subsets: ["latin"], axes: ["wdth", "opsz"] });
+const figtree = Figtree({ variable: "--font-figtree", subsets: ["latin"] });
 const plexMono = IBM_Plex_Mono({ variable: "--font-mono-plex", subsets: ["latin"], weight: ["400", "500"] });
 
 export const metadata: Metadata = {
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="es" className={`${poppins.variable} ${inter.variable} ${plexMono.variable} antialiased`}>
+    <html lang="es" className={`${bricolage.variable} ${figtree.variable} ${plexMono.variable} antialiased`}>
       <body className="min-h-dvh">{children}</body>
     </html>
   );

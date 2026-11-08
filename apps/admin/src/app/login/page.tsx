@@ -10,7 +10,7 @@ type Props = { searchParams: Promise<{ next?: string; cambio?: string }> };
 export default async function LoginPage({ searchParams }: Props) {
   const { next, cambio } = await searchParams;
   return (
-    <main className="page-enter mx-auto flex min-h-dvh max-w-sm flex-col justify-center gap-8 px-6">
+    <main className="auth-stage page-enter mx-auto flex min-h-dvh max-w-sm flex-col justify-center gap-8 px-6">
       <div>
         <h1>
           <Logo className="h-12 w-auto" />

@@ -60,8 +60,9 @@ const mm = (v: number) => v * MM;
 const SAFE = mm(4);
 const INK = rgb(0.08, 0.09, 0.1);
 const MUTED = rgb(0.38, 0.39, 0.37);
-const MAGENTA = rgb(173 / 255, 70 / 255, 141 / 255);
-const BLUE = rgb(96 / 255, 113 / 255, 139 / 255);
+// Logo a color: la "B" en el naranja de la llama y "oost" en la noche violeta.
+const FLAME = rgb(255 / 255, 106 / 255, 43 / 255);
+const NIGHT = rgb(26 / 255, 9 / 255, 51 / 255);
 
 type Box = { x: number; y: number; w: number; h: number };
 type Fonts = { regular: PDFFont; bold: PDFFont; mono: PDFFont };
@@ -155,8 +156,8 @@ function dashedLine(page: PDFPage, x1: number, y1: number, x2: number, y2: numbe
  */
 function drawLogo(page: PDFPage, x: number, top: number, height: number, mono = false): number {
   const scale = height / BOOST_LOGO.height;
-  page.drawSvgPath(BOOST_LOGO.b, { x, y: top, scale, color: mono ? INK : MAGENTA });
-  page.drawSvgPath(BOOST_LOGO.oost, { x, y: top, scale, color: mono ? INK : BLUE });
+  page.drawSvgPath(BOOST_LOGO.b, { x, y: top, scale, color: mono ? INK : FLAME });
+  page.drawSvgPath(BOOST_LOGO.oost, { x, y: top, scale, color: mono ? INK : NIGHT });
   return BOOST_LOGO.width * scale;
 }
 

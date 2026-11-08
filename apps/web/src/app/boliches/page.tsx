@@ -32,7 +32,7 @@ export default async function ClubsPage({ searchParams }: Props) {
     return s ? `/boliches?${s}` : "/boliches";
   };
   const chip = (active: boolean) =>
-    `rounded-full border px-3.5 py-1.5 text-sm transition-colors ${active ? "border-[#AD468D] bg-[#AD468D]/15 font-semibold text-[#D985B8]" : "border-[var(--border-light)] text-[var(--ink-muted)] hover:border-[var(--ink-muted)] hover:text-[var(--ink)]"}`;
+    `rounded-full border px-3.5 py-1.5 text-sm transition-colors ${active ? "border-[#C8136F] bg-[#C8136F]/15 font-semibold text-[#FF7AB6]" : "border-[var(--border-light)] text-[var(--ink-muted)] hover:border-[var(--ink-muted)] hover:text-[var(--ink)]"}`;
 
   return (
     <main>
@@ -40,10 +40,10 @@ export default async function ClubsPage({ searchParams }: Props) {
         <div
           aria-hidden
           className="absolute inset-0 opacity-70"
-          style={{ background: "radial-gradient(60% 80% at 15% 20%, #AD468D66, transparent 70%), radial-gradient(50% 70% at 85% 30%, #60718B55, transparent 70%)" }}
+          style={{ background: "radial-gradient(60% 80% at 15% 20%, #FF3D8B55, transparent 70%), radial-gradient(50% 70% at 85% 30%, #FF6A2B44, transparent 70%)" }}
         />
         <div className="relative mx-auto max-w-6xl px-6 py-14 sm:py-20">
-          <p className="eyebrow text-[#D985B8]">Noche · Bolivia</p>
+          <p className="eyebrow text-[#FF7AB6]">Noche · Bolivia</p>
           <h1 className="font-display mt-2 max-w-3xl text-5xl leading-[0.95] sm:text-7xl">Boliches y discotecas</h1>
           <p className="mt-4 max-w-2xl text-[var(--ink-muted)]">
             Reserva tu mesa o lounge con consumo incluido, entra free antes de la hora o compra tu entrada con trago. Cada
@@ -95,7 +95,7 @@ export default async function ClubsPage({ searchParams }: Props) {
                     <div className="relative h-48 overflow-hidden bg-[var(--bg-raised)]">
                       <EventImage src={club.imageUrl} title={club.title} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
                       <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-raised)] via-transparent to-transparent" />
-                      <span className="absolute left-4 top-4 rounded-full bg-[#AD468D] px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">
+                      <span className="absolute left-4 top-4 rounded-full bg-[#C8136F] px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">
                         Boliche
                       </span>
                     </div>
@@ -121,7 +121,7 @@ export default async function ClubsPage({ searchParams }: Props) {
                             {n.left > 0 ? (
                               <Link
                                 href={`/comprar/${n.id}`}
-                                className="block rounded-lg border border-[var(--border-light)] px-3 py-1.5 text-center text-sm transition-colors hover:border-[#AD468D] hover:bg-[#AD468D]/10"
+                                className="block rounded-lg border border-[var(--border-light)] px-3 py-1.5 text-center text-sm transition-colors hover:border-[#C8136F] hover:bg-[#C8136F]/10"
                               >
                                 <span className="block font-semibold">
                                   {WEEKDAY_SHORT[localWeekday(n.startsAt, tz)]} {date}
@@ -154,7 +154,7 @@ export default async function ClubsPage({ searchParams }: Props) {
             ["03", "Consume en la barra", "Muestra cualquier QR de tu mesa en la barra: se descuenta del consumo incluido."],
           ].map(([n, title, text]) => (
             <div key={n} className="flex gap-4">
-              <span className="font-display text-4xl leading-none text-[#AD468D]">{n}</span>
+              <span className="font-display text-4xl leading-none text-[#C8136F]">{n}</span>
               <div>
                 <h3 className="font-display text-lg leading-tight">{title}</h3>
                 <p className="mt-1 text-sm text-[var(--ink-muted)]">{text}</p>

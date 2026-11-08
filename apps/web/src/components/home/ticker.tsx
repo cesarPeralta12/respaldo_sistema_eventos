@@ -7,8 +7,8 @@ export function Ticker({ events }: { events: EventCard[] }) {
   const items = events.slice(0, 10).map((e) => `${e.title} · ${shortDate(e.nextSession.startsAt, e.nextSession.venue.timezone)}`);
   const loop = [...items, ...items];
   return (
-    <div className="ticker overflow-hidden border-y border-[var(--border)] bg-[var(--highlight)] py-2 text-[var(--highlight-ink)]" aria-hidden>
-      <div className="ticker-track font-display text-sm uppercase tracking-[0.18em]">
+    <div className="ticker ticker-band overflow-hidden py-2.5" aria-hidden>
+      <div className="ticker-track font-display text-sm uppercase tracking-[0.14em]">
         {loop.map((text, i) => (
           <span key={i} className="flex items-center whitespace-nowrap px-5">
             {text}

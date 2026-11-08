@@ -15,7 +15,7 @@ export default async function ChangePasswordPage() {
   const staff = await requireStaff(ROLES.any);
 
   return (
-    <main className="mx-auto flex min-h-dvh max-w-sm flex-col justify-center gap-6 px-6">
+    <main className="auth-stage mx-auto flex min-h-dvh max-w-sm flex-col justify-center gap-6 px-6">
       <div>
         <p className="eyebrow">{staff.home.name}</p>
         <h1 className="text-xl font-semibold tracking-tight">

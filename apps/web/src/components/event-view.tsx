@@ -92,7 +92,7 @@ export async function EventView({ event, preview = false }: { event: ViewableEve
         <div className="relative mx-auto flex h-full max-w-6xl flex-col justify-end gap-3 px-6 pb-8">
           <span
             className="w-fit rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide"
-            style={{ background: color, color: "#192438" }}
+            style={{ background: color, color: "#1A0933" }}
           >
             {CATEGORY_LABEL[event.category] ?? "Evento"}
           </span>
@@ -166,7 +166,7 @@ export async function EventView({ event, preview = false }: { event: ViewableEve
                       {when.end && <p className="text-xs text-[var(--ink-dim)]">{when.end}</p>}
                       <p className="mt-1 text-xs">
                         {s.freeUntil && (
-                          <span className="mr-2 font-semibold text-[#35C48F]">Free hasta {formatClock(s.freeUntil, s.venue.timezone)} ·</span>
+                          <span className="mr-2 font-semibold text-[#3BE08A]">Free hasta {formatClock(s.freeUntil, s.venue.timezone)} ·</span>
                         )}
                         {s.minPrice !== null && (
                           <span className="text-[var(--ink-muted)]">Desde {formatMoney(s.minPrice, s.ticketTypes[0]!.currency)}</span>
